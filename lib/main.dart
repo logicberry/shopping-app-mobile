@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shopapp/router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,14 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: const MaterialApp(
-          title: 'Shopapp',
-          debugShowCheckedModeBanner: false,
-          home: Scaffold(
-            body: Center(
-              child: Text('Shopapp'),
-            ),
-          )),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'Shopapp',
+        routerConfig: AppRouter().router,
+      ),
     );
   }
 }
