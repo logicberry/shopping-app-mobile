@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopapp/router.dart';
 
 void main() {
@@ -16,13 +17,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: 'Shopapp',
-        routerConfig: AppRouter().router,
-      ),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(375, 812),
+        builder: (ctx, child) {
+          return GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+            child: MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              title: 'Shopapp',
+              routerConfig: AppRouter().router,
+            ),
+          );
+        });
   }
 }
