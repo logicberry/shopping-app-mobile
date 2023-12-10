@@ -10,6 +10,8 @@ class AppColors {
   static const Color pink = Color(0xFFF3D9E8);
   static const Color white = Color(0xFFFFFFFF);
   static const Color ash = Color(0xFFF3F7F9);
+  static const Color grey = Color(0xFFCCCCCC);
+
   // static const Gradient linew = LinearGradient(
   //     colors: [Color(0xFF376AED), Color(0xFF49B0E2), Color(0xFF9CECFB)]);
 }

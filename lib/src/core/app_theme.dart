@@ -11,9 +11,7 @@ class AppTheme {
 
     //BODY
     bodyLarge: TextStyle(
-      fontSize: 12.sp,
-      color: AppColors.black,
-    ),
+        fontSize: 12.sp, color: AppColors.black, fontWeight: FontWeight.w400),
 
     //LABEL
     labelLarge: TextStyle(
@@ -25,8 +23,5 @@ class AppTheme {
     fontFamily: 'Poppins',
     textTheme: textTheme,
     primaryTextTheme: textTheme,
-    primaryIconTheme: const IconThemeData(
-      color: AppColors.black,
-    ),
   );
 }
