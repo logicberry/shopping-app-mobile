@@ -1,3 +1,4 @@
 class RouteConstants {
-  static String signUp = '/signup';
+  static String signIn = '/signIn';
+  static String signUp = '/signUp';
 }
