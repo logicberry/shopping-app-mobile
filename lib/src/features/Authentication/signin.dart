@@ -127,6 +127,7 @@ class _SignInPageState extends State<SignInPage> {
                       Space.height(71),
                       const SAActionButton(
                         title: 'Sign In',
+                        onTap: null,
                       ),
                       Space.height(80),
                       Row(

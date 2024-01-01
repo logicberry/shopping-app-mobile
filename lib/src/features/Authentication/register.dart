@@ -107,8 +107,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         labeltext: 'Confirm Password',
                       ),
                       Space.height(59),
-                      const SAActionButton(
+                       SAActionButton(
                         title: 'Sign Up',
+                        onTap: () => context.go(RouteConstants.home),
+
                       ),
                       Space.height(50),
                       Row(
