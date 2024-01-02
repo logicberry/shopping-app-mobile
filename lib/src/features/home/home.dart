@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopapp/src/components/appbar.dart';
+import 'package:shopapp/src/features/home/widgets/searchfield.dart';
 
 import '../../core/core.dart';
 
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              height: 100,
+              height: 135.h,
               width: double.infinity,
               decoration: const BoxDecoration(
                 color: AppColors.primaryColor,
@@ -31,9 +33,23 @@ class HomePage extends StatelessWidget {
                       SvgPicture.asset(SvgPath.location),
                       Space.width(10),
                       Text('St 394 Jackson, New york  United Status',
-                          style: Theme.of(context).textTheme.bodyLarge),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                  color: AppColors.white,
+                                  fontWeight: FontWeight.w400)),
                     ],
-                  )
+                  ),
+                  Space.height(20),
+                  SASearchField(
+                      labeltext: '',
+                      suffix: SvgPicture.asset(
+                        SvgPath.search,
+                        height: 14.h,
+                        width: 14.w,
+                        fit: BoxFit.scaleDown,
+                      )),
                 ],
               ),
             ),

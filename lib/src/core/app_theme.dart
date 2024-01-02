@@ -16,6 +16,9 @@ class AppTheme {
     //LABEL
     labelLarge: TextStyle(
         fontSize: 14.sp, color: AppColors.white, fontWeight: FontWeight.w600),
+
+        //SEARCH LABEL
+        labelSmall: TextStyle(fontSize: 11.sp, color: const Color(0xFF5F6E7C)),
   );
 
   static ThemeData theme = ThemeData(
