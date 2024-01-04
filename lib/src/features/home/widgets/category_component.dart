@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/core.dart';
 
@@ -13,9 +14,11 @@ class CategoryComponent extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
+          radius: 19.r,
+          backgroundColor: AppColors.white,
           child: Image.asset(categoryImage),
         ),
-        Space.height(10),
+        Space.height(5),
         Text(categoryName, style: Theme.of(context).textTheme.bodyLarge)
       ],
     );
