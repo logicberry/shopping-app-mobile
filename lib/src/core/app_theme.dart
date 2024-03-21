@@ -10,6 +10,9 @@ class AppTheme {
     headlineMedium: TextStyle(fontSize: 12.sp, color: AppColors.white),
 
     //BODY
+    titleLarge: TextStyle(
+        fontSize: 19.sp, color: AppColors.black, fontWeight: FontWeight.w600),
+
     bodyLarge: TextStyle(
         fontSize: 12.sp, color: AppColors.black, fontWeight: FontWeight.w400),
 

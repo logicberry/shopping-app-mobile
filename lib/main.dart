@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(375, 977),
+        designSize: const Size(375, 812),
         builder: (ctx, child) {
           return GestureDetector(
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),

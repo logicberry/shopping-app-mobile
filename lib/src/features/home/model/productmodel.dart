@@ -52,4 +52,20 @@ List<Product> constantProducts = [
     productPrice: 19.99,
     initialPrice: 25.99,
   ),
+  Product(
+    name: 'Samsung zflip',
+    image: 'path_to_image2.jpg',
+    company: 'Samsung Store',
+    productBgColor: AppColors.secondaryColor,
+    productPrice: 19.99,
+    initialPrice: 25.99,
+  ),
+  Product(
+    name: 'Samsung zflip',
+    image: 'path_to_image2.jpg',
+    company: 'Samsung Store',
+    productBgColor: AppColors.secondaryColor,
+    productPrice: 19.99,
+    initialPrice: 25.99,
+  ),
 ];
