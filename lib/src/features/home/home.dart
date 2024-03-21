@@ -31,7 +31,8 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: AppColors.ash,
         appBar: const SHAppBar(
           title: 'Home',
-          action: true,
+          actionConfig: AppBarActionConfig.allActions,
+          background: AppColors.primaryColor,
         ),
         body: SingleChildScrollView(
           child: Column(

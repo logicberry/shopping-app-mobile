@@ -16,7 +16,7 @@ class ProductPage extends StatelessWidget {
         appBar: const SHAppBar(
           background: AppColors.primaryColor,
           title: 'All Products',
-          action: true,
+          actionConfig: AppBarActionConfig.allActions,
         ),
         body: Padding(
           padding: EdgeInsets.all(25.0.h),
