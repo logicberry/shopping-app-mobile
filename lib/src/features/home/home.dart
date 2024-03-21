@@ -8,6 +8,7 @@ import 'package:shopapp/src/features/home/widgets/searchfield.dart';
 
 import '../../core/core.dart';
 import 'model/productmodel.dart';
+import 'widgets/promotion_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -72,13 +73,13 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Space.height(20),
+              Space.height(19),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 64.h,
+                      height: 69.h,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         itemCount: categories.length,
@@ -95,6 +96,25 @@ class _HomePageState extends State<HomePage> {
                           width: 24.w,
                         ),
                       ),
+                    ),
+                    Space.height(20),
+                    SizedBox(
+                      height: 120.h,
+                      child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return PromotionsCard(
+                              promotionImage:
+                                  'https://t4.ftcdn.net/jpg/02/62/03/53/360_F_262035364_gGi8uJsPl9uljis8C6oxI0w6AM7MKDLq.webp',
+                              width: 250.h,
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return SizedBox(
+                              width: 13.w,
+                            );
+                          },
+                          itemCount: 3),
                     ),
                     Space.height(20),
                     Row(
@@ -121,8 +141,8 @@ class _HomePageState extends State<HomePage> {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               crossAxisSpacing: 13.0,
-                              mainAxisSpacing: 13.0,
-                              childAspectRatio: 160 / 199),
+                              mainAxisSpacing: 0.0,
+                              childAspectRatio: 160 / 170),
                       itemCount: constantProducts.length,
                       itemBuilder: (context, index) {
                         Product product = constantProducts[index];

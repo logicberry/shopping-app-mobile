@@ -20,8 +20,8 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 199.h,
-      width: 160.w,
+      height: 191.h,
+      width: 161.w,
       child: Column(
         children: [
           Container(

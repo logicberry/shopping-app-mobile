@@ -14,7 +14,7 @@ class CategoryComponent extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
-          radius: 19.r,
+          radius: 20.r,
           backgroundColor: AppColors.white,
           child: Image.asset(categoryImage),
         ),
