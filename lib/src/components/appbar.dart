@@ -43,12 +43,13 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
               )),
       leading: implyLeading
           ? IconButton(
-              onPressed: ontap ?? () => Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.arrow_back, color: AppColors.black),
             )
           : Padding(
               padding: const EdgeInsets.only(left: 20.0),
-              child: SvgPicture.asset(SvgPath.menu),
+              child: GestureDetector(
+                  onTap: ontap, child: SvgPicture.asset(SvgPath.menu)),
             ),
       actions: _buildActions(context),
     );

@@ -6,6 +6,7 @@ import 'package:shopapp/src/features/home/widgets/category_component.dart';
 import 'package:shopapp/src/features/home/widgets/product_card.dart';
 import 'package:shopapp/src/features/home/widgets/searchfield.dart';
 
+import '../../components/sidenav.dart';
 import '../../core/core.dart';
 import 'model/productmodel.dart';
 import 'widgets/promotion_card.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> categories = [
     'Fashion',
     'Electronics',
@@ -29,9 +31,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldKey,
+        drawer: const SideMenu(),
         backgroundColor: AppColors.ash,
-        appBar: const SHAppBar(
+        appBar: SHAppBar(
           title: 'Home',
+          ontap: () {
+            _scaffoldKey.currentState?.openDrawer();
+          },
           actionConfig: AppBarActionConfig.allActions,
           background: AppColors.primaryColor,
         ),
