@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopapp/src/core/app_colors.dart';
 
 import '../../../components/button.dart';
+import '../../../components/cart_num.dart';
 import '../../../core/dimension.dart';
 
 class AddToCartBar extends StatelessWidget {
@@ -27,37 +28,7 @@ class AddToCartBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              height: 27.h,
-              width: 27.w,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                margin: EdgeInsets.zero,
-                child: const Icon(
-                  Icons.remove,
-                  size: 16,
-                ),
-              ),
-            ),
-            const Text('1'),
-            SizedBox(
-              height: 27.h,
-              width: 27.w,
-              child: Card(
-                color: AppColors.primaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                margin: EdgeInsets.zero,
-                child: const Icon(
-                  Icons.add,
-                  size: 16,
-                  color: AppColors.white,
-                ),
-              ),
-            ),
+            const CartAddRemove(),
             Space.width(30),
             SizedBox(
                 width: 185.w,
