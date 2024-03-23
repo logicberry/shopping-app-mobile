@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:shopapp/src/features/Profile/screens/profile_page.dart';
 
 import 'src/core/core.dart';
 import 'src/features/Authentication/register.dart';
@@ -9,7 +10,7 @@ class AppRouter {
     GoRoute(
       name: RouteConstants.signIn,
       path: '/',
-      builder: (context, state) => const HomePage(),
+      builder: (context, state) => const ProfilePage(),
     ),
     GoRoute(
       name: RouteConstants.signUp,
