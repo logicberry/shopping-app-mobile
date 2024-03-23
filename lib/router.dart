@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
+import 'package:shopapp/src/features/Transactions/screens/trasactions_page.dart';
 
 import 'src/core/core.dart';
 import 'src/features/Authentication/register.dart';
-import 'src/features/Feeds/screens/feed_screen.dart';
 import 'src/features/home/home.dart';
 
 class AppRouter {
@@ -10,7 +10,7 @@ class AppRouter {
     GoRoute(
       name: RouteConstants.signIn,
       path: '/',
-      builder: (context, state) => const FeedsPage(),
+      builder: (context, state) => TransactionsPage(),
     ),
     GoRoute(
       name: RouteConstants.signUp,
