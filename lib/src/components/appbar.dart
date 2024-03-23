@@ -49,7 +49,12 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
           : Padding(
               padding: const EdgeInsets.only(left: 20.0),
               child: GestureDetector(
-                  onTap: ontap, child: SvgPicture.asset(SvgPath.menu)),
+                  onTap: ontap,
+                  child: SvgPicture.asset(
+                    SvgPath.menu,
+                    colorFilter:
+                        ColorFilter.mode(actionColor!, BlendMode.srcIn),
+                  )),
             ),
       actions: _buildActions(context),
     );
