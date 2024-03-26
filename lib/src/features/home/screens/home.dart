@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shopapp/src/features/home/widgets/category_component.dart';
 import 'package:shopapp/src/features/home/widgets/product_card.dart';
 import 'package:shopapp/src/features/home/widgets/searchfield.dart';
 
-import '../../core/core.dart';
-import 'model/productmodel.dart';
-import 'widgets/promotion_card.dart';
+import '../../../core/core.dart';
+import '../model/productmodel.dart';
+import '../widgets/promotion_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -125,15 +126,18 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Products',
+                Text('New Products',
                     style: Theme.of(context)
                         .textTheme
                         .labelLarge
                         ?.copyWith(color: AppColors.black)),
-                Text('See all',
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.w400))
+                GestureDetector(
+                  onTap: () => context.pushNamed(RouteConstants.allProducts),
+                  child: Text('See all',
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.w400)),
+                )
               ],
             ),
           ),

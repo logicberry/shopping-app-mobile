@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopapp/src/components/appbar.dart';
 import 'package:shopapp/src/components/sidenav.dart';
-import 'package:shopapp/src/features/home/home.dart';
+import 'package:shopapp/src/features/home/screens/home.dart';
 
 import '../core/core.dart';
 import '../features/Feeds/screens/feed_screen.dart';

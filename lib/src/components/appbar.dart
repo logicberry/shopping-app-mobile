@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../core/core.dart';
 
@@ -43,8 +44,8 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
               )),
       leading: implyLeading
           ? IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: const Icon(Icons.arrow_back, color: AppColors.black),
+              onPressed: () => context.pop(),
+              icon: Icon(Icons.arrow_back, color: actionColor),
             )
           : Padding(
               padding: const EdgeInsets.only(left: 20.0),

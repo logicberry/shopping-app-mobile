@@ -33,7 +33,7 @@ class _SideMenuState extends State<SideMenu> {
 
         break;
       case 3 || 4 || 6:
-        // context.pushNamed("/m");
+        context.pushNamed(RouteConstants.productDetails);
 
         break;
       case 5:

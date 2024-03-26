@@ -14,8 +14,10 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: AppColors.ash,
         appBar: const SHAppBar(
+          implyLeading: true,
           background: AppColors.primaryColor,
           title: 'All Products',
+          actionColor: AppColors.white,
           actionConfig: AppBarActionConfig.allActions,
         ),
         body: Padding(
