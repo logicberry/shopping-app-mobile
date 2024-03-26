@@ -23,5 +23,11 @@ class SvgPath {
   static const String settings = '${svgPath}settings.svg';
   static const String transactions = '${svgPath}transaction.svg';
   static const String union = '${svgPath}union.svg';
+  static const String notification = '${svgPath}notifi.svg';
+  static const String electronics = '${svgPath}electronics.svg';
+  static const String fashion = '${svgPath}fashion.svg';
+  static const String fb = '${svgPath}fb.svg';
+  static const String beauty = '${svgPath}beauty.svg';
+  static const String deals = '${svgPath}deals.svg';
   // static const String  = '${svgPath}check.svg';
 }

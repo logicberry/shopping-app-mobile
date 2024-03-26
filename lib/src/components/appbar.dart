@@ -68,14 +68,14 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
         return [
           _buildActionIcon(SvgPath.message),
           Space.width(20),
-          _buildActionIcon(SvgPath.cart),
+          _buildActionIcon(SvgPath.notification),
           Space.width(20),
         ];
       case AppBarActionConfig.allActions:
         return [
           _buildActionIcon(SvgPath.message),
           Space.width(20),
-          _buildActionIcon(SvgPath.cart),
+          _buildActionIcon(SvgPath.notification),
           Space.width(20),
           _buildActionIcon(SvgPath.cart),
           Space.width(20),

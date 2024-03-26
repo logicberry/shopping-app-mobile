@@ -63,6 +63,7 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.ash,
       key: _scaffoldKey,
       appBar: SHAppBar(
         title: pageTitles[_currentPageIndex!],

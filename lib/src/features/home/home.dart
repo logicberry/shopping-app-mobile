@@ -17,6 +17,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> promo = [
+    ImagePath.promobanner,
+    ImagePath.promo2,
+  ];
+
   List<String> categories = [
     'Fashion',
     'Electronics',
@@ -24,6 +29,14 @@ class _HomePageState extends State<HomePage> {
     'Beauty',
     'Deals'
   ];
+
+  Map<String, String> categoryImages = {
+    'Fashion': SvgPath.fashion,
+    'Electronics': SvgPath.electronics,
+    'F&B': SvgPath.fb,
+    'Beauty': SvgPath.beauty,
+    'Deals': SvgPath.deals,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -64,84 +77,88 @@ class _HomePageState extends State<HomePage> {
           ),
           Space.height(19),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 69.h,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: categories.length,
-                    itemBuilder: (context, index) {
-                      String categoryName = categories[index];
-                      String categoryImage = ImagePath.logo;
-
-                      return CategoryComponent(
-                        categoryName: categoryName,
-                        categoryImage: categoryImage,
-                      );
-                    },
-                    separatorBuilder: (context, index) => SizedBox(
-                      width: 24.w,
-                    ),
-                  ),
-                ),
-                Space.height(20),
-                SizedBox(
-                  height: 120.h,
-                  child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return PromotionsCard(
-                          promotionImage:
-                              'https://t4.ftcdn.net/jpg/02/62/03/53/360_F_262035364_gGi8uJsPl9uljis8C6oxI0w6AM7MKDLq.webp',
-                          width: 250.h,
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return SizedBox(
-                          width: 13.w,
-                        );
-                      },
-                      itemCount: 3),
-                ),
-                Space.height(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Products',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge
-                            ?.copyWith(color: AppColors.black)),
-                    Text('See all',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w400))
-                  ],
-                ),
-                Space.height(13),
-                GridView.builder(
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 13.0,
-                      mainAxisSpacing: 1.0,
-                      childAspectRatio: 160 / 199),
-                  itemCount: constantProducts.length,
+            padding: EdgeInsets.symmetric(horizontal: 21.w),
+            child: Column(children: [
+              SizedBox(
+                height: 69.h,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
                   itemBuilder: (context, index) {
-                    Product product = constantProducts[index];
+                    String categoryName = categories[index];
+                    String categoryImage = categoryImages[categoryName] ?? '';
 
-                    return ProductCard(
-                      productName: product.name,
-                      company: product.company,
-                      productBgColor: product.productBgColor,
-                      productPrice: product.productPrice.toString(),
-                      initialPrice: product.initialPrice.toString(),
+                    return CategoryComponent(
+                      categoryName: categoryName,
+                      categoryImage: categoryImage,
                     );
                   },
+                  separatorBuilder: (context, index) => SizedBox(
+                    width: 24.w,
+                  ),
                 ),
+              ),
+            ]),
+          ),
+          Space.height(20),
+          SizedBox(
+            height: 120.h,
+            child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.only(left: 21.w),
+                itemBuilder: (context, index) {
+                  return PromotionsCard(
+                    promotionImage: promo[index],
+                    width: 250.h,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return SizedBox(
+                    width: 13.w,
+                  );
+                },
+                itemCount: promo.length),
+          ),
+          Space.height(20),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 21.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Products',
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelLarge
+                        ?.copyWith(color: AppColors.black)),
+                Text('See all',
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.w400))
               ],
+            ),
+          ),
+          Space.height(13),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 21.w),
+            child: GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 13.0,
+                  mainAxisSpacing: 1.0,
+                  childAspectRatio: 160 / 190),
+              itemCount: constantProducts.length,
+              itemBuilder: (context, index) {
+                Product product = constantProducts[index];
+
+                return ProductCard(
+                  productName: product.name,
+                  company: product.company,
+                  productBgColor: product.productBgColor,
+                  productPrice: product.productPrice.toString(),
+                  initialPrice: product.initialPrice.toString(),
+                );
+              },
             ),
           ),
         ],

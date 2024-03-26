@@ -14,12 +14,10 @@ class PromotionsCard extends StatelessWidget {
       width: width ?? 353.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(
-          Radius.circular(20.r),
+          Radius.circular(12.r),
         ),
         image: DecorationImage(
-          fit: BoxFit.fill,
-          image: NetworkImage(promotionImage),
-        ),
+            fit: BoxFit.fill, image: AssetImage(promotionImage)),
       ),
     );
   }
