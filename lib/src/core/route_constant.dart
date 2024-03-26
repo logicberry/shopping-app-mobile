@@ -1,5 +1,10 @@
 class RouteConstants {
   static String signIn = '/signIn';
   static String signUp = '/signUp';
-  static String home = '/home';
+  static String nav = '/nav';
+  // static String editProfile = '/editProfile';
+  // static String productDetails = '/productDetails';
+  // static String notification = '/notification';
+  // static String cart = '/cart';
+  // static String checkOut = '/checkOut';
 }

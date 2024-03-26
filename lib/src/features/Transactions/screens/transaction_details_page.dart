@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopapp/src/components/appbar.dart';
-
 import '../../../core/core.dart';
 
 class TransactionDetailsPage extends StatelessWidget {
@@ -17,9 +16,7 @@ class TransactionDetailsPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [Container(
-            
-          )],
+          children: [Container()],
         ),
       ),
     );

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shopapp/src/components/appbar.dart';
-import 'package:shopapp/src/components/button.dart';
-import 'package:shopapp/src/components/textfield.dart';
-
+import '../../../components/components.dart';
 import '../../../core/core.dart';
 
 class EditProfilePage extends StatelessWidget {

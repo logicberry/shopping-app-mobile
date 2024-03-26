@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shopapp/src/components/appbar.dart';
-import 'package:shopapp/src/components/cart_And_checkout_bar.dart';
 import 'package:shopapp/src/core/core.dart';
-import 'package:shopapp/src/features/Checkout/widget/success_popup.dart';
-import 'package:shopapp/src/features/Checkout/widget/summary_item_card.dart';
+
+import '../../../components/components.dart';
+import '../widget/widget.dart';
 
 class CheckOutPage extends StatefulWidget {
   const CheckOutPage({super.key});

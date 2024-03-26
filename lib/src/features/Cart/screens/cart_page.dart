@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shopapp/src/components/appbar.dart';
-import 'package:shopapp/src/core/app_colors.dart';
-import 'package:shopapp/src/features/Cart/widgets/cart_card.dart';
 import 'package:shopapp/src/features/Product/widgets/addtocart.dart';
 
-import '../../../core/dimension.dart';
+import '../../../components/components.dart';
+import '../../../core/core.dart';
+import '../widgets/cart_card.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});

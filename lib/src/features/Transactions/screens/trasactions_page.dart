@@ -1,10 +1,8 @@
 import 'package:autoscale_tabbarview/autoscale_tabbarview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shopapp/src/features/Transactions/widget/transaction_card.dart';
-import 'package:shopapp/src/features/Transactions/widget/transaction_status.dart';
-
 import '../../../core/core.dart';
+import '../widget/widgets.dart';
 
 class TransactionsPage extends StatelessWidget {
   const TransactionsPage({super.key});

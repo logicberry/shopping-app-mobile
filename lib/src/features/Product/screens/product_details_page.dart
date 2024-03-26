@@ -2,12 +2,10 @@ import 'package:autoscale_tabbarview/autoscale_tabbarview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shopapp/src/components/appbar.dart';
-import 'package:shopapp/src/components/rating.dart';
 import 'package:shopapp/src/core/core.dart';
-import 'package:shopapp/src/features/Product/widgets/addtocart.dart';
-import 'package:shopapp/src/features/Product/widgets/colorcard.dart';
-import 'package:shopapp/src/features/Product/widgets/reviewcard.dart';
+
+import '../../../components/components.dart';
+import '../widgets/widgets.dart';
 
 Map<String, String> specifications = {
   'Processor': 'Core i3',

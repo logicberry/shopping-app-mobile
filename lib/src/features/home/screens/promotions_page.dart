@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shopapp/src/components/appbar.dart';
 
-import '../../../core/app_colors.dart';
-import '../widgets/promotion_card.dart';
+import '../../../components/components.dart';
+import '../../../core/core.dart';
+import '../widgets/widgets.dart';
 
 class PromotionsPage extends StatelessWidget {
   const PromotionsPage({super.key});

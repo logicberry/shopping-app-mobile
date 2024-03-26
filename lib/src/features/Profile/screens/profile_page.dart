@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shopapp/src/features/Profile/widget/profile_card.dart';
 
 import '../../../core/core.dart';
+import '../widget/profile_card.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

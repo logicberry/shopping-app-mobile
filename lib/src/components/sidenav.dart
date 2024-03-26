@@ -23,7 +23,7 @@ class _SideMenuState extends State<SideMenu> {
 
     switch (index) {
       case 0:
-        context.pushNamed(RouteConstants.home);
+        context.pushNamed(RouteConstants.nav);
         break;
       case 1:
         // context.pushNamed(RouteConstants.signIn);
@@ -48,7 +48,6 @@ class _SideMenuState extends State<SideMenu> {
     return Drawer(
         backgroundColor: AppColors.white,
         width: 290.w,
-        
         child: ListView(padding: EdgeInsets.zero, children: [
           DrawerHeader(
             padding: const EdgeInsets.all(25.0),

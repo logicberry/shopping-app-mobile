@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../components/appbar.dart';
+import '../../../components/components.dart';
 import '../../../core/core.dart';
 import '../model/productmodel.dart';
-import '../widgets/product_card.dart';
+import '../widgets/widgets.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});

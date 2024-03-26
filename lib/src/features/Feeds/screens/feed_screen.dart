@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shopapp/src/features/Feeds/widget/feed_card.dart';
+
+import '../widget/feed_card.dart';
 
 class FeedsPage extends StatelessWidget {
   const FeedsPage({super.key});

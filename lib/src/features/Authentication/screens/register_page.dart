@@ -109,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Space.height(59),
                        SAActionButton(
                         title: 'Sign Up',
-                        onTap: () => context.go(RouteConstants.home),
+                        onTap: () => context.go(RouteConstants.nav),
 
                       ),
                       Space.height(50),
