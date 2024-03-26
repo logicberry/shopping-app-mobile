@@ -48,6 +48,7 @@ class _SideMenuState extends State<SideMenu> {
     return Drawer(
         backgroundColor: AppColors.white,
         width: 290.w,
+        
         child: ListView(padding: EdgeInsets.zero, children: [
           DrawerHeader(
             padding: const EdgeInsets.all(25.0),

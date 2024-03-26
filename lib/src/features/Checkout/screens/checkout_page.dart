@@ -3,11 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopapp/src/components/appbar.dart';
 import 'package:shopapp/src/components/cart_And_checkout_bar.dart';
 import 'package:shopapp/src/core/core.dart';
+import 'package:shopapp/src/features/Checkout/widget/success_popup.dart';
 import 'package:shopapp/src/features/Checkout/widget/summary_item_card.dart';
 
-class CheckOutPage extends StatelessWidget {
+class CheckOutPage extends StatefulWidget {
   const CheckOutPage({super.key});
 
+  @override
+  State<CheckOutPage> createState() => _CheckOutPageState();
+}
+
+class _CheckOutPageState extends State<CheckOutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -210,7 +216,13 @@ class CheckOutPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomSheet: const CartAndCheckoutBar(),
+      bottomSheet: CartAndCheckoutBar(onTap: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return const SuccessPopUp();
+            });
+      }),
     );
   }
 }

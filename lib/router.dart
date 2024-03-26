@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:shopapp/src/features/Notification/screens/notifications_page.dart';
+import 'package:shopapp/src/components/bottom_nav.dart';
 
 import 'src/core/core.dart';
 import 'src/features/Authentication/register.dart';
@@ -10,7 +10,7 @@ class AppRouter {
     GoRoute(
       name: RouteConstants.signIn,
       path: '/',
-      builder: (context, state) => const NotificationsPage(),
+      builder: (context, state) => const NavBar(current: 0),
     ),
     GoRoute(
       name: RouteConstants.signUp,

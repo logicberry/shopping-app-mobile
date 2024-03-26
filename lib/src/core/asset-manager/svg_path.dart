@@ -21,7 +21,7 @@ class SvgPath {
   static const String search = '${svgPath}search.svg';
   static const String seller = '${svgPath}seller.svg';
   static const String settings = '${svgPath}settings.svg';
-  static const String transactions = '${svgPath}transactions.svg';
+  static const String transactions = '${svgPath}transaction.svg';
   static const String union = '${svgPath}union.svg';
   // static const String  = '${svgPath}check.svg';
 }

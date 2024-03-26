@@ -6,7 +6,8 @@ import '../core/core.dart';
 
 class CartAndCheckoutBar extends StatelessWidget {
   final String? title;
-  const CartAndCheckoutBar({super.key, this.title});
+  final VoidCallback? onTap;
+  const CartAndCheckoutBar({super.key, this.title, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class CartAndCheckoutBar extends StatelessWidget {
             SizedBox(
                 width: 185.w,
                 child:
-                    SAActionButton(title: title ?? 'Continue', onTap: () {})),
+                    SAActionButton(title: title ?? 'Continue', onTap: onTap)),
           ],
         ),
       ),

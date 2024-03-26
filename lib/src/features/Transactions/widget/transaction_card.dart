@@ -10,11 +10,13 @@ enum TransactionStatus {
 }
 
 class TransactionCard extends StatelessWidget {
+  final VoidCallback? onTap;
   final TransactionStatus status;
 
   const TransactionCard({
     Key? key,
     required this.status,
+    this.onTap,
   }) : super(key: key);
 
   Color getStatusColor(TransactionStatus status) {
@@ -52,71 +54,74 @@ class TransactionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 85.h,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.all(Radius.circular(10.r)),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0.w),
-        child: ListTile(
-          isThreeLine: true,
-          contentPadding: EdgeInsets.zero,
-          leading: Container(
-            height: 60.h,
-            width: 60.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10.r)),
-              image: const DecorationImage(
-                image: AssetImage(ImagePath.welcome),
-                fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 85.h,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10.r)),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15.0.w),
+          child: ListTile(
+            isThreeLine: true,
+            contentPadding: EdgeInsets.zero,
+            leading: Container(
+              height: 60.h,
+              width: 60.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                image: const DecorationImage(
+                  image: AssetImage(ImagePath.welcome),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          title: Text(
-            'Smart Watch T80',
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge
-                ?.copyWith(fontWeight: FontWeight.w500),
-          ),
-          subtitle: Text(
-            '\$268.90',
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: AppColors.primaryColor, fontWeight: FontWeight.w500),
-          ),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Card(
-                elevation: 0,
-                color: getStatusColor(status),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    status == TransactionStatus.success ? 20.r : 10.r,
+            title: Text(
+              'Smart Watch T80',
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge
+                  ?.copyWith(fontWeight: FontWeight.w500),
+            ),
+            subtitle: Text(
+              '\$268.90',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: AppColors.primaryColor, fontWeight: FontWeight.w500),
+            ),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Card(
+                  elevation: 0,
+                  color: getStatusColor(status),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      status == TransactionStatus.success ? 20.r : 10.r,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      status == TransactionStatus.shipping
+                          ? 'Shipping'
+                          : status == TransactionStatus.success
+                              ? 'Success'
+                              : 'Not Paid',
+                      style: getStatusTextStyle(status),
+                    ),
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    status == TransactionStatus.shipping
-                        ? 'Shipping'
-                        : status == TransactionStatus.success
-                            ? 'Success'
-                            : 'Not Paid',
-                    style: getStatusTextStyle(status),
-                  ),
-                ),
-              ),
-              Text('12 September 2023',
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelSmall
-                      ?.copyWith(fontSize: 10)),
-            ],
+                Text('12 September 2023',
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelSmall
+                        ?.copyWith(fontSize: 10)),
+              ],
+            ),
           ),
         ),
       ),
