@@ -29,6 +29,8 @@ class MyApp extends StatelessWidget {
               title: 'Shopapp',
               theme: AppTheme.theme,
               routerConfig: AppRouter().router,
+              routeInformationParser: AppRouter().router.routeInformationParser,
+              routerDelegate: AppRouter().router.routerDelegate,
             ),
           );
         });

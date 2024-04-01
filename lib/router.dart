@@ -12,9 +12,8 @@ import 'src/features/Product/screens/product_details_page.dart';
 import 'src/features/Profile/screens/edit_profile_page.dart';
 
 class AppRouter {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-  GoRouter router = GoRouter(
-      // navigatorKey: navigatorKey,
+  late final GoRouter router = GoRouter(
+      navigatorKey: GlobalKey<NavigatorState>(),
       initialLocation: RouteConstants.signIn,
       routes: [
         GoRoute(
