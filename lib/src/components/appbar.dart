@@ -17,7 +17,7 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? background, actionColor;
   final AppBarActionConfig actionConfig;
   const SHAppBar({
-    Key? key,
+    super.key,
     this.title,
     this.centerTitle = false,
     this.implyLeading = false,
@@ -25,7 +25,7 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.background,
     this.actionColor,
     required this.actionConfig,
-  }) : super(key: key);
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -39,9 +39,9 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 40,
       centerTitle: centerTitle,
       title: Text(title ?? '',
-          style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: background != null ? AppColors.white : AppColors.black,
-              )),
+          style: AppTheme.textTheme.labelLarge?.copyWith(
+            color: background != null ? AppColors.white : AppColors.black,
+          )),
       leading: implyLeading
           ? IconButton(
               onPressed: () => context.pop(),

@@ -46,14 +46,14 @@ class CartCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text('Smart Watch T80',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w500,
-                        )),
+                    style: AppTheme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
+                    )),
                 Text('\$268.90',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.w600,
-                        )),
+                    style: AppTheme.textTheme.titleMedium?.copyWith(
+                      color: AppColors.primaryColor,
+                      fontWeight: FontWeight.w600,
+                    )),
                 Space.height(10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

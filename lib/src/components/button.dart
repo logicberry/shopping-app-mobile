@@ -17,11 +17,10 @@ class SAActionButton extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Card(
-
           color: AppColors.secondaryColor,
           shape: const StadiumBorder(),
           child: Center(
-            child: Text(title, style: Theme.of(context).textTheme.labelLarge),
+            child: Text(title, style: AppTheme.textTheme.labelLarge),
           ),
         ),
       ),

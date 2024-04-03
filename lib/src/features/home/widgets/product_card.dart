@@ -52,31 +52,25 @@ class ProductCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(productName,
-                        style: Theme.of(context).textTheme.bodyMedium),
+                    Text(productName, style: AppTheme.textTheme.bodyMedium),
                     Row(
                       children: [
                         Text('$company •',
-                            style: Theme.of(context).textTheme.labelSmall),
+                            style: AppTheme.textTheme.labelSmall),
                         Space.width(10),
                       ],
                     ),
                     Row(
                       children: [
                         Text('\$$productPrice',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge
+                            style: AppTheme.textTheme.labelLarge
                                 ?.copyWith(color: AppColors.primaryColor)),
                         Space.width(6),
                         Text('\$$initialPrice',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.copyWith(
-                                    color: AppColors.red,
-                                    decoration: TextDecoration.lineThrough,
-                                    fontWeight: FontWeight.w600))
+                            style: AppTheme.textTheme.labelSmall?.copyWith(
+                                color: AppColors.red,
+                                decoration: TextDecoration.lineThrough,
+                                fontWeight: FontWeight.w600))
                       ],
                     ),
                   ],

@@ -41,13 +41,12 @@ class FeedCard extends StatelessWidget {
                 ),
               ),
               titleAlignment: ListTileTitleAlignment.titleHeight,
-              title: Text('Malik Rasaq',
-                  style: Theme.of(context).textTheme.titleSmall),
+              title: Text('Malik Rasaq', style: AppTheme.textTheme.titleSmall),
               subtitle: Text(
                 'Applestore',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Colors.blueGrey,
-                    ),
+                style: AppTheme.textTheme.bodySmall?.copyWith(
+                  color: Colors.blueGrey,
+                ),
               ),
               trailing: const Icon(Icons.more_horiz_outlined),
             ),
@@ -76,7 +75,7 @@ class FeedCard extends StatelessWidget {
                 Space.height(8),
                 Text(
                   'IMAC SILVER 21,5 INCH MID 2010/2011 RAM 8GB HDD 500GB SECOND',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  style: AppTheme.textTheme.bodyLarge?.copyWith(
                       color: Colors.blueGrey, fontWeight: FontWeight.w600),
                 ),
                 Space.height(4),

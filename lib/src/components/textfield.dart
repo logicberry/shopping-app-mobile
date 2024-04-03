@@ -9,7 +9,6 @@ class SATextField extends StatefulWidget {
   final Widget? icon, prefix;
   final TextInputType? inputType;
   final bool isPassword;
-
   const SATextField(
       {super.key,
       this.hintText,
@@ -29,11 +28,11 @@ class _SATextFieldState extends State<SATextField> {
   @override
   void initState() {
     _obscureText = widget.isPassword;
-    _obscureText = false;
+
     super.initState();
   }
 
-  void pass() {
+  void togglePasswordVisibility() {
     setState(() {
       _obscureText = !_obscureText;
     });
@@ -65,28 +64,25 @@ class _SATextFieldState extends State<SATextField> {
         decoration: InputDecoration(
             labelText: widget.hintText,
             hintText: widget.hintText,
-            isDense: true,
-            floatingLabelStyle:
-                Theme.of(context).textTheme.titleMedium?.copyWith(
-                      height: 0.3,
-                      color: Colors.grey,
-                    ),
+            // isDense: true,
+            floatingLabelStyle: AppTheme.textTheme.titleMedium?.copyWith(
+              height: 0.3,
+              color: Colors.grey,
+            ),
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            labelStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Colors.grey,
-                ),
-            hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.grey,
-                ),
+            labelStyle: AppTheme.textTheme.bodySmall?.copyWith(
+              color: Colors.grey,
+            ),
+            hintStyle: AppTheme.textTheme.bodyLarge?.copyWith(
+              color: Colors.grey,
+            ),
             prefixIcon: widget.prefix,
             suffix: (widget.isPassword)
                 ? GestureDetector(
-                    onTap: pass,
+                    onTap: togglePasswordVisibility,
                     child: Text(
                       _obscureText ? 'Hide' : 'Show',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall
+                      style: AppTheme.textTheme.bodySmall
                           ?.copyWith(color: AppColors.black),
                     ),
                   )

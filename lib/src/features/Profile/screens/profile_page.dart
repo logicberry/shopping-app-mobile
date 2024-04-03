@@ -30,14 +30,10 @@ class ProfilePage extends StatelessWidget {
                         radius: 25.r,
                         backgroundImage: const AssetImage(ImagePath.logo)),
                     title: Text('Malik Rasaq',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall
+                        style: AppTheme.textTheme.titleSmall
                             ?.copyWith(color: AppColors.white)),
                     subtitle: Text('+2341234567',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall
+                        style: AppTheme.textTheme.bodySmall
                             ?.copyWith(color: AppColors.grey)),
                   ),
                   Space.height(26),

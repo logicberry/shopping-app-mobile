@@ -25,8 +25,7 @@ class ReviewCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Malik Rasaq',
-                    style: Theme.of(context).textTheme.titleSmall),
+                Text('Malik Rasaq', style: AppTheme.textTheme.titleSmall),
                 Space.height(5),
                 const RatingWidget(),
                 Space.height(5),
@@ -34,17 +33,17 @@ class ReviewCard extends StatelessWidget {
             ),
             Text(
               '4 days ago',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Colors.blueGrey,
-                  ),
+              style: AppTheme.textTheme.bodySmall?.copyWith(
+                color: Colors.blueGrey,
+              ),
             )
           ],
         ),
         subtitle: Text(
           'wow this is the product i like the most. and a trusted and friendly shop',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.blueGrey,
-              ),
+          style: AppTheme.textTheme.bodyMedium?.copyWith(
+            color: Colors.blueGrey,
+          ),
         ));
   }
 }

@@ -14,8 +14,10 @@ void main() {
   );
 }
 
+final _router = AppRouter();
+
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +27,10 @@ class MyApp extends StatelessWidget {
           return GestureDetector(
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              title: 'Shopapp',
-              theme: AppTheme.theme,
-              routerConfig: AppRouter().router,
-              routeInformationParser: AppRouter().router.routeInformationParser,
-              routerDelegate: AppRouter().router.routerDelegate,
-            ),
+                debugShowCheckedModeBanner: false,
+                title: 'Shopapp',
+                theme: AppTheme.theme,
+                routerConfig: _router.router),
           );
         });
   }

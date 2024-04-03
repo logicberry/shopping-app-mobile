@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shopapp/src/components/button.dart';
-import 'package:shopapp/src/components/textfield.dart';
 import 'package:shopapp/src/core/core.dart';
+import 'package:shopapp/src/features/Authentication/controller/auth_controller.dart';
+
+import '../../../components/components.dart';
+import '../../../core/snackbar.dart';
+import '../repository/auth_repository.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -13,13 +16,51 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  static final TextEditingController _nameController = TextEditingController();
-  static final TextEditingController _emailController = TextEditingController();
-  static final TextEditingController _phoneController = TextEditingController();
-  static final TextEditingController _passwordController =
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
       TextEditingController();
-      static final TextEditingController _confirmPasswordController = TextEditingController();
-  static final GlobalKey<FormState> _signUpKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _signUpKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  AuthProvider authProvider = AuthProvider(AuthRepository());
+
+  void _signUp() {
+    if (_signUpKey.currentState!.validate()) {
+      final name = _nameController.text;
+      final email = _emailController.text;
+      final phone = _phoneController.text;
+      final password = _passwordController.text;
+      final confirmPassword = _confirmPasswordController.text;
+
+      if (password != confirmPassword) {
+        Snackbar.show(
+            context: context, message: 'Passwords do not match', isError: true);
+        return;
+      }
+
+      // Call the authProvider
+      authProvider.register(
+        context: context,
+        fullName: name,
+        email: email,
+        phoneNumber: phone,
+        password: password,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,12 +84,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Space.height(75),
-                      Text('Register',
-                          style: Theme.of(context).textTheme.headlineLarge),
+                      Text('Register', style: AppTheme.textTheme.headlineLarge),
                       Text('Enter your personal details to create an account',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
+                          style: AppTheme.textTheme.bodyLarge
                               ?.copyWith(color: AppColors.white))
                     ]),
               )),
@@ -97,7 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         isPassword: true,
                         hintText: 'Password',
                         labeltext: 'Password',
-                        inputType: TextInputType.emailAddress,
+                        // inputType: TextInputType.visiblePassword,
                       ),
                       Space.height(30),
                       SATextField(
@@ -105,12 +143,12 @@ class _SignUpPageState extends State<SignUpPage> {
                         isPassword: true,
                         hintText: 'Confirm Password',
                         labeltext: 'Confirm Password',
+                        inputType: TextInputType.visiblePassword,
                       ),
                       Space.height(59),
-                       SAActionButton(
+                      SAActionButton(
                         title: 'Sign Up',
-                        onTap: () => context.go(RouteConstants.nav),
-
+                        onTap: _signUp,
                       ),
                       Space.height(50),
                       Row(
@@ -118,21 +156,20 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: [
                           Text(
                             'Have an account?',
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: AppTheme.textTheme.bodyLarge,
                           ),
                           Space.width(8),
                           GestureDetector(
-                            onTap: () => context.pushNamed(RouteConstants.signIn),
+                              onTap: () =>
+                                  context.goNamed(RouteConstants.signIn),
                               child: Text(
-                            'Sign In',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(color: AppColors.secondaryColor),
-                          ))
+                                'Sign In',
+                                style: AppTheme.textTheme.bodyLarge
+                                    ?.copyWith(color: AppColors.secondaryColor),
+                              ))
                         ],
                       ),
-                      Space.height(63)
+                      // Space.height(63)
                     ]),
                   ),
                 ),

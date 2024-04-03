@@ -70,9 +70,7 @@ class ProductDetailsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Imac 27 Inch 5k',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
+                              style: AppTheme.textTheme.titleLarge
                                   ?.copyWith(color: AppColors.black)),
                           Space.height(10),
                           Row(
@@ -81,18 +79,14 @@ class ProductDetailsPage extends StatelessWidget {
                                   height: 20.h, width: 20.w),
                               Space.width(10),
                               Text('Applestore  •  ',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelSmall
+                                  style: AppTheme.textTheme.labelSmall
                                       ?.copyWith(
                                           color: AppColors.black,
                                           fontWeight: FontWeight.w500)),
                               const RatingWidget(),
                               Space.width(10),
                               Text('4.5',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelSmall
+                                  style: AppTheme.textTheme.labelSmall
                                       ?.copyWith(color: AppColors.black)),
                             ],
                           ),
@@ -102,21 +96,15 @@ class ProductDetailsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text('\$999.99',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
-                                  ?.copyWith(
-                                      color: AppColors.primaryColor,
-                                      fontWeight: FontWeight.bold)),
+                              style: AppTheme.textTheme.titleLarge?.copyWith(
+                                  color: AppColors.primaryColor,
+                                  fontWeight: FontWeight.bold)),
                           Text('\$2,000.99',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelSmall
-                                  ?.copyWith(
-                                      color: AppColors.red,
-                                      decoration: TextDecoration.lineThrough,
-                                      fontSize: 10.sp,
-                                      letterSpacing: 0.01))
+                              style: AppTheme.textTheme.labelSmall?.copyWith(
+                                  color: AppColors.red,
+                                  decoration: TextDecoration.lineThrough,
+                                  fontSize: 10.sp,
+                                  letterSpacing: 0.01))
                         ],
                       ),
                     ],
@@ -129,9 +117,7 @@ class ProductDetailsPage extends StatelessWidget {
                           TabBar(
                               labelPadding: EdgeInsets.zero,
                               labelColor: AppColors.primaryColor,
-                              labelStyle: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
+                              labelStyle: AppTheme.textTheme.bodyLarge
                                   ?.copyWith(
                                       color: AppColors.primaryColor,
                                       fontWeight: FontWeight.w600),
@@ -183,9 +169,7 @@ class ProductDetailsPage extends StatelessWidget {
                                   children: [
                                     Text(
                                       'IMAC SILVER 21,5 INCH MID 2010/2011 RAM 8GB HDD 500GB SECOND',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge
+                                      style: AppTheme.textTheme.bodyLarge
                                           ?.copyWith(
                                               color: Colors.blueGrey,
                                               fontWeight: FontWeight.w600),
@@ -193,9 +177,7 @@ class ProductDetailsPage extends StatelessWidget {
                                     Space.height(10),
                                     Text(
                                       'Specifications',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge
+                                      style: AppTheme.textTheme.bodyLarge
                                           ?.copyWith(color: Colors.blueGrey),
                                     ),
                                     _buildSpecificationItems(),

@@ -41,7 +41,7 @@ class SASearchField extends StatelessWidget {
             hintText: 'Search product here',
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            hintStyle: Theme.of(context).textTheme.labelSmall,
+            hintStyle: AppTheme.textTheme.labelSmall,
             suffixIcon: suffix,
             border: customOutlineInputBorder,
             enabledBorder: customOutlineInputBorder,

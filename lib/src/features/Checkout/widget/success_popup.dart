@@ -4,7 +4,7 @@ import 'package:shopapp/src/components/button.dart';
 import 'package:shopapp/src/core/core.dart';
 
 class SuccessPopUp extends StatelessWidget {
-  const SuccessPopUp({Key? key}) : super(key: key);
+  const SuccessPopUp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +33,9 @@ class SuccessPopUp extends StatelessWidget {
                 Text(
                     'we will contact the seller so that it can be sent immediately to the destination',
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: AppColors.black,
-                        )),
+                    style: AppTheme.textTheme.bodySmall?.copyWith(
+                      color: AppColors.black,
+                    )),
                 Space.height(40),
                 const SAActionButton(
                   title: 'OK',

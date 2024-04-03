@@ -69,26 +69,24 @@ class NotificationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(getTitle(type),
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
+                    style: AppTheme.textTheme.bodyLarge
                         ?.copyWith(fontWeight: FontWeight.w600)),
                 Space.height(5)
               ],
             ),
             Text(
               '4 hours',
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: Colors.blueGrey,
-                  ),
+              style: AppTheme.textTheme.labelSmall?.copyWith(
+                color: Colors.blueGrey,
+              ),
             )
           ],
         ),
         subtitle: Text(
           'Consectetur adipiscing elit, sed do eiusmodtempor incididunt u labore',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Colors.blueGrey,
-              ),
+          style: AppTheme.textTheme.bodySmall?.copyWith(
+            color: Colors.blueGrey,
+          ),
         ));
   }
 }

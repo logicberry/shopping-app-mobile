@@ -28,14 +28,14 @@ class CartAndCheckoutBar extends StatelessWidget {
           children: [
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text('Total Payment',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      )),
+                  style: AppTheme.textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  )),
               Text('\$1480.20',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.w600,
-                      )),
+                  style: AppTheme.textTheme.titleLarge?.copyWith(
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.w600,
+                  )),
             ]),
             Space.width(5),
             SizedBox(

@@ -19,7 +19,7 @@ class CategoryComponent extends StatelessWidget {
             backgroundColor: AppColors.white,
             child: SvgPicture.asset(categoryImage)),
         Space.height(5),
-        Text(categoryName, style: Theme.of(context).textTheme.bodyLarge)
+        Text(categoryName, style: AppTheme.textTheme.bodyLarge)
       ],
     );
   }

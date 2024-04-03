@@ -76,20 +76,14 @@ class _SideMenuState extends State<SideMenu> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Balance',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(
-                                      // color: AppColors.grey,
-                                      )),
+                              style: AppTheme.textTheme.bodySmall?.copyWith(
+                                  // color: AppColors.grey,
+                                  )),
                           Space.height(5),
                           Text('\$809.10',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
-                                  ?.copyWith(
-                                    color: AppColors.primaryColor,
-                                  )),
+                              style: AppTheme.textTheme.titleLarge?.copyWith(
+                                color: AppColors.primaryColor,
+                              )),
                         ],
                       ),
                       const VerticalDivider(
@@ -101,20 +95,14 @@ class _SideMenuState extends State<SideMenu> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('My Reward Point',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(
-                                      // color: AppColors.grey,
-                                      )),
+                              style: AppTheme.textTheme.bodySmall?.copyWith(
+                                  // color: AppColors.grey,
+                                  )),
                           Space.height(5),
                           Text('800',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
-                                  ?.copyWith(
-                                    color: AppColors.secondaryColor,
-                                  )),
+                              style: AppTheme.textTheme.titleLarge?.copyWith(
+                                color: AppColors.secondaryColor,
+                              )),
                         ],
                       )
                     ],

@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 class ApiHelper {
@@ -8,17 +9,35 @@ class ApiHelper {
   }
 
   static Future<dynamic> post(String url, dynamic body) async {
-    final response = await http.post(Uri.parse(url), body: body);
+    final response = await http.post(
+      Uri.parse(url),
+      body: jsonEncode(body),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
     return _response(response);
   }
 
   static Future<dynamic> patch(String url, dynamic body) async {
-    final response = await http.patch(Uri.parse(url), body: body);
+    final response = await http.patch(
+      Uri.parse(url),
+      body: body,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
     return _response(response);
   }
 
   static Future<dynamic> put(String url, dynamic body) async {
-    final response = await http.put(Uri.parse(url), body: body);
+    final response = await http.put(
+      Uri.parse(url),
+      body: body,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
     return _response(response);
   }
 
@@ -30,16 +49,18 @@ class ApiHelper {
   static dynamic _response(http.Response response) {
     switch (response.statusCode) {
       case 200:
-        final responseJson = json.decode(response.body.toString());
+        final responseJson = jsonDecode(response.body);
         return responseJson;
       case 400:
-        throw Exception('Bad request');
+        final responseJson = jsonDecode(response.body);
+        return responseJson;
       case 401:
       case 403:
         throw Exception('Unauthorised');
       case 500:
       default:
-        throw Exception('Error occured while Communication with Server with StatusCode : ${response.statusCode}');
+        throw Exception(
+            'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
     }
   }
 }

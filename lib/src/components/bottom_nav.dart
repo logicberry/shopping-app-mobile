@@ -13,9 +13,9 @@ class NavBar extends StatefulWidget {
   static const String routeName = '/nav';
   final int? current;
   const NavBar({
-    Key? key,
+    super.key,
     this.current,
-  }) : super(key: key);
+  });
 
   @override
   State<NavBar> createState() => _NavBarState();

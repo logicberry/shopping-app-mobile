@@ -23,14 +23,11 @@ class SummaryItemCard extends StatelessWidget {
           ),
         ),
       ),
-      title:
-          Text('Smart Watch T80', style: Theme.of(context).textTheme.bodyLarge),
+      title: Text('Smart Watch T80', style: AppTheme.textTheme.bodyLarge),
       subtitle: Text('\$268.90',
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall
+          style: AppTheme.textTheme.bodySmall
               ?.copyWith(color: AppColors.primaryColor)),
-      trailing: Text('Quantity', style: Theme.of(context).textTheme.labelSmall),
+      trailing: Text('Quantity', style: AppTheme.textTheme.labelSmall),
     );
   }
 }

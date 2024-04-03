@@ -12,69 +12,68 @@ import 'src/features/Product/screens/product_details_page.dart';
 import 'src/features/Profile/screens/edit_profile_page.dart';
 
 class AppRouter {
-  late final GoRouter router = GoRouter(
-      navigatorKey: GlobalKey<NavigatorState>(),
-      initialLocation: RouteConstants.signIn,
+  GoRouter router = GoRouter(
+      initialLocation: '/signIn',
       routes: [
         GoRoute(
           name: RouteConstants.signIn,
-          path: RouteConstants.signIn,
+          path: '/signIn',
           pageBuilder: (context, state) {
             return const MaterialPage(child: SignInPage());
           },
         ),
         GoRoute(
           name: RouteConstants.signUp,
-          path: RouteConstants.signUp,
+          path: '/signUp',
           pageBuilder: (context, state) {
             return const MaterialPage(child: SignUpPage());
           },
         ),
         GoRoute(
           name: RouteConstants.nav,
-          path: RouteConstants.nav,
+          path: '/nav',
           pageBuilder: (context, state) {
             return const MaterialPage(child: NavBar());
           },
         ),
         GoRoute(
           name: RouteConstants.productDetails,
-          path: RouteConstants.productDetails,
+          path: '/pde',
           pageBuilder: (context, state) {
             return const MaterialPage(child: ProductDetailsPage());
           },
         ),
         GoRoute(
           name: RouteConstants.allProducts,
-          path: RouteConstants.allProducts,
+          path: '/allProducts',
           pageBuilder: (context, state) {
             return const MaterialPage(child: ProductPage());
           },
         ),
         GoRoute(
           name: RouteConstants.cart,
-          path: RouteConstants.cart,
+          path: '/cart',
           pageBuilder: (context, state) {
             return const MaterialPage(child: CartPage());
           },
         ),
         GoRoute(
           name: RouteConstants.checkOut,
-          path: RouteConstants.checkOut,
+          path: '/checkOut',
           pageBuilder: (context, state) {
             return const MaterialPage(child: CheckOutPage());
           },
         ),
         GoRoute(
           name: RouteConstants.editProfile,
-          path: RouteConstants.editProfile,
+          path: '/editProfile',
           pageBuilder: (context, state) {
             return const MaterialPage(child: EditProfilePage());
           },
         ),
         GoRoute(
           name: RouteConstants.notification,
-          path: RouteConstants.notification,
+          path: '/notification',
           pageBuilder: (context, state) {
             return const MaterialPage(child: NotificationsPage());
           },

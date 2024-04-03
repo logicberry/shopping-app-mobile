@@ -25,11 +25,10 @@ class ProfileCard extends StatelessWidget {
             ),
           ),
           trailing: const Icon(Icons.chevron_right),
-          title: Text('User Profile',
-              style: Theme.of(context).textTheme.titleSmall),
+          title: Text('User Profile', style: AppTheme.textTheme.titleSmall),
           subtitle: Text(
             'User profile is here',
-            style: Theme.of(context).textTheme.bodySmall,
+            style: AppTheme.textTheme.bodySmall,
           )),
     );
   }
@@ -57,12 +56,11 @@ class BalanceCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith()),
+            Text(title, style: AppTheme.textTheme.bodySmall?.copyWith()),
             Text(balanceText,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: balancdTextColor,
-                    )),
+                style: AppTheme.textTheme.titleLarge?.copyWith(
+                  color: balancdTextColor,
+                )),
           ],
         ),
       ),

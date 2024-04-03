@@ -35,7 +35,7 @@ class NavItem extends StatelessWidget {
           ),
           Space.width(20),
           Text(text,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              style: AppTheme.textTheme.bodySmall?.copyWith(
                   color: isSelected ? AppColors.primaryColor : Colors.grey,
                   fontWeight: FontWeight.w500)),
         ],

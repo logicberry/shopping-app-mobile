@@ -5,6 +5,9 @@ import 'package:shopapp/src/components/button.dart';
 import 'package:shopapp/src/components/textfield.dart';
 import 'package:shopapp/src/core/core.dart';
 
+import '../controller/auth_controller.dart';
+import '../repository/auth_repository.dart';
+
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
@@ -13,14 +16,36 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  static final TextEditingController _emailController = TextEditingController();
-  static final TextEditingController _passwordController =
-      TextEditingController();
-  static final GlobalKey<FormState> _signInKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> _signInKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    _emailController.clear();
+    _passwordController.clear();
+    super.dispose();
+  }
+
+  AuthProvider authProvider = AuthProvider(AuthRepository());
+
+  void _signIn() {
+    if (_signInKey.currentState!.validate()) {
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      // Call the authProvider
+      authProvider.login(
+        context: context,
+        email: email,
+        password: password,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       backgroundColor: AppColors.primaryColor,
       body: Stack(children: [
         Column(children: [
@@ -41,12 +66,9 @@ class _SignInPageState extends State<SignInPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Space.height(75),
-                      Text('Welcome',
-                          style: Theme.of(context).textTheme.headlineLarge),
+                      Text('Welcome', style: AppTheme.textTheme.headlineLarge),
                       Text('Sign in to Continue',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
+                          style: AppTheme.textTheme.bodyLarge
                               ?.copyWith(color: AppColors.white))
                     ]),
               )),
@@ -105,30 +127,24 @@ class _SignInPageState extends State<SignInPage> {
                                 width: 4,
                               ),
                               Text('Remember me',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.copyWith(
-                                        color: Colors.grey,
-                                      )),
+                                  style: AppTheme.textTheme.bodyLarge?.copyWith(
+                                    color: Colors.grey,
+                                  )),
                             ],
                           ),
                           GestureDetector(
                             onTap: () {},
                             child: Text('Forgot Password?',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(
-                                      color: AppColors.secondaryColor,
-                                    )),
+                                style: AppTheme.textTheme.bodyLarge?.copyWith(
+                                  color: AppColors.secondaryColor,
+                                )),
                           )
                         ],
                       ),
                       Space.height(71),
-                      const SAActionButton(
+                      SAActionButton(
                         title: 'Sign In',
-                        onTap: null,
+                        onTap: _signIn,
                       ),
                       Space.height(80),
                       Row(
@@ -136,7 +152,7 @@ class _SignInPageState extends State<SignInPage> {
                         children: [
                           Text(
                             'Don\'t have an account?',
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: AppTheme.textTheme.bodyLarge,
                           ),
                           Space.width(8),
                           GestureDetector(
@@ -145,9 +161,7 @@ class _SignInPageState extends State<SignInPage> {
                               },
                               child: Text(
                                 'Sign Up',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
+                                style: AppTheme.textTheme.bodyLarge
                                     ?.copyWith(color: AppColors.secondaryColor),
                               ))
                         ],

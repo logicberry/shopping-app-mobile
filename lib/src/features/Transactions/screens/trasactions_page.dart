@@ -1,6 +1,7 @@
 import 'package:autoscale_tabbarview/autoscale_tabbarview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/core.dart';
 import '../widget/widgets.dart';
 
@@ -23,7 +24,7 @@ class TransactionsPage extends StatelessWidget {
             TabBar(
                 labelPadding: EdgeInsets.zero,
                 labelColor: AppColors.primaryColor,
-                labelStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                labelStyle: AppTheme.textTheme.bodyLarge?.copyWith(
                     color: AppColors.primaryColor, fontWeight: FontWeight.w600),
                 unselectedLabelColor: AppColors.grey,
                 indicatorColor: AppColors.primaryColor,

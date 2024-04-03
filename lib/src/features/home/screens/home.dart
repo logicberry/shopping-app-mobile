@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                     SvgPicture.asset(SvgPath.location),
                     Space.width(10),
                     Text('St 394 Jackson, New york  United Status',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        style: AppTheme.textTheme.bodyLarge?.copyWith(
                             color: AppColors.white,
                             fontWeight: FontWeight.w400)),
                   ],
@@ -127,14 +127,12 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('New Products',
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge
+                    style: AppTheme.textTheme.labelLarge
                         ?.copyWith(color: AppColors.black)),
                 GestureDetector(
                   onTap: () => context.pushNamed(RouteConstants.allProducts),
                   child: Text('See all',
-                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      style: AppTheme.textTheme.labelLarge?.copyWith(
                           color: AppColors.primaryColor,
                           fontWeight: FontWeight.w400)),
                 )

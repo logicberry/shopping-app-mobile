@@ -14,10 +14,10 @@ class TransactionCard extends StatelessWidget {
   final TransactionStatus status;
 
   const TransactionCard({
-    Key? key,
+    super.key,
     required this.status,
     this.onTap,
-  }) : super(key: key);
+  });
 
   Color getStatusColor(TransactionStatus status) {
     switch (status) {
@@ -81,14 +81,12 @@ class TransactionCard extends StatelessWidget {
             ),
             title: Text(
               'Smart Watch T80',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge
+              style: AppTheme.textTheme.bodyLarge
                   ?.copyWith(fontWeight: FontWeight.w500),
             ),
             subtitle: Text(
               '\$268.90',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              style: AppTheme.textTheme.bodyLarge?.copyWith(
                   color: AppColors.primaryColor, fontWeight: FontWeight.w500),
             ),
             trailing: Column(
@@ -116,10 +114,8 @@ class TransactionCard extends StatelessWidget {
                   ),
                 ),
                 Text('12 September 2023',
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall
-                        ?.copyWith(fontSize: 10)),
+                    style:
+                        AppTheme.textTheme.labelSmall?.copyWith(fontSize: 10)),
               ],
             ),
           ),
