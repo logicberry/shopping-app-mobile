@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<String> promo = [
-    ImagePath.promobanner,
+    ImagePath.promo1,
     ImagePath.promo2,
   ];
 

@@ -8,6 +8,13 @@ import '../widgets/widgets.dart';
 class PromotionsPage extends StatelessWidget {
   const PromotionsPage({super.key});
 
+  static List<String> images = [
+    ImagePath.promo1,
+    ImagePath.promo2,
+    ImagePath.promo3,
+    ImagePath.promo4,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +30,9 @@ class PromotionsPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(20.h),
           child: ListView.separated(
-            itemCount: 10,
+            itemCount: images.length,
             itemBuilder: (context, index) {
-              return const PromotionsCard(promotionImage: '');
+              return PromotionsCard(promotionImage: images[index]);
             },
             separatorBuilder: (context, index) {
               return SizedBox(height: 20.h);

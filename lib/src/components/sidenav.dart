@@ -25,20 +25,14 @@ class _SideMenuState extends State<SideMenu> {
       case 0:
         context.pushNamed(RouteConstants.nav);
         break;
-      case 1:
+      case 4:
+        context.pushNamed(RouteConstants.allProducts);
+        break;
+      case 6:
+        context.pushNamed(RouteConstants.promotions);
+        break;
+      case 1 || 2 || 5 || 7:
         // context.pushNamed(RouteConstants.signIn);
-        break;
-      case 2:
-        // Navigator.pushNamed(context, StorageDetailsScreen.routeName);
-
-        break;
-      case 3 || 4 || 6:
-        context.pushNamed(RouteConstants.productDetails);
-
-        break;
-      case 5:
-        // Navigator.pushNamed(context, SettingsScreen.routeName);
-
         break;
     }
   }

@@ -1,11 +1,17 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
 import '../../../core/core.dart';
 
 class AuthRepository {
-  Future<void> register({
+  Future<dynamic> register({
     required String fullName,
     required String email,
     required String phoneNumber,
     required String password,
+    required BuildContext context,
   }) async {
     try {
       final response = await ApiHelper.post(
@@ -17,16 +23,26 @@ class AuthRepository {
           'password': password,
         },
       );
-      print(response);
+      if (response['message'] == 'Registration Successful') {
+        if (context.mounted) {
+          context.pushNamed(RouteConstants.signIn);
+        }
+      } else {
+        Snackbar.show(
+            context: context,
+            message: response['message'] ?? 'An error occurred',
+            isError: true);
+      }
       return response;
     } catch (e) {
-      print('Error registering user: $e');
+      debugPrint('Error registering user: $e');
     }
   }
 
   Future<dynamic> login({
     required String email,
     required String password,
+    required BuildContext context,
   }) async {
     try {
       final response = await ApiHelper.post(
@@ -36,11 +52,20 @@ class AuthRepository {
           'password': password,
         },
       );
-      print(response);
+      if (response.containsKey('token')) {
+        if (context.mounted) {
+          context.pushNamed(RouteConstants.nav);
+        }
+      } else {
+        Snackbar.show(
+            context: context,
+            message: response['message'] ?? 'An error occurred',
+            isError: true);
+      }
 
       return response;
     } catch (e) {
-      print('Error login user: $e');
+      debugPrint('Error login user: $e');
     }
   }
 }

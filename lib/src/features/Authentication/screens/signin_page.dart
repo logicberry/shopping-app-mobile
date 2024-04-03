@@ -19,6 +19,7 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _signInKey = GlobalKey<FormState>();
+  AuthProvider authProvider = AuthProvider(AuthRepository());
 
   @override
   void dispose() {
@@ -27,14 +28,11 @@ class _SignInPageState extends State<SignInPage> {
     super.dispose();
   }
 
-  AuthProvider authProvider = AuthProvider(AuthRepository());
-
   void _signIn() {
     if (_signInKey.currentState!.validate()) {
       final email = _emailController.text;
       final password = _passwordController.text;
 
-      // Call the authProvider
       authProvider.login(
         context: context,
         email: email,

@@ -5,7 +5,6 @@ import 'package:shopapp/src/core/core.dart';
 import 'package:shopapp/src/features/Authentication/controller/auth_controller.dart';
 
 import '../../../components/components.dart';
-import '../../../core/snackbar.dart';
 import '../repository/auth_repository.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -23,6 +22,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
   final GlobalKey<FormState> _signUpKey = GlobalKey<FormState>();
+  AuthProvider authProvider = AuthProvider(AuthRepository());
 
   @override
   void dispose() {
@@ -33,8 +33,6 @@ class _SignUpPageState extends State<SignUpPage> {
     _confirmPasswordController.dispose();
     super.dispose();
   }
-
-  AuthProvider authProvider = AuthProvider(AuthRepository());
 
   void _signUp() {
     if (_signUpKey.currentState!.validate()) {
@@ -50,7 +48,6 @@ class _SignUpPageState extends State<SignUpPage> {
         return;
       }
 
-      // Call the authProvider
       authProvider.register(
         context: context,
         fullName: name,

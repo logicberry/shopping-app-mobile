@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopapp/src/features/home/screens/products_screen.dart';
+import 'package:shopapp/src/features/home/screens/promotions_page.dart';
 
 import 'src/components/bottom_nav.dart';
 import 'src/core/core.dart';
@@ -27,6 +28,13 @@ class AppRouter {
           path: '/signUp',
           pageBuilder: (context, state) {
             return const MaterialPage(child: SignUpPage());
+          },
+        ),
+        GoRoute(
+          name: RouteConstants.promotions,
+          path: '/promotion',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: PromotionsPage());
           },
         ),
         GoRoute(
