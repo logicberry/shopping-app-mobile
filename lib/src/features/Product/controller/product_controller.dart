@@ -22,15 +22,15 @@ class ProductProvider with ChangeNotifier {
     return products;
   }
 
-  Future<void> login({
-    required String email,
-    required String password,
+  Future<List<ProductModel>> getProductByCategory({
+    required String categoryId,
     required BuildContext context,
   }) async {
     _setLoading(true);
-    await _productRepository.getProductByCategory(context: context);
-
+    final products = await _productRepository.getProductByCategory(
+        context: context, categoryId: categoryId);
     _setLoading(false);
+    return products;
   }
 
   void _setLoading(bool value) {

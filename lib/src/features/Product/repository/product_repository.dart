@@ -28,17 +28,24 @@ class ProductRepository {
     }
   }
 
-  Future<dynamic> getProductByCategory({
+  Future<List<ProductModel>> getProductByCategory({
+    required String categoryId,
     required BuildContext context,
   }) async {
     try {
       final String? token = await _localStorageService.getToken();
 
-      final response =
-          await ApiHelper.get(ApiEndpoints.getProdctByCategory, token!);
-      return response;
+      final response = await ApiHelper.get(
+          '${ApiEndpoints.getProdctByCategory}$categoryId', token!);
+      final List<dynamic> productList = response as List<dynamic>;
+      final List<ProductModel> products = productList
+          .map((productMap) => ProductModel.fromMap(productMap))
+          .toList();
+      print(products);
+      return products;
     } catch (e) {
       debugPrint('Error fetching product: $e');
+      rethrow;
     }
   }
 }

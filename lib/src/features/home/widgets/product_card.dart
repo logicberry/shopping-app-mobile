@@ -78,7 +78,7 @@ class ProductCard extends StatelessWidget {
                                   decoration: TextDecoration.lineThrough,
                                   decorationColor: AppColors.red,
                                   decorationStyle: TextDecorationStyle.wavy,
-                                  fontWeight: FontWeight.w600),
+                                  fontWeight: FontWeight.w400),
                               overflow: TextOverflow.ellipsis),
                         )
                       ],

@@ -53,9 +53,11 @@ class AppRouter {
         ),
         GoRoute(
           name: RouteConstants.allProducts,
-          path: '/allProducts',
+          path: '/allProducts/:categoryId',
           pageBuilder: (context, state) {
-            return const MaterialPage(child: ProductPage());
+            return MaterialPage(child: ProductPage(
+              categoryId: state.pathParameters['categoryId'],
+            ));
           },
         ),
         GoRoute(

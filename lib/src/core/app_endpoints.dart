@@ -18,5 +18,5 @@ class ApiEndpoints {
   static const product = 'product/';
   static const getAllProducts = '$baseUrl${product}get';
   static const getSingleProduct = '$baseUrl${product}getProductById';
-  static const getProdctByCategory = '$baseUrl${product}getByCategory';
+  static const getProdctByCategory = '$baseUrl${product}getByCategory/';
 }

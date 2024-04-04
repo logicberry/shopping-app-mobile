@@ -103,10 +103,17 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                     String categoryName = categories[index];
                     String categoryImage = categoryImages[categoryName] ?? '';
+                    String idx = '${index + 1}';
 
-                    return CategoryComponent(
-                      categoryName: categoryName,
-                      categoryImage: categoryImage,
+                    return InkWell(
+                      onTap: () {
+                        context.pushNamed(RouteConstants.allProducts,
+                            pathParameters: {'categoryId': idx});
+                      },
+                      child: CategoryComponent(
+                        categoryName: categoryName,
+                        categoryImage: categoryImage,
+                      ),
                     );
                   },
                   separatorBuilder: (context, index) => SizedBox(
