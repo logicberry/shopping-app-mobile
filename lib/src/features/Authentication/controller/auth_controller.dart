@@ -26,7 +26,6 @@ class AuthProvider with ChangeNotifier {
         phoneNumber: phoneNumber,
         password: password,
         context: context);
-
     _setLoading(false);
   }
 
@@ -38,7 +37,6 @@ class AuthProvider with ChangeNotifier {
     _setLoading(true);
     await _authRepository.login(
         email: email, password: password, context: context);
-
     _setLoading(false);
   }
 

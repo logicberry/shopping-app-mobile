@@ -45,6 +45,8 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
   provider: ^6.1.2
   get_it: ^7.6.8
+  shared_preferences: ^2.2.2
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:

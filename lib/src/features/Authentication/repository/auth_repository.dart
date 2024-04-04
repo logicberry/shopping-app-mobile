@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/core.dart';
+import '../../../services/local_storage_service.dart';
 
 class AuthRepository {
+  final LocalStorageService _localStorageService = LocalStorageService();
+
   Future<dynamic> register({
     required String fullName,
     required String email,
@@ -53,6 +56,7 @@ class AuthRepository {
         },
       );
       if (response.containsKey('token')) {
+        await _localStorageService.saveToken(response['token']);
         if (context.mounted) {
           context.pushNamed(RouteConstants.nav);
         }

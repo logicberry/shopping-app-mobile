@@ -3,8 +3,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiHelper {
-  static Future<dynamic> get(String url) async {
-    final response = await http.get(Uri.parse(url));
+  static Future<dynamic> get(String url, String token) async {
+    final response = await http.get(Uri.parse(url), headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer $token',
+    });
     return _response(response);
   }
 

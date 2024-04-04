@@ -7,7 +7,9 @@ import 'package:shopapp/src/features/home/widgets/product_card.dart';
 import 'package:shopapp/src/features/home/widgets/searchfield.dart';
 
 import '../../../core/core.dart';
-import '../model/productmodel.dart';
+import '../../Product/controller/product_controller.dart';
+import '../../Product/model/product_model.dart';
+import '../../Product/repository/product_repository.dart';
 import '../widgets/promotion_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,6 +40,19 @@ class _HomePageState extends State<HomePage> {
     'Beauty': SvgPath.beauty,
     'Deals': SvgPath.deals,
   };
+
+  final ProductProvider productProvider = ProductProvider(ProductRepository());
+  List<ProductModel> products = [];
+  getProducts() async {
+    products = await productProvider.getAllProducts(context: context);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getProducts();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -149,16 +164,17 @@ class _HomePageState extends State<HomePage> {
                   crossAxisSpacing: 13.0,
                   mainAxisSpacing: 1.0,
                   childAspectRatio: 160 / 190),
-              itemCount: constantProducts.length,
+              itemCount: (products.length < 4) ? products.length : 4,
               itemBuilder: (context, index) {
-                Product product = constantProducts[index];
+                ProductModel product = products[index];
 
                 return ProductCard(
                   productName: product.name,
                   company: product.company,
-                  productBgColor: product.productBgColor,
-                  productPrice: product.productPrice.toString(),
-                  initialPrice: product.initialPrice.toString(),
+                  image: product.imageUrl,
+                  productBgColor: Colors.green,
+                  productPrice: product.price,
+                  initialPrice: product.initialPrice,
                 );
               },
             ),

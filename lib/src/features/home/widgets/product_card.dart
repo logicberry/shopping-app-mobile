@@ -3,20 +3,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/core.dart';
+import '../../../services/format.dart';
 
 class ProductCard extends StatelessWidget {
   final String productName;
   final String company;
-  final String productPrice;
-  final String initialPrice;
+  final double productPrice;
+  final double initialPrice;
   final Color productBgColor;
+  final String image;
   const ProductCard(
       {super.key,
       required this.productName,
       required this.company,
       required this.productPrice,
       required this.initialPrice,
-      required this.productBgColor});
+      required this.productBgColor,
+      required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +31,17 @@ class ProductCard extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 97.h,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: productBgColor,
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10)),
-              ),
-              child: Image.asset(
-                ImagePath.logo,
-                fit: BoxFit.scaleDown,
-              ),
-            ),
+                height: 97.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: productBgColor,
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
+                ),
+                child: Image.network(
+                  image,
+                )),
             Container(
               height: 94.h,
               decoration: BoxDecoration(
@@ -62,15 +63,24 @@ class ProductCard extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text('\$$productPrice',
-                            style: AppTheme.textTheme.labelLarge
-                                ?.copyWith(color: AppColors.primaryColor)),
+                        Text(
+                          '\$${NumberFormatUtil.formatThousand(productPrice)}',
+                          style: AppTheme.textTheme.labelLarge?.copyWith(
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
                         Space.width(6),
-                        Text('\$$initialPrice',
-                            style: AppTheme.textTheme.labelSmall?.copyWith(
-                                color: AppColors.red,
-                                decoration: TextDecoration.lineThrough,
-                                fontWeight: FontWeight.w600))
+                        Expanded(
+                          child: Text(
+                              '\$${NumberFormatUtil.formatThousand(initialPrice)}',
+                              style: AppTheme.textTheme.labelSmall?.copyWith(
+                                  color: AppColors.red,
+                                  decoration: TextDecoration.lineThrough,
+                                  decorationColor: AppColors.red,
+                                  decorationStyle: TextDecorationStyle.wavy,
+                                  fontWeight: FontWeight.w600),
+                              overflow: TextOverflow.ellipsis),
+                        )
                       ],
                     ),
                   ],
