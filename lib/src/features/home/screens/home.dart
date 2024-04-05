@@ -179,7 +179,6 @@ class _HomePageState extends State<HomePage> {
                   productName: product.name,
                   company: product.company,
                   image: product.imageUrl,
-                  productBgColor: Colors.green,
                   productPrice: product.price,
                   initialPrice: product.initialPrice,
                 );

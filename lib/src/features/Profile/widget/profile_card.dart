@@ -5,31 +5,47 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/core.dart';
 
 class ProfileCard extends StatelessWidget {
-  const ProfileCard({super.key});
+  final String title, description, icon;
+  final VoidCallback? onTap;
+
+  const ProfileCard(
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.icon,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 69.h,
-      decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(Radius.circular(10.r))),
-      child: ListTile(
-          minLeadingWidth: 35,
-          leading: SizedBox(
-            height: double.infinity,
-            child: SvgPicture.asset(
-              SvgPath.cart,
-              colorFilter: const ColorFilter.mode(
-                  AppColors.secondaryColor, BlendMode.srcIn),
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: 69.h,
+        decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.all(Radius.circular(10.r))),
+        child: ListTile(
+            minLeadingWidth: 35,
+            leading: SizedBox(
+              height: double.infinity,
+              child: SvgPicture.asset(
+                icon,
+                colorFilter:
+                    const ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+              ),
             ),
-          ),
-          trailing: const Icon(Icons.chevron_right),
-          title: Text('User Profile', style: AppTheme.textTheme.titleSmall),
-          subtitle: Text(
-            'User profile is here',
-            style: AppTheme.textTheme.bodySmall,
-          )),
+            trailing: const Icon(
+              Icons.chevron_right,
+              size: 30,
+              color: AppColors.grey,
+            ),
+            title: Text(title, style: AppTheme.textTheme.bodyMedium),
+            subtitle: Text(
+              description,
+              style: AppTheme.textTheme.labelSmall
+                  ?.copyWith(fontWeight: FontWeight.w400),
+            )),
+      ),
     );
   }
 }

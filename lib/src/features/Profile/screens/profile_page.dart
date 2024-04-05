@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/core.dart';
 import '../widget/profile_card.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
         children: [
           Container(
@@ -30,10 +35,10 @@ class ProfilePage extends StatelessWidget {
                         radius: 25.r,
                         backgroundImage: const AssetImage(ImagePath.logo)),
                     title: Text('Malik Rasaq',
-                        style: AppTheme.textTheme.titleSmall
+                        style: AppTheme.textTheme.bodyMedium
                             ?.copyWith(color: AppColors.white)),
-                    subtitle: Text('+2341234567',
-                        style: AppTheme.textTheme.bodySmall
+                    subtitle: Text('+234123456756',
+                        style: AppTheme.textTheme.bodyLarge
                             ?.copyWith(color: AppColors.grey)),
                   ),
                   Space.height(26),
@@ -58,20 +63,46 @@ class ProfilePage extends StatelessWidget {
           ),
           Space.height(10),
           Padding(
-            padding: const EdgeInsets.all(20),
-            child: ListView.separated(
-              shrinkWrap: true,
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return const ProfileCard();
-              },
-              separatorBuilder: (context, index) => SizedBox(
-                height: 10.h,
-              ),
-            ),
-          ),
+              padding: const EdgeInsets.all(20),
+              child: Column(children: [
+                ProfileCard(
+                  title: 'User Profile',
+                  icon: SvgPath.profile,
+                  description: 'View and edit your profile',
+                  onTap: () => context.pushNamed(RouteConstants.editProfile),
+                ),
+                Space.height(10),
+                ProfileCard(
+                  title: 'Notifications',
+                  icon: SvgPath.notification,
+                  description: 'Manage your notifications',
+                  onTap: () => context.pushNamed(RouteConstants.notification),
+                ),
+                Space.height(10),
+                ProfileCard(
+                  title: 'Promotions',
+                  icon: SvgPath.promo,
+                  description: 'View and manage promotions',
+                  onTap: () => context.pushNamed(RouteConstants.promotions),
+                ),
+                Space.height(10),
+                ProfileCard(
+                  title: 'About',
+                  icon: SvgPath.help,
+                  description: 'Learn more about the app',
+                  onTap: () {},
+                ),
+                Space.height(10),
+                ProfileCard(
+                  title: 'Settings',
+                  icon: SvgPath.settings,
+                  description: 'Manage your app settings',
+                  onTap: () {},
+                ),
+                Space.height(10),
+              ])),
         ],
       ),
-    ));
+    );
   }
 }

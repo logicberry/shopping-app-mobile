@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../components/components.dart';
 import '../../../core/core.dart';
 
@@ -43,11 +44,11 @@ class EditProfilePage extends StatelessWidget {
                           ),
                           Space.height(15),
                           const SATextField(
-                            hintText: 'Email Address',
+                            hintText: 'Phone Number',
                           ),
                           Space.height(15),
                           const SATextField(
-                            hintText: 'Phone Number',
+                            hintText: 'Address',
                           ),
                           Space.height(15),
                           const SATextField(

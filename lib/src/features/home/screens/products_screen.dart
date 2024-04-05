@@ -75,7 +75,6 @@ class _ProductPageState extends State<ProductPage> {
                     productName: product.name,
                     company: product.company,
                     image: product.imageUrl,
-                    productBgColor: Colors.lightGreenAccent,
                     productPrice: product.price,
                     initialPrice: product.initialPrice,
                   );
