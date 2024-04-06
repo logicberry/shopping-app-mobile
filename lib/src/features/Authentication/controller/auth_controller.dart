@@ -2,15 +2,16 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../services/locator_service.dart';
 import '../repository/auth_repository.dart';
 
 class AuthProvider with ChangeNotifier {
   bool _isLoading = false;
   final AuthRepository _authRepository;
 
-  AuthProvider(this._authRepository);
-
   bool get isLoading => _isLoading;
+
+  AuthProvider() : _authRepository = locator<AuthRepository>();
 
   Future<void> register({
     required String fullName,

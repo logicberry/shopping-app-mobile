@@ -5,8 +5,8 @@ import 'package:shopapp/src/components/button.dart';
 import 'package:shopapp/src/components/textfield.dart';
 import 'package:shopapp/src/core/core.dart';
 
+import '../../../services/locator_service.dart';
 import '../controller/auth_controller.dart';
-import '../repository/auth_repository.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -19,8 +19,7 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _signInKey = GlobalKey<FormState>();
-  AuthProvider authProvider = AuthProvider(AuthRepository());
-
+  final AuthProvider authProvider = locator<AuthProvider>();
   @override
   void dispose() {
     _emailController.clear();

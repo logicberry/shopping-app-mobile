@@ -5,11 +5,11 @@ import 'package:go_router/go_router.dart';
 import 'package:shopapp/src/features/home/widgets/category_component.dart';
 import 'package:shopapp/src/features/home/widgets/product_card.dart';
 import 'package:shopapp/src/features/home/widgets/searchfield.dart';
+import 'package:shopapp/src/services/locator_service.dart';
 
 import '../../../core/core.dart';
 import '../../Product/controller/product_controller.dart';
 import '../../Product/model/product_model.dart';
-import '../../Product/repository/product_repository.dart';
 import '../widgets/promotion_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     'Deals': SvgPath.deals,
   };
 
-  final ProductProvider productProvider = ProductProvider(ProductRepository());
+  final ProductProvider productProvider = locator<ProductProvider>();
   List<ProductModel> products = [];
   getProducts() async {
     products = await productProvider.getAllProducts(context: context);

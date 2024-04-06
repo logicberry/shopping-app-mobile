@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopapp/src/features/Product/controller/product_controller.dart';
 import 'package:shopapp/src/features/Product/model/product_model.dart';
+import 'package:shopapp/src/services/locator_service.dart';
 
 import '../../../components/components.dart';
 import '../../../core/core.dart';
-import '../../Product/repository/product_repository.dart';
 import '../widgets/widgets.dart';
 
 class ProductPage extends StatefulWidget {
@@ -19,7 +19,7 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   late Future<List<ProductModel>> _futureProducts;
-  final ProductProvider productProvider = ProductProvider(ProductRepository());
+  final ProductProvider productProvider = locator<ProductProvider>();
 
   @override
   void initState() {

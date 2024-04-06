@@ -47,7 +47,7 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     Color backgroundColor =
-        _paletteGenerator.dominantColor?.color ?? Colors.white;
+        _paletteGenerator.lightVibrantColor?.color ?? Colors.white;
 
     return GestureDetector(
       onTap: () => context.pushNamed(RouteConstants.productDetails),

@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:shopapp/src/features/Product/model/product_model.dart';
 
+import '../../../services/locator_service.dart';
 import '../repository/product_repository.dart';
 
 class ProductProvider with ChangeNotifier {
   bool _isLoading = false;
   final ProductRepository _productRepository;
 
-  ProductProvider(this._productRepository);
-
+  ProductProvider() : _productRepository = locator<ProductRepository>();
   bool get isLoading => _isLoading;
 
   Future<List<ProductModel>> getAllProducts({

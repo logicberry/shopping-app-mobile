@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:shopapp/router.dart';
+import 'package:shopapp/src/features/Authentication/controller/auth_controller.dart';
+import 'package:shopapp/src/features/Product/controller/product_controller.dart';
 
 import 'src/core/core.dart';
+import 'src/services/locator_service.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(
-    const MyApp(),
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => AuthProvider()),
+      ChangeNotifierProvider(create: (context) => ProductProvider()),
+    ], child: const MyApp()),
   );
 }
 

@@ -5,7 +5,7 @@ import 'package:shopapp/src/core/core.dart';
 import 'package:shopapp/src/features/Authentication/controller/auth_controller.dart';
 
 import '../../../components/components.dart';
-import '../repository/auth_repository.dart';
+import '../../../services/locator_service.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -22,7 +22,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
   final GlobalKey<FormState> _signUpKey = GlobalKey<FormState>();
-  AuthProvider authProvider = AuthProvider(AuthRepository());
+  AuthProvider authProvider = locator<AuthProvider>();
 
   @override
   void dispose() {
