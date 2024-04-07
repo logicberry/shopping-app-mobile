@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shopapp/src/core/core.dart';
 
 class ColorCard extends StatelessWidget {
-  const ColorCard({super.key});
+  final String title;
+  const ColorCard({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         width: 66.w,
         child: Card(
+          color: AppColors.white,
           shape: RoundedRectangleBorder(
-              side: const BorderSide(width: 0.1),
+              side: const BorderSide(width: 0.13),
               borderRadius: BorderRadius.all(Radius.circular(10.r))),
           margin: EdgeInsets.zero,
-          elevation: 2,
-          child: const Center(child: Text('Green')),
+          elevation: 0.1,
+          child: Center(child: Text(title)),
         ));
   }
 }

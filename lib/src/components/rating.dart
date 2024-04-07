@@ -9,7 +9,7 @@ class RatingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return RatingBar.builder(
       itemSize: 14,
-      initialRating: 3,
+      initialRating: 4.5,
       minRating: 1,
       direction: Axis.horizontal,
       allowHalfRating: true,

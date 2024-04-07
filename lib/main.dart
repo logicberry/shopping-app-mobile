@@ -7,6 +7,7 @@ import 'package:shopapp/src/features/Authentication/controller/auth_controller.d
 import 'package:shopapp/src/features/Product/controller/product_controller.dart';
 
 import 'src/core/core.dart';
+import 'src/features/Cart/controller/cart_controller.dart';
 import 'src/services/locator_service.dart';
 
 void main() {
@@ -18,6 +19,7 @@ void main() {
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => AuthProvider()),
       ChangeNotifierProvider(create: (context) => ProductProvider()),
+      // ChangeNotifierProvider(create: (context) => CartProvider()),
     ], child: const MyApp()),
   );
 }

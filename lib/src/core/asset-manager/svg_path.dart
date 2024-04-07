@@ -29,5 +29,8 @@ class SvgPath {
   static const String fb = '${svgPath}fb.svg';
   static const String beauty = '${svgPath}beauty.svg';
   static const String deals = '${svgPath}deals.svg';
+  static const String chat = '${svgPath}chat.svg';
+  static const String like = '${svgPath}like.svg';
+  static const String share = '${svgPath}share.svg';
   // static const String  = '${svgPath}check.svg';
 }

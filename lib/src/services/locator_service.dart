@@ -10,6 +10,9 @@ final locator = GetIt.instance;
 void setupServiceLocator() {
   locator.registerLazySingleton<AuthRepository>(() => AuthRepository());
   locator.registerLazySingleton<ProductRepository>(() => ProductRepository());
+  // locator.registerLazySingleton<CartRepository>(() => CartRepository());
   locator.registerLazySingleton<AuthProvider>(() => AuthProvider());
   locator.registerLazySingleton<ProductProvider>(() => ProductProvider());
+
+  // locator.registerLazySingleton<CartProvider>(() => CartProvider());
 }

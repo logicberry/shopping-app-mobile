@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopapp/src/core/core.dart';
+import 'package:shopapp/src/features/Product/widgets/palette_image.dart';
 
 import '../../../components/components.dart';
+import '../../../services/format.dart';
+import '../model/product_model.dart';
 import '../widgets/widgets.dart';
 
 Map<String, String> specifications = {
@@ -14,10 +17,22 @@ Map<String, String> specifications = {
   'Built-In Display': '21.5 Inch (1920 x 1080)',
 };
 
-class ProductDetailsPage extends StatelessWidget {
-  final Color? productBgColor;
-  const ProductDetailsPage({super.key, this.productBgColor = AppColors.pink});
+List<String> colors = [
+  'Red',
+  'Blue',
+  'Green',
+];
 
+class ProductDetailsPage extends StatefulWidget {
+  final ProductModel product;
+  const ProductDetailsPage({super.key, required this.product});
+
+  @override
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
+}
+
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
+  Color _backgroundColor = Colors.transparent;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +50,14 @@ class ProductDetailsPage extends StatelessWidget {
               Container(
                 height: 222.h,
                 width: double.infinity,
-                color: productBgColor,
-                child: Image.asset(ImagePath.logo),
+                color: _backgroundColor,
+                child: PaletteImage(
+                    imageUrl: widget.product.imageUrl,
+                    onPaletteGenerated: (color) {
+                      setState(() {
+                        _backgroundColor = color;
+                      });
+                    }),
               ),
               Positioned(
                 bottom: -20,
@@ -69,7 +90,7 @@ class ProductDetailsPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Imac 27 Inch 5k',
+                          Text(widget.product.name,
                               style: AppTheme.textTheme.titleLarge
                                   ?.copyWith(color: AppColors.black)),
                           Space.height(10),
@@ -78,7 +99,7 @@ class ProductDetailsPage extends StatelessWidget {
                               Image.asset(ImagePath.logo,
                                   height: 20.h, width: 20.w),
                               Space.width(10),
-                              Text('Applestore  •  ',
+                              Text(widget.product.company,
                                   style: AppTheme.textTheme.labelSmall
                                       ?.copyWith(
                                           color: AppColors.black,
@@ -95,14 +116,17 @@ class ProductDetailsPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('\$999.99',
+                          Text(
+                              '\$${NumberFormatUtil.formatThousand(widget.product.price)}',
                               style: AppTheme.textTheme.titleLarge?.copyWith(
                                   color: AppColors.primaryColor,
                                   fontWeight: FontWeight.bold)),
-                          Text('\$2,000.99',
+                          Text(
+                              '\$${NumberFormatUtil.formatThousand(widget.product.initialPrice)}',
                               style: AppTheme.textTheme.labelSmall?.copyWith(
                                   color: AppColors.red,
                                   decoration: TextDecoration.lineThrough,
+                                  decorationColor: AppColors.red,
                                   fontSize: 10.sp,
                                   letterSpacing: 0.01))
                         ],
@@ -168,20 +192,20 @@ class ProductDetailsPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'IMAC SILVER 21,5 INCH MID 2010/2011 RAM 8GB HDD 500GB SECOND',
+                                      widget.product.description,
                                       style: AppTheme.textTheme.bodyLarge
                                           ?.copyWith(
                                               color: Colors.blueGrey,
                                               fontWeight: FontWeight.w600),
                                     ),
-                                    Space.height(10),
-                                    Text(
-                                      'Specifications',
-                                      style: AppTheme.textTheme.bodyLarge
-                                          ?.copyWith(color: Colors.blueGrey),
-                                    ),
-                                    _buildSpecificationItems(),
-                                    Space.height(20),
+                                    // Space.height(10),
+                                    // Text(
+                                    //   'Specifications',
+                                    //   style: AppTheme.textTheme.bodyLarge
+                                    //       ?.copyWith(color: Colors.blueGrey),
+                                    // ),
+                                    // _buildSpecificationItems(),
+                                    Space.height(30),
                                     const Text('Color'),
                                     Space.height(10),
                                     SizedBox(
@@ -189,7 +213,9 @@ class ProductDetailsPage extends StatelessWidget {
                                       child: ListView.separated(
                                           scrollDirection: Axis.horizontal,
                                           itemBuilder: (context, index) {
-                                            return const ColorCard();
+                                            return ColorCard(
+                                              title: colors[index],
+                                            );
                                           },
                                           separatorBuilder: (context, index) {
                                             return SizedBox(

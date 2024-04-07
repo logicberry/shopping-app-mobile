@@ -152,7 +152,8 @@ class _HomePageState extends State<HomePage> {
                     style: AppTheme.textTheme.labelLarge
                         ?.copyWith(color: AppColors.black)),
                 GestureDetector(
-                  onTap: () => context.pushNamed(RouteConstants.allProducts),
+                  onTap: () => context.pushNamed(RouteConstants.allProducts,
+                      pathParameters: {'categoryId': ''}),
                   child: Text('See all',
                       style: AppTheme.textTheme.labelLarge?.copyWith(
                           color: AppColors.primaryColor,

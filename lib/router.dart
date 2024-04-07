@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shopapp/src/features/Product/model/product_model.dart';
 import 'package:shopapp/src/features/home/screens/products_screen.dart';
 import 'package:shopapp/src/features/home/screens/promotions_page.dart';
 
@@ -48,14 +49,16 @@ class AppRouter {
           name: RouteConstants.productDetails,
           path: '/pde',
           pageBuilder: (context, state) {
-            return const MaterialPage(child: ProductDetailsPage());
+            ProductModel product = state.extra as ProductModel;
+            return MaterialPage(child: ProductDetailsPage(product: product));
           },
         ),
         GoRoute(
           name: RouteConstants.allProducts,
           path: '/allProducts/:categoryId',
           pageBuilder: (context, state) {
-            return MaterialPage(child: ProductPage(
+            return MaterialPage(
+                child: ProductPage(
               categoryId: state.pathParameters['categoryId'],
             ));
           },

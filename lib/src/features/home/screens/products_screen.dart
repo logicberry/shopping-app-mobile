@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shopapp/src/features/Product/controller/product_controller.dart';
 import 'package:shopapp/src/features/Product/model/product_model.dart';
 import 'package:shopapp/src/services/locator_service.dart';
@@ -28,7 +29,7 @@ class _ProductPageState extends State<ProductPage> {
   }
 
   Future<List<ProductModel>> _fetchProducts() async {
-    if (widget.categoryId != null) {
+    if (widget.categoryId != '') {
       // Fetch products based on category ID if provided
       return productProvider.getProductByCategory(
           categoryId: widget.categoryId!, context: context);
@@ -72,6 +73,10 @@ class _ProductPageState extends State<ProductPage> {
                   ProductModel product = snapshot.data![index];
 
                   return ProductCard(
+                    onTap: () {
+                      context.pushNamed(RouteConstants.productDetails,
+                          extra: product);
+                    },
                     productName: product.name,
                     company: product.company,
                     image: product.imageUrl,

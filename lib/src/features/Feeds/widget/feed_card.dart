@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/core.dart';
+import '../../Product/model/product_model.dart';
+import '../../Product/widgets/palette_image.dart';
 
 Map<String, String> specifications = {
   'Processor': 'Core i3',
@@ -11,79 +14,95 @@ Map<String, String> specifications = {
   'Built-In Display': '21.5 Inch (1920 x 1080)',
 };
 
-class FeedCard extends StatelessWidget {
-  const FeedCard({super.key});
+class FeedCard extends StatefulWidget {
+  final ProductModel product;
+  const FeedCard({super.key, required this.product});
+
+  @override
+  State<FeedCard> createState() => _FeedCardState();
+}
+
+class _FeedCardState extends State<FeedCard> {
+  Color _backgroundColor = Colors.transparent;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 420.h,
-      width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15.r),
-          ),
-          color: AppColors.white),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ListTile(
-              visualDensity: const VisualDensity(horizontal: 0, vertical: -3.5),
-              contentPadding: EdgeInsets.zero,
-              minLeadingWidth: -20,
-              horizontalTitleGap: 11,
-              leading: SizedBox(
-                height: double.infinity,
-                child: CircleAvatar(
-                  radius: 12.r,
-                  backgroundImage: const AssetImage(ImagePath.logo),
-                ),
-              ),
-              titleAlignment: ListTileTitleAlignment.titleHeight,
-              title: Text('Malik Rasaq', style: AppTheme.textTheme.titleSmall),
-              subtitle: Text(
-                'Applestore',
-                style: AppTheme.textTheme.bodySmall?.copyWith(
-                  color: Colors.blueGrey,
-                ),
-              ),
-              trailing: const Icon(Icons.more_horiz_outlined),
+    return GestureDetector(
+      onTap: () => context.pushNamed(RouteConstants.productDetails,
+          extra: widget.product),
+      child: Container(
+        height: 420.h,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(15.r),
             ),
-          ),
-          Container(
-            height: 170.h,
-            width: double.infinity,
-            decoration: const BoxDecoration(color: AppColors.pink),
-            child: Image.asset(ImagePath.logo),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0.w, vertical: 10.h),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    const Text('12 mins'),
-                    const Spacer(),
-                    SvgPicture.asset(SvgPath.promo),
-                    Space.width(10),
-                    SvgPicture.asset(SvgPath.promo),
-                    Space.width(10),
-                    SvgPicture.asset(SvgPath.categories),
-                  ],
+            color: AppColors.white),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListTile(
+                visualDensity:
+                    const VisualDensity(horizontal: 0, vertical: -3.5),
+                contentPadding: EdgeInsets.zero,
+                minLeadingWidth: -20,
+                horizontalTitleGap: 11,
+                leading: SizedBox(
+                  height: double.infinity,
+                  child: CircleAvatar(
+                    radius: 12.r,
+                    backgroundImage: const AssetImage(ImagePath.logo),
+                  ),
                 ),
-                Space.height(8),
-                Text(
-                  'IMAC SILVER 21,5 INCH MID 2010/2011 RAM 8GB HDD 500GB SECOND',
-                  style: AppTheme.textTheme.bodyLarge?.copyWith(
-                      color: Colors.blueGrey, fontWeight: FontWeight.w600),
-                ),
-                Space.height(4),
-                _buildSpecificationItems(),
-              ],
+                titleAlignment: ListTileTitleAlignment.titleHeight,
+                title: Text(widget.product.name,
+                    style: AppTheme.textTheme.bodyMedium?.copyWith(
+                        color: Colors.black, fontWeight: FontWeight.w600)),
+                subtitle: Text(widget.product.company,
+                    style: AppTheme.textTheme.labelSmall),
+                trailing: const Icon(Icons.more_horiz_outlined),
+              ),
             ),
-          )
-        ],
+            Container(
+              height: 170.h,
+              width: double.infinity,
+              decoration: BoxDecoration(color: _backgroundColor),
+              child: PaletteImage(
+                  imageUrl: widget.product.imageUrl,
+                  onPaletteGenerated: (color) {
+                    setState(() {
+                      _backgroundColor = color;
+                    });
+                  }),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0.w, vertical: 10.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text('12 mins', style: AppTheme.textTheme.labelSmall),
+                      const Spacer(),
+                      SvgPicture.asset(SvgPath.chat),
+                      Space.width(27),
+                      SvgPicture.asset(SvgPath.like),
+                      Space.width(27),
+                      SvgPicture.asset(SvgPath.share),
+                    ],
+                  ),
+                  Space.height(8),
+                  Text(widget.product.description.toUpperCase(),
+                      style: AppTheme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.black, fontWeight: FontWeight.w400)),
+                  Space.height(4),
+                  _buildSpecificationItems(),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -92,7 +111,7 @@ class FeedCard extends StatelessWidget {
     List<Widget> items = [];
     specifications.forEach((key, value) {
       items.add(_buildSpecificationItem(key, value));
-      items.add(SizedBox(height: 1.h)); // Add spacing between items
+      items.add(SizedBox(height: 1.h));
     });
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,12 +124,16 @@ class FeedCard extends StatelessWidget {
       children: [
         Text(
           ' - $label',
-          style: TextStyle(fontSize: 12.sp, color: Colors.blueGrey),
+          style: TextStyle(
+            fontSize: 12.sp,
+          ),
         ),
         Space.width(5),
         Text(
           value,
-          style: TextStyle(fontSize: 12.sp, color: Colors.blueGrey),
+          style: TextStyle(
+            fontSize: 12.sp,
+          ),
         ),
       ],
     );

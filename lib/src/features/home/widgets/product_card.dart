@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:palette_generator/palette_generator.dart';
 
 import '../../../core/core.dart';
@@ -12,6 +11,7 @@ class ProductCard extends StatefulWidget {
   final double productPrice;
   final double initialPrice;
   final String image;
+  final Function()? onTap;
 
   const ProductCard({
     super.key,
@@ -20,6 +20,7 @@ class ProductCard extends StatefulWidget {
     required this.productPrice,
     required this.initialPrice,
     required this.image,
+    this.onTap,
   });
 
   @override
@@ -50,7 +51,7 @@ class _ProductCardState extends State<ProductCard> {
         _paletteGenerator.lightVibrantColor?.color ?? Colors.white;
 
     return GestureDetector(
-      onTap: () => context.pushNamed(RouteConstants.productDetails),
+      onTap: widget.onTap,
       child: SizedBox(
         height: 191.h,
         width: 161.w,
