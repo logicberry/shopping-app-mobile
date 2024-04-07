@@ -11,6 +11,7 @@ import 'src/features/Cart/screens/cart_page.dart';
 import 'src/features/Checkout/screens/checkout_page.dart';
 import 'src/features/Notification/screens/notifications_page.dart';
 import 'src/features/Product/screens/product_details_page.dart';
+import 'src/features/Profile/model/user_model.dart';
 import 'src/features/Profile/screens/edit_profile_page.dart';
 
 class AppRouter {
@@ -81,7 +82,8 @@ class AppRouter {
           name: RouteConstants.editProfile,
           path: '/editProfile',
           pageBuilder: (context, state) {
-            return const MaterialPage(child: EditProfilePage());
+            UserModel user = state.extra as UserModel;
+            return MaterialPage(child: EditProfilePage(user: user));
           },
         ),
         GoRoute(

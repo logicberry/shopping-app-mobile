@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../services/locator_service.dart';
 import '../repository/auth_repository.dart';
 
-class AuthProvider with ChangeNotifier {
+class AuthProvider extends ChangeNotifier {
   bool _isLoading = false;
   final AuthRepository _authRepository;
 

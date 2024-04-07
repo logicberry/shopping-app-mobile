@@ -22,12 +22,13 @@ class ApiHelper {
     return _response(response);
   }
 
-  static Future<dynamic> patch(String url, dynamic body) async {
+  static Future<dynamic> patch(String url, dynamic body, String token) async {
     final response = await http.patch(
       Uri.parse(url),
-      body: body,
+      body: jsonEncode(body),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer $token',
       },
     );
     return _response(response);
