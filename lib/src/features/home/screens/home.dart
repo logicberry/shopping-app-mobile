@@ -56,6 +56,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -74,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                     SvgPicture.asset(SvgPath.location),
                     Space.width(10),
                     Text('St 394 Jackson, New york  United Status',
-                        style: AppTheme.textTheme.bodyLarge?.copyWith(
+                        style: textTheme.bodyLarge?.copyWith(
                             color: AppColors.white,
                             fontWeight: FontWeight.w400)),
                   ],
@@ -93,19 +95,17 @@ class _HomePageState extends State<HomePage> {
           ),
           Space.height(19),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 21.w),
-            child: Column(children: [
-              SizedBox(
-                height: 69.h,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    String categoryName = categories[index];
-                    String categoryImage = categoryImages[categoryName] ?? '';
-                    String idx = '${index + 1}';
+            padding: EdgeInsets.symmetric(horizontal: 9.w),
+            child: Row(
+              children: List.generate(
+                categories.length,
+                (index) {
+                  String categoryName = categories[index];
+                  String categoryImage = categoryImages[categoryName] ?? '';
+                  String idx = '${index + 1}';
 
-                    return InkWell(
+                  return Expanded(
+                    child: InkWell(
                       onTap: () {
                         context.pushNamed(RouteConstants.allProducts,
                             pathParameters: {'categoryId': idx});
@@ -114,14 +114,11 @@ class _HomePageState extends State<HomePage> {
                         categoryName: categoryName,
                         categoryImage: categoryImage,
                       ),
-                    );
-                  },
-                  separatorBuilder: (context, index) => SizedBox(
-                    width: 24.w,
-                  ),
-                ),
-              ),
-            ]),
+                    ),
+                  );
+                },
+              ).toList(),
+            ),
           ),
           Space.height(20),
           SizedBox(
@@ -148,14 +145,12 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('New Products',
-                    style: AppTheme.textTheme.labelLarge
-                        ?.copyWith(color: AppColors.black)),
+                Text('New Products', style: textTheme.bodyMedium),
                 GestureDetector(
                   onTap: () => context.pushNamed(RouteConstants.allProducts,
                       pathParameters: {'categoryId': ''}),
                   child: Text('See all',
-                      style: AppTheme.textTheme.labelLarge?.copyWith(
+                      style: textTheme.labelLarge?.copyWith(
                           color: AppColors.primaryColor,
                           fontWeight: FontWeight.w400)),
                 )

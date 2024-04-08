@@ -60,6 +60,8 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: Stack(children: [
@@ -81,9 +83,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Space.height(75),
-                      Text('Register', style: AppTheme.textTheme.headlineLarge),
+                      Text('Register', style: textTheme.headlineLarge),
                       Text('Enter your personal details to create an account',
-                          style: AppTheme.textTheme.bodyLarge
+                          style: textTheme.bodyLarge
                               ?.copyWith(color: AppColors.white))
                     ]),
               )),
@@ -94,7 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
               height: 669.h,
               width: 375.w,
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: Theme.of(context).scaffoldBackgroundColor,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30.r),
                     topRight: Radius.circular(30.r)),
@@ -153,7 +155,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: [
                           Text(
                             'Have an account?',
-                            style: AppTheme.textTheme.bodyLarge,
+                            style: textTheme.bodyLarge,
                           ),
                           Space.width(8),
                           GestureDetector(
@@ -161,7 +163,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   context.goNamed(RouteConstants.signIn),
                               child: Text(
                                 'Sign In',
-                                style: AppTheme.textTheme.bodyLarge
+                                style: textTheme.bodyLarge
                                     ?.copyWith(color: AppColors.secondaryColor),
                               ))
                         ],

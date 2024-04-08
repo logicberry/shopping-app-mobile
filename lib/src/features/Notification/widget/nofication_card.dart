@@ -49,6 +49,8 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+            final textTheme = Theme.of(context).textTheme;
+
     return ListTile(
         minVerticalPadding: 5,
         contentPadding: EdgeInsets.zero,
@@ -69,14 +71,14 @@ class NotificationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(getTitle(type),
-                    style: AppTheme.textTheme.bodyLarge
+                    style: textTheme.bodyLarge
                         ?.copyWith(fontWeight: FontWeight.w600)),
                 Space.height(5)
               ],
             ),
             Text(
               '4 hours',
-              style: AppTheme.textTheme.labelSmall?.copyWith(
+              style: textTheme.labelSmall?.copyWith(
                 color: Colors.blueGrey,
               ),
             )
@@ -84,7 +86,7 @@ class NotificationCard extends StatelessWidget {
         ),
         subtitle: Text(
           'Consectetur adipiscing elit, sed do eiusmodtempor incididunt u labore',
-          style: AppTheme.textTheme.bodySmall?.copyWith(
+          style: textTheme.bodySmall?.copyWith(
             color: Colors.blueGrey,
           ),
         ));

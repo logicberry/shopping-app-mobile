@@ -18,6 +18,8 @@ class NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+              final textTheme = Theme.of(context).textTheme;
+
     return ListTile(
       minVerticalPadding: 0,
       horizontalTitleGap: 0,
@@ -35,7 +37,7 @@ class NavItem extends StatelessWidget {
           ),
           Space.width(20),
           Text(text,
-              style: AppTheme.textTheme.bodySmall?.copyWith(
+              style: textTheme.bodySmall?.copyWith(
                   color: isSelected ? AppColors.primaryColor : Colors.grey,
                   fontWeight: FontWeight.w500)),
         ],

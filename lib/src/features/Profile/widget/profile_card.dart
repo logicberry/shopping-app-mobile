@@ -17,12 +17,14 @@ class ProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return InkWell(
       onTap: onTap,
       child: Container(
         height: 69.h,
         decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.all(Radius.circular(10.r))),
         child: ListTile(
             minLeadingWidth: 35,
@@ -39,11 +41,11 @@ class ProfileCard extends StatelessWidget {
               size: 30,
               color: AppColors.grey,
             ),
-            title: Text(title, style: AppTheme.textTheme.bodyMedium),
+            title: Text(title, style: textTheme.bodyMedium),
             subtitle: Text(
               description,
-              style: AppTheme.textTheme.labelSmall
-                  ?.copyWith(fontWeight: FontWeight.w400),
+              style:
+                  textTheme.labelSmall?.copyWith(fontWeight: FontWeight.w400),
             )),
       ),
     );
@@ -61,6 +63,8 @@ class BalanceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Container(
       height: 75.h,
       width: 156.w,
@@ -68,13 +72,14 @@ class BalanceCard extends StatelessWidget {
           color: AppColors.white,
           borderRadius: BorderRadius.all(Radius.circular(10.r))),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 12.0.h, horizontal: 15.w),
+        padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 15.w),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: AppTheme.textTheme.bodySmall?.copyWith()),
+            Text(title, style: textTheme.bodySmall?.copyWith()),
             Text(balanceText,
-                style: AppTheme.textTheme.titleLarge?.copyWith(
+                style: textTheme.titleLarge?.copyWith(
                   color: balancdTextColor,
                 )),
           ],

@@ -18,7 +18,7 @@ class PromotionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.ash,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: const SHAppBar(
         implyLeading: true,
         centerTitle: true,

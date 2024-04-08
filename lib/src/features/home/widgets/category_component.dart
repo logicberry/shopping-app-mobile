@@ -12,6 +12,8 @@ class CategoryComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+            final textTheme = Theme.of(context).textTheme;
+
     return Column(
       children: [
         CircleAvatar(
@@ -19,7 +21,7 @@ class CategoryComponent extends StatelessWidget {
             backgroundColor: AppColors.white,
             child: SvgPicture.asset(categoryImage)),
         Space.height(5),
-        Text(categoryName, style: AppTheme.textTheme.bodyLarge)
+        Text(categoryName, style: textTheme.bodyLarge)
       ],
     );
   }

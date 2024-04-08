@@ -40,6 +40,8 @@ class _SATextFieldState extends State<SATextField> {
 
   @override
   Widget build(BuildContext context) {
+              final textTheme = Theme.of(context).textTheme;
+
     const UnderlineInputBorder defaultOutlineInputBorder = UnderlineInputBorder(
       borderSide: BorderSide(width: 1, color: AppColors.grey),
     );
@@ -50,6 +52,7 @@ class _SATextFieldState extends State<SATextField> {
     return SizedBox(
       height: 57.h,
       child: TextFormField(
+
         obscureText: (widget.isPassword) ? !_obscureText : _obscureText,
         style: TextStyle(
             fontSize: 13.sp,
@@ -62,18 +65,19 @@ class _SATextFieldState extends State<SATextField> {
         textInputAction: TextInputAction.next,
         cursorWidth: 1.5,
         decoration: InputDecoration(
+
             labelText: widget.hintText,
             hintText: widget.hintText,
             // isDense: true,
-            floatingLabelStyle: AppTheme.textTheme.titleMedium?.copyWith(
+            floatingLabelStyle: textTheme.titleMedium?.copyWith(
               height: 0.3,
               color: Colors.grey,
             ),
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            labelStyle: AppTheme.textTheme.bodySmall?.copyWith(
+            labelStyle: textTheme.bodySmall?.copyWith(
               color: Colors.grey,
             ),
-            hintStyle: AppTheme.textTheme.bodyLarge?.copyWith(
+            hintStyle: textTheme.bodyLarge?.copyWith(
               color: Colors.grey,
             ),
             prefixIcon: widget.prefix,
@@ -82,15 +86,13 @@ class _SATextFieldState extends State<SATextField> {
                     onTap: togglePasswordVisibility,
                     child: Text(
                       _obscureText ? 'Hide' : 'Show',
-                      style: AppTheme.textTheme.bodySmall
-                          ?.copyWith(color: AppColors.black),
+                      style: textTheme.bodySmall
                     ),
                   )
                 : null,
             border: defaultOutlineInputBorder,
             enabledBorder: defaultOutlineInputBorder,
             focusedBorder: focusedOutlineInputBorder),
-        cursorColor: AppColors.black,
       ),
     );
   }

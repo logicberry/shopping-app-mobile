@@ -9,6 +9,8 @@ class ReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+            final textTheme = Theme.of(context).textTheme;
+
     return ListTile(
         contentPadding: EdgeInsets.zero,
         minLeadingWidth: -20,
@@ -25,7 +27,7 @@ class ReviewCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Malik Rasaq', style: AppTheme.textTheme.titleSmall),
+                Text('Malik Rasaq', style: textTheme.titleSmall),
                 Space.height(5),
                 const RatingWidget(),
                 Space.height(5),
@@ -33,7 +35,7 @@ class ReviewCard extends StatelessWidget {
             ),
             Text(
               '4 days ago',
-              style: AppTheme.textTheme.bodySmall?.copyWith(
+              style: textTheme.bodySmall?.copyWith(
                 color: Colors.blueGrey,
               ),
             )
@@ -41,7 +43,7 @@ class ReviewCard extends StatelessWidget {
         ),
         subtitle: Text(
           'wow this is the product i like the most. and a trusted and friendly shop',
-          style: AppTheme.textTheme.bodyMedium?.copyWith(
+          style: textTheme.bodyMedium?.copyWith(
             color: Colors.blueGrey,
           ),
         ));

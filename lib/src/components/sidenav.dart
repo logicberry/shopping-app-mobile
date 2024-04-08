@@ -39,8 +39,11 @@ class _SideMenuState extends State<SideMenu> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Drawer(
-        backgroundColor: AppColors.white,
+        shape: const RoundedRectangleBorder(),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         width: 290.w,
         child: ListView(padding: EdgeInsets.zero, children: [
           DrawerHeader(
@@ -70,12 +73,12 @@ class _SideMenuState extends State<SideMenu> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Balance',
-                              style: AppTheme.textTheme.bodySmall?.copyWith(
-                                  // color: AppColors.grey,
-                                  )),
+                              style: textTheme.bodySmall?.copyWith(
+                                color: Colors.grey,
+                              )),
                           Space.height(5),
                           Text('\$809.10',
-                              style: AppTheme.textTheme.titleLarge?.copyWith(
+                              style: textTheme.titleLarge?.copyWith(
                                 color: AppColors.primaryColor,
                               )),
                         ],
@@ -89,12 +92,12 @@ class _SideMenuState extends State<SideMenu> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('My Reward Point',
-                              style: AppTheme.textTheme.bodySmall?.copyWith(
-                                  // color: AppColors.grey,
-                                  )),
+                              style: textTheme.bodySmall?.copyWith(
+                                color: Colors.grey,
+                              )),
                           Space.height(5),
                           Text('800',
-                              style: AppTheme.textTheme.titleLarge?.copyWith(
+                              style: textTheme.titleLarge?.copyWith(
                                 color: AppColors.secondaryColor,
                               )),
                         ],
@@ -155,14 +158,16 @@ class _SideMenuState extends State<SideMenu> {
           ),
           Space.height(50),
           ListTile(
-              minLeadingWidth: 0,
-              contentPadding: const EdgeInsets.only(left: 40),
-              leading: SvgPicture.asset(
-                SvgPath.logout,
-                colorFilter:
-                    const ColorFilter.mode(AppColors.red, BlendMode.srcIn),
-              ),
-              title: const Text('Logout')),
+            minLeadingWidth: 0,
+            contentPadding: const EdgeInsets.only(left: 40),
+            leading: SvgPicture.asset(
+              SvgPath.logout,
+              colorFilter:
+                  const ColorFilter.mode(AppColors.red, BlendMode.srcIn),
+            ),
+            title:
+                Text('Logout', style: Theme.of(context).textTheme.bodyMedium),
+          ),
         ]));
   }
 }

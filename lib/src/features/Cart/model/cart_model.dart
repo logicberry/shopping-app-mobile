@@ -7,12 +7,10 @@ class CartModel {
   final String id;
   final ProductModel product;
   final int quantity;
-  final double totalPrice;
   CartModel({
     required this.id,
     required this.product,
     required this.quantity,
-    required this.totalPrice,
   });
 
   CartModel copyWith({
@@ -25,7 +23,6 @@ class CartModel {
       id: id ?? this.id,
       product: product ?? this.product,
       quantity: quantity ?? this.quantity,
-      totalPrice: totalPrice ?? this.totalPrice,
     );
   }
 
@@ -34,7 +31,6 @@ class CartModel {
       'id': id,
       'product': product.toMap(),
       'quantity': quantity,
-      'totalPrice': totalPrice,
     };
   }
 
@@ -43,7 +39,6 @@ class CartModel {
       id: map['id'] as String,
       product: ProductModel.fromMap(map['product'] as Map<String, dynamic>),
       quantity: map['quantity'] as int,
-      totalPrice: map['totalPrice'] as double,
     );
   }
 
@@ -54,7 +49,7 @@ class CartModel {
 
   @override
   String toString() {
-    return 'CartModel(id: $id, product: $product, quantity: $quantity, totalPrice: $totalPrice)';
+    return 'CartModel(id: $id, product: $product, quantity: $quantity)';
   }
 
   @override
@@ -63,15 +58,11 @@ class CartModel {
 
     return other.id == id &&
         other.product == product &&
-        other.quantity == quantity &&
-        other.totalPrice == totalPrice;
+        other.quantity == quantity;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        product.hashCode ^
-        quantity.hashCode ^
-        totalPrice.hashCode;
+    return id.hashCode ^ product.hashCode ^ quantity.hashCode;
   }
 }

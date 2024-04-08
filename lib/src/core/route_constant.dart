@@ -9,4 +9,6 @@ class RouteConstants {
   static String cart = 'cart';
   static String checkOut = 'checkOut';
   static String promotions = 'promotions';
+  static String theme = 'theme';
+  static String changePassword = 'changePassword';
 }

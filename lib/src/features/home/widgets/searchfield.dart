@@ -18,6 +18,8 @@ class SASearchField extends StatelessWidget {
       this.suffix});
   @override
   Widget build(BuildContext context) {
+            final textTheme = Theme.of(context).textTheme;
+
     final OutlineInputBorder customOutlineInputBorder = OutlineInputBorder(
       borderSide: const BorderSide(width: 1, color: AppColors.white),
       borderRadius: BorderRadius.circular(10.r),
@@ -41,7 +43,7 @@ class SASearchField extends StatelessWidget {
             hintText: 'Search product here',
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            hintStyle: AppTheme.textTheme.labelSmall,
+            hintStyle: textTheme.labelSmall,
             suffixIcon: suffix,
             border: customOutlineInputBorder,
             enabledBorder: customOutlineInputBorder,

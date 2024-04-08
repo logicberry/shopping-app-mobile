@@ -40,4 +40,15 @@ class UserProvider extends ChangeNotifier {
     _isLoading = false;
     notifyListeners();
   }
+
+  Future<void> changePassword(
+      {required BuildContext context,
+      required String oldPassword,
+      required String newPassword}) async {
+    _isLoading = true;
+    await _userRepository.changePassword(
+        context: context, oldPassword: oldPassword, newPassword: newPassword);
+
+    _isLoading = false;
+  }
 }

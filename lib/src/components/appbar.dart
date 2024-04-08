@@ -31,6 +31,7 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return AppBar(
       automaticallyImplyLeading: implyLeading,
       elevation: 0,
@@ -39,7 +40,7 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 40,
       centerTitle: centerTitle,
       title: Text(title ?? '',
-          style: AppTheme.textTheme.labelLarge?.copyWith(
+          style: textTheme.labelLarge?.copyWith(
             color: background != null ? AppColors.white : AppColors.black,
           )),
       leading: implyLeading

@@ -6,10 +6,10 @@ class PaletteImage extends StatefulWidget {
   final Function(Color)? onPaletteGenerated; // Callback function
 
   const PaletteImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
     this.onPaletteGenerated,
-  }) : super(key: key);
+  });
 
   @override
   State<PaletteImage> createState() => _PaletteImageState();
@@ -32,7 +32,8 @@ class _PaletteImageState extends State<PaletteImage> {
     setState(() {
       _paletteGenerator = paletteGenerator;
     });
-    widget.onPaletteGenerated?.call(_paletteGenerator.lightVibrantColor?.color ?? Colors.white);
+    widget.onPaletteGenerated
+        ?.call(_paletteGenerator.lightVibrantColor?.color ?? Colors.white);
   }
 
   @override

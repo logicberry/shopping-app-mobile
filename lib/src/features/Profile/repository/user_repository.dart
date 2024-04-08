@@ -14,7 +14,6 @@ class UserRepository {
       final dynamic response =
           await ApiHelper.get(ApiEndpoints.viewProfile, token!);
       final UserModel user = UserModel.fromMap(response);
-      print(user);
       return user;
     } catch (e) {
       debugPrint('Error fecthing user: $e');
@@ -39,8 +38,40 @@ class UserRepository {
             'country': country
           },
           token!);
-      print(response);
       if (response["message"] == "User Data Successfully updated") {
+        if (context.mounted) {
+          Snackbar.show(
+            context: context,
+            message: response['message'],
+          );
+        }
+      } else {
+        Snackbar.show(
+            context: context,
+            message: response['message'] ?? 'An error occurred',
+            isError: true);
+      }
+
+      return response;
+    } catch (e) {
+      debugPrint('Error registering user: $e');
+    }
+  }
+
+  Future<void> changePassword(
+      {required String oldPassword,
+      required String newPassword,
+      required BuildContext context}) async {
+    final String? token = await _localStorageService.getToken();
+    try {
+      final response = await ApiHelper.patch(
+          ApiEndpoints.changePassword,
+          {
+            'oldPassword': oldPassword,
+            'newPassword': newPassword,
+          },
+          token!);
+      if (response["message"] == "Password Updated successfully") {
         if (context.mounted) {
           Snackbar.show(
             context: context,

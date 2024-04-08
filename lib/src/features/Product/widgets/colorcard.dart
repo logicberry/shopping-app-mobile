@@ -8,6 +8,7 @@ class ColorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return SizedBox(
         width: 66.w,
         child: Card(
@@ -17,7 +18,7 @@ class ColorCard extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10.r))),
           margin: EdgeInsets.zero,
           elevation: 0.1,
-          child: Center(child: Text(title)),
+          child: Center(child: Text(title, style: textTheme.bodySmall)),
         ));
   }
 }

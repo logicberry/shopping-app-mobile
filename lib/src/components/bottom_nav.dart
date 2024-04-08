@@ -63,7 +63,7 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.ash,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       key: _scaffoldKey,
       appBar: SHAppBar(
         title: pageTitles[_currentPageIndex!],
@@ -76,6 +76,7 @@ class _NavBarState extends State<NavBar> {
       ),
       drawer: const SideMenu(),
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
         onPageChanged: updatePage,
         children: pages,
@@ -84,8 +85,9 @@ class _NavBarState extends State<NavBar> {
         clipBehavior: Clip.none,
         children: [
           Container(
-            decoration: const BoxDecoration(
-              border: Border(top: BorderSide(width: 0.5)),
+            decoration: BoxDecoration(
+              color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+              border: const Border(top: BorderSide(width: 0.5)),
             ),
             child: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
@@ -103,7 +105,7 @@ class _NavBarState extends State<NavBar> {
               iconSize: 30,
               onTap: (index) {
                 _pageController.animateToPage(index,
-                    duration: const Duration(milliseconds: 200),
+                    duration: const Duration(milliseconds: 1),
                     curve: Curves.linear);
               },
               items: [
@@ -129,7 +131,7 @@ class _NavBarState extends State<NavBar> {
             ),
           ),
           AnimatedPositioned(
-            duration: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 1),
             top: -2,
             left: MediaQuery.of(context).size.width / 4 * _currentPageIndex!,
             child: Container(

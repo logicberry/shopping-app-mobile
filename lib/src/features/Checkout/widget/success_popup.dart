@@ -8,6 +8,8 @@ class SuccessPopUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+            final textTheme = Theme.of(context).textTheme;
+
     return Dialog(
         surfaceTintColor: AppColors.primaryColor,
         shape: RoundedRectangleBorder(
@@ -33,7 +35,7 @@ class SuccessPopUp extends StatelessWidget {
                 Text(
                     'we will contact the seller so that it can be sent immediately to the destination',
                     textAlign: TextAlign.center,
-                    style: AppTheme.textTheme.bodySmall?.copyWith(
+                    style: textTheme.bodySmall?.copyWith(
                       color: AppColors.black,
                     )),
                 Space.height(40),

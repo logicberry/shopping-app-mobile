@@ -11,6 +11,8 @@ class CartAndCheckoutBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+              final textTheme = Theme.of(context).textTheme;
+
     return Container(
       width: double.infinity,
       height: 94.h,
@@ -28,11 +30,11 @@ class CartAndCheckoutBar extends StatelessWidget {
           children: [
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text('Total Payment',
-                  style: AppTheme.textTheme.bodyLarge?.copyWith(
+                  style: textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.w600,
                   )),
               Text('\$1480.20',
-                  style: AppTheme.textTheme.titleLarge?.copyWith(
+                  style: textTheme.titleLarge?.copyWith(
                     color: AppColors.primaryColor,
                     fontWeight: FontWeight.w600,
                   )),

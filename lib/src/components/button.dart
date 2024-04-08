@@ -11,6 +11,8 @@ class SAActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+              final textTheme = Theme.of(context).textTheme;
+
     return SizedBox(
       height: 60.h,
       width: 320.w,
@@ -20,7 +22,7 @@ class SAActionButton extends StatelessWidget {
           color: AppColors.secondaryColor,
           shape: const StadiumBorder(),
           child: Center(
-            child: Text(title, style: AppTheme.textTheme.labelLarge),
+            child: Text(title, style: textTheme.labelLarge),
           ),
         ),
       ),

@@ -24,3 +24,5 @@ class RatingWidget extends StatelessWidget {
     );
   }
 }
+
+

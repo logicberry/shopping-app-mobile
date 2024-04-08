@@ -8,6 +8,7 @@ class CartAddRemove extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -26,7 +27,7 @@ class CartAddRemove extends StatelessWidget {
           ),
         ),
         Space.width(13),
-        const Text('1'),
+        Text('1', style: textTheme.bodyMedium),
         Space.width(13),
         SizedBox(
           height: 27.h,

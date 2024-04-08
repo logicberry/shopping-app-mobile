@@ -61,6 +61,8 @@ class ApiHelper {
       case 401:
       case 403:
         throw Exception('Unauthorised');
+      case 404:
+        throw Exception('Not Found');
       case 500:
       default:
         throw Exception(

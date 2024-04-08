@@ -10,6 +10,8 @@ class CartCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+              final textTheme = Theme.of(context).textTheme;
+
     return Container(
       height: 125.h,
       width: double.infinity,
@@ -46,11 +48,11 @@ class CartCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text('Smart Watch T80',
-                    style: AppTheme.textTheme.titleMedium?.copyWith(
+                    style: textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.w500,
                     )),
                 Text('\$268.90',
-                    style: AppTheme.textTheme.titleMedium?.copyWith(
+                    style: textTheme.titleMedium?.copyWith(
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.w600,
                     )),

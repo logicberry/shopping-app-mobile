@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopapp/src/features/Product/model/product_model.dart';
+import 'package:shopapp/src/features/Profile/screens/change_password_page.dart';
 import 'package:shopapp/src/features/home/screens/products_screen.dart';
 import 'package:shopapp/src/features/home/screens/promotions_page.dart';
 
@@ -13,6 +14,7 @@ import 'src/features/Notification/screens/notifications_page.dart';
 import 'src/features/Product/screens/product_details_page.dart';
 import 'src/features/Profile/model/user_model.dart';
 import 'src/features/Profile/screens/edit_profile_page.dart';
+import 'src/features/Profile/screens/theme_page.dart';
 
 class AppRouter {
   GoRouter router = GoRouter(
@@ -84,6 +86,20 @@ class AppRouter {
           pageBuilder: (context, state) {
             UserModel user = state.extra as UserModel;
             return MaterialPage(child: EditProfilePage(user: user));
+          },
+        ),
+        GoRoute(
+          name: RouteConstants.theme,
+          path: '/theme',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: ThemePage());
+          },
+        ),
+        GoRoute(
+          name: RouteConstants.changePassword,
+          path: '/changePassword',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: ChangePasswordPage());
           },
         ),
         GoRoute(

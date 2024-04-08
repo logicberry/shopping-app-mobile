@@ -54,13 +54,15 @@ class TransactionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 85.h,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: theme.cardColor,
           borderRadius: BorderRadius.all(Radius.circular(10.r)),
         ),
         child: Padding(
@@ -81,12 +83,12 @@ class TransactionCard extends StatelessWidget {
             ),
             title: Text(
               'Smart Watch T80',
-              style: AppTheme.textTheme.bodyLarge
+              style: theme.textTheme.bodyLarge
                   ?.copyWith(fontWeight: FontWeight.w500),
             ),
             subtitle: Text(
               '\$268.90',
-              style: AppTheme.textTheme.bodyLarge?.copyWith(
+              style: theme.textTheme.bodyLarge?.copyWith(
                   color: AppColors.primaryColor, fontWeight: FontWeight.w500),
             ),
             trailing: Column(
@@ -114,8 +116,8 @@ class TransactionCard extends StatelessWidget {
                   ),
                 ),
                 Text('12 September 2023',
-                    style:
-                        AppTheme.textTheme.labelSmall?.copyWith(fontSize: 10)),
+                    style: theme.textTheme.labelSmall
+                        ?.copyWith(fontSize: 10, color: Colors.grey)),
               ],
             ),
           ),

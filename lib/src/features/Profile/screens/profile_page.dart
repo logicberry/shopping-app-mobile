@@ -12,6 +12,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final textTheme = Theme.of(context).textTheme;
+
     return Consumer<UserProvider>(builder: (context, userProvider, _) {
       return FutureBuilder<void>(
           future: userProvider.viewProfile(context: context),
@@ -46,12 +48,12 @@ class ProfilePage extends StatelessWidget {
                               ),
                               title: Text(
                                 user.name!,
-                                style: AppTheme.textTheme.bodyMedium
+                                style: textTheme.bodyMedium
                                     ?.copyWith(color: AppColors.white),
                               ),
                               subtitle: Text(
                                 user.phone!,
-                                style: AppTheme.textTheme.bodyLarge
+                                style: textTheme.bodyLarge
                                     ?.copyWith(color: AppColors.grey),
                               ),
                             ),
@@ -66,7 +68,7 @@ class ProfilePage extends StatelessWidget {
                                 ),
                                 BalanceCard(
                                   title: 'My Reward Points',
-                                  balanceText: '800',
+                                  balanceText: '800 Points',
                                   balancdTextColor: AppColors.secondaryColor,
                                 ),
                               ],
@@ -108,14 +110,16 @@ class ProfilePage extends StatelessWidget {
                             title: 'Theme',
                             icon: SvgPath.help,
                             description: 'Change your theme',
-                            onTap: () {},
+                            onTap: () =>
+                                context.pushNamed(RouteConstants.theme),
                           ),
                           Space.height(10),
                           ProfileCard(
                             title: 'Change Password',
                             icon: SvgPath.settings,
                             description: 'Change your password',
-                            onTap: () {},
+                            onTap: () => context
+                                .pushNamed(RouteConstants.changePassword),
                           ),
                           Space.height(10),
                         ])),

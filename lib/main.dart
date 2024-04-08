@@ -7,7 +7,7 @@ import 'package:shopapp/src/features/Authentication/controller/auth_controller.d
 import 'package:shopapp/src/features/Product/controller/product_controller.dart';
 import 'package:shopapp/src/features/Profile/controller/user_controller.dart';
 
-import 'src/core/core.dart';
+import 'src/features/Profile/controller/theme_controller.dart';
 import 'src/services/locator_service.dart';
 
 void main() {
@@ -19,8 +19,8 @@ void main() {
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => AuthProvider()),
       ChangeNotifierProvider(create: (context) => ProductProvider()),
-      ChangeNotifierProvider(create: (context) => UserProvider())
-      // ChangeNotifierProvider(create: (context) => CartProvider()),
+      ChangeNotifierProvider(create: (context) => UserProvider()),
+      ChangeNotifierProvider(create: (_) => ThemeProvider())
     ], child: const MyApp()),
   );
 }
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp.router(
                 debugShowCheckedModeBanner: false,
                 title: 'Shopapp',
-                theme: AppTheme.theme,
+                theme: context.watch<ThemeProvider>().currentTheme,
                 routerConfig: _router.router),
           );
         });

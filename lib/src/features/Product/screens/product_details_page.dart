@@ -35,11 +35,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   Color _backgroundColor = Colors.transparent;
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: const SHAppBar(
         implyLeading: true,
         actionConfig: AppBarActionConfig.allActions,
-        actionColor: AppColors.black,
+        actionColor: AppColors.white,
+        background: AppColors.primaryColor,
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -91,8 +94,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(widget.product.name,
-                              style: AppTheme.textTheme.titleLarge
-                                  ?.copyWith(color: AppColors.black)),
+                              style: textTheme.titleLarge),
                           Space.height(10),
                           Row(
                             children: [
@@ -100,15 +102,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   height: 20.h, width: 20.w),
                               Space.width(10),
                               Text(widget.product.company,
-                                  style: AppTheme.textTheme.labelSmall
-                                      ?.copyWith(
-                                          color: AppColors.black,
-                                          fontWeight: FontWeight.w500)),
+                                  style: textTheme.bodyLarge),
                               const RatingWidget(),
                               Space.width(10),
-                              Text('4.5',
-                                  style: AppTheme.textTheme.labelSmall
-                                      ?.copyWith(color: AppColors.black)),
+                              Text('4.5', style: textTheme.bodyLarge),
                             ],
                           ),
                         ],
@@ -116,14 +113,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
+                          Space.height(8),
                           Text(
                               '\$${NumberFormatUtil.formatThousand(widget.product.price)}',
-                              style: AppTheme.textTheme.titleLarge?.copyWith(
+                              style: textTheme.titleLarge?.copyWith(
                                   color: AppColors.primaryColor,
                                   fontWeight: FontWeight.bold)),
                           Text(
                               '\$${NumberFormatUtil.formatThousand(widget.product.initialPrice)}',
-                              style: AppTheme.textTheme.labelSmall?.copyWith(
+                              style: textTheme.labelSmall?.copyWith(
                                   color: AppColors.red,
                                   decoration: TextDecoration.lineThrough,
                                   decorationColor: AppColors.red,
@@ -141,10 +139,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           TabBar(
                               labelPadding: EdgeInsets.zero,
                               labelColor: AppColors.primaryColor,
-                              labelStyle: AppTheme.textTheme.bodyLarge
-                                  ?.copyWith(
-                                      color: AppColors.primaryColor,
-                                      fontWeight: FontWeight.w600),
+                              labelStyle: textTheme.bodyLarge?.copyWith(
+                                  color: AppColors.primaryColor,
+                                  fontWeight: FontWeight.w600),
                               unselectedLabelColor: AppColors.grey,
                               indicatorColor: AppColors.primaryColor,
                               tabs: [
@@ -156,7 +153,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                             border: Border(
                                                 bottom: BorderSide(
                                                     color: AppColors.grey,
-                                                    width: 1))),
+                                                    width: 0))),
                                         child: const Tab(
                                           text: 'Details',
                                         ),
@@ -193,10 +190,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   children: [
                                     Text(
                                       widget.product.description,
-                                      style: AppTheme.textTheme.bodyLarge
-                                          ?.copyWith(
-                                              color: Colors.blueGrey,
-                                              fontWeight: FontWeight.w600),
+                                      style: textTheme.bodyLarge?.copyWith(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.w600),
                                     ),
                                     // Space.height(10),
                                     // Text(
@@ -261,32 +257,32 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       bottomSheet: const AddToCartBar(),
     );
   }
-
-  Widget _buildSpecificationItems() {
-    List<Widget> items = [];
-    specifications.forEach((key, value) {
-      items.add(_buildSpecificationItem(key, value));
-      items.add(SizedBox(height: 5.h)); // Add spacing between items
-    });
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: items,
-    );
-  }
-
-  Widget _buildSpecificationItem(String label, String value) {
-    return Row(
-      children: [
-        Text(
-          ' - $label',
-          style: TextStyle(fontSize: 12.sp, color: Colors.blueGrey),
-        ),
-        Space.width(5),
-        Text(
-          value,
-          style: TextStyle(fontSize: 12.sp, color: Colors.blueGrey),
-        ),
-      ],
-    );
-  }
 }
+//   Widget _buildSpecificationItems() {
+//     List<Widget> items = [];
+//     specifications.forEach((key, value) {
+//       items.add(_buildSpecificationItem(key, value));
+//       items.add(SizedBox(height: 5.h)); // Add spacing between items
+//     });
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: items,
+//     );
+//   }
+
+//   Widget _buildSpecificationItem(String label, String value) {
+//     return Row(
+//       children: [
+//         Text(
+//           ' - $label',
+//           style: TextStyle(fontSize: 12.sp, color: Colors.blueGrey),
+//         ),
+//         Space.width(5),
+//         Text(
+//           value,
+//           style: TextStyle(fontSize: 12.sp, color: Colors.blueGrey),
+//         ),
+//       ],
+//     );
+//   }
+// }

@@ -10,6 +10,8 @@ class TransactionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     const List<TransactionStatus> statuses = [
       TransactionStatus.shipping,
       TransactionStatus.success,
@@ -24,7 +26,7 @@ class TransactionsPage extends StatelessWidget {
             TabBar(
                 labelPadding: EdgeInsets.zero,
                 labelColor: AppColors.primaryColor,
-                labelStyle: AppTheme.textTheme.bodyLarge?.copyWith(
+                labelStyle: textTheme.bodyLarge?.copyWith(
                     color: AppColors.primaryColor, fontWeight: FontWeight.w600),
                 unselectedLabelColor: AppColors.grey,
                 indicatorColor: AppColors.primaryColor,
@@ -36,7 +38,7 @@ class TransactionsPage extends StatelessWidget {
                           decoration: const BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
-                                      color: AppColors.grey, width: 1))),
+                                      color: AppColors.grey, width: 0))),
                           child: const Tab(
                             text: 'All Transactions',
                           ),
@@ -51,7 +53,7 @@ class TransactionsPage extends StatelessWidget {
                           decoration: const BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
-                                      color: AppColors.grey, width: 1))),
+                                      color: AppColors.grey, width: 0))),
                           child: const Tab(
                             text: 'Shipping',
                           ),
@@ -65,7 +67,7 @@ class TransactionsPage extends StatelessWidget {
                         decoration: const BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
-                                    color: AppColors.grey, width: 1))),
+                                    color: AppColors.grey, width: 0))),
                         child: const Tab(
                           text: 'Not Paid',
                         ),
@@ -79,7 +81,7 @@ class TransactionsPage extends StatelessWidget {
                           decoration: const BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
-                                      color: AppColors.grey, width: 1))),
+                                      color: AppColors.grey, width: 0))),
                           child: const Tab(
                             text: 'Success',
                           ),

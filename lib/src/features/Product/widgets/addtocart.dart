@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shopapp/src/core/app_colors.dart';
 
 import '../../../components/button.dart';
 import '../../../components/cart_num.dart';
@@ -15,7 +14,6 @@ class AddToCartBar extends StatelessWidget {
       width: double.infinity,
       height: 94.h,
       decoration: const BoxDecoration(
-        color: AppColors.white,
         border: Border(
           top: BorderSide(
             width: 0.2,

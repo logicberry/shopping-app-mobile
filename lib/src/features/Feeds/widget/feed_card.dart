@@ -25,8 +25,11 @@ class FeedCard extends StatefulWidget {
 class _FeedCardState extends State<FeedCard> {
   Color _backgroundColor = Colors.transparent;
 
+
   @override
   Widget build(BuildContext context) {
+              final textTheme = Theme.of(context).textTheme;
+
     return GestureDetector(
       onTap: () => context.pushNamed(RouteConstants.productDetails,
           extra: widget.product),
@@ -57,10 +60,10 @@ class _FeedCardState extends State<FeedCard> {
                 ),
                 titleAlignment: ListTileTitleAlignment.titleHeight,
                 title: Text(widget.product.name,
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
+                    style: textTheme.bodyMedium?.copyWith(
                         color: Colors.black, fontWeight: FontWeight.w600)),
                 subtitle: Text(widget.product.company,
-                    style: AppTheme.textTheme.labelSmall),
+                    style: textTheme.labelSmall),
                 trailing: const Icon(Icons.more_horiz_outlined),
               ),
             ),
@@ -83,7 +86,7 @@ class _FeedCardState extends State<FeedCard> {
                 children: [
                   Row(
                     children: [
-                      Text('12 mins', style: AppTheme.textTheme.labelSmall),
+                      Text('12 mins', style: textTheme.labelSmall),
                       const Spacer(),
                       SvgPicture.asset(SvgPath.chat),
                       Space.width(27),
@@ -94,7 +97,7 @@ class _FeedCardState extends State<FeedCard> {
                   ),
                   Space.height(8),
                   Text(widget.product.description.toUpperCase(),
-                      style: AppTheme.textTheme.bodyMedium?.copyWith(
+                      style: textTheme.bodyMedium?.copyWith(
                           color: Colors.black, fontWeight: FontWeight.w400)),
                   Space.height(4),
                   _buildSpecificationItems(),

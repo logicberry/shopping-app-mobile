@@ -15,6 +15,8 @@ class CheckOutPage extends StatefulWidget {
 class _CheckOutPageState extends State<CheckOutPage> {
   @override
   Widget build(BuildContext context) {
+            final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       backgroundColor: AppColors.ash,
       appBar: const SHAppBar(
@@ -46,11 +48,11 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     children: [
                       Text(
                           'Domen Tikoro Street:  825 Baker Avenue, Dallas,Texas, Zip code  75202',
-                          style: AppTheme.textTheme.bodySmall?.copyWith(
+                          style: textTheme.bodySmall?.copyWith(
                             color: AppColors.black,
                           )),
                       Text('Change address',
-                          style: AppTheme.textTheme.labelSmall?.copyWith(
+                          style: textTheme.labelSmall?.copyWith(
                               color: AppColors.primaryColor, fontSize: 10.sp)),
                     ],
                   ),
@@ -92,7 +94,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       fillColor: AppColors.white,
                       filled: true,
                       hintText: 'Enter Coupon Code',
-                      hintStyle: AppTheme.textTheme.labelSmall,
+                      hintStyle: textTheme.labelSmall,
                       suffixIcon: Padding(
                         padding: EdgeInsets.symmetric(
                             vertical: 8.0.h, horizontal: 15.0.w),
@@ -109,7 +111,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           ),
                           child: Center(
                             child: Text('USE COUPON',
-                                style: AppTheme.textTheme.labelSmall?.copyWith(
+                                style: textTheme.labelSmall?.copyWith(
                                     color: AppColors.primaryColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 8.sp)),
@@ -144,12 +146,12 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       Row(
                         children: [
                           Text('Delivery Fee',
-                              style: AppTheme.textTheme.bodySmall?.copyWith(
+                              style: textTheme.bodySmall?.copyWith(
                                 color: AppColors.black,
                               )),
                           const Spacer(),
                           Text('\$ 10.00',
-                              style: AppTheme.textTheme.bodySmall?.copyWith(
+                              style: textTheme.bodySmall?.copyWith(
                                 color: AppColors.black,
                               )),
                         ],
@@ -157,12 +159,12 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       Row(
                         children: [
                           Text('Subtotal',
-                              style: AppTheme.textTheme.bodySmall?.copyWith(
+                              style: textTheme.bodySmall?.copyWith(
                                 color: AppColors.black,
                               )),
                           const Spacer(),
                           Text('\$ 150.00',
-                              style: AppTheme.textTheme.bodySmall?.copyWith(
+                              style: textTheme.bodySmall?.copyWith(
                                 color: AppColors.black,
                               )),
                         ],
@@ -170,12 +172,12 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       Row(
                         children: [
                           Text('Tax',
-                              style: AppTheme.textTheme.bodySmall?.copyWith(
+                              style: textTheme.bodySmall?.copyWith(
                                 color: AppColors.black,
                               )),
                           const Spacer(),
                           Text('\$ 160.00',
-                              style: AppTheme.textTheme.bodySmall?.copyWith(
+                              style: textTheme.bodySmall?.copyWith(
                                 color: AppColors.black,
                               )),
                         ],

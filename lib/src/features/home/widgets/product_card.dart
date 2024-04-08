@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:palette_generator/palette_generator.dart';
+import 'package:shopapp/src/components/components.dart';
 
 import '../../../core/core.dart';
 import '../../../services/format.dart';
@@ -49,6 +50,7 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
     Color backgroundColor =
         _paletteGenerator.lightVibrantColor?.color ?? Colors.white;
+    final textTheme = Theme.of(context).textTheme;
 
     return GestureDetector(
       onTap: widget.onTap,
@@ -73,7 +75,9 @@ class _ProductCardState extends State<ProductCard> {
               height: 94.h,
               decoration: BoxDecoration(
                 color: AppColors.white,
-                borderRadius: BorderRadius.all(Radius.circular(12.r)),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(12.r),
+                    bottomRight: Radius.circular(12.r)),
               ),
               child: Padding(
                 padding: EdgeInsets.all(10.0.h),
@@ -82,27 +86,35 @@ class _ProductCardState extends State<ProductCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(widget.productName,
-                        style: AppTheme.textTheme.bodyMedium),
+                        style: textTheme.titleMedium?.copyWith(
+                          color: AppColors.black,
+                        )),
                     Row(
                       children: [
-                        Text('${widget.company} •',
-                            style: AppTheme.textTheme.labelSmall),
+                        Text(widget.company, style: textTheme.labelSmall),
                         Space.width(10),
+                        const RatingWidget(
+                          ratingCount: 1,
+                        ),
+                        Text('4.5',
+                            style: textTheme.labelSmall
+                                ?.copyWith(color: AppColors.black)),
                       ],
                     ),
                     Row(
                       children: [
                         Text(
                           '\$${NumberFormatUtil.formatThousand(widget.productPrice)}',
-                          style: AppTheme.textTheme.labelLarge?.copyWith(
+                          style: textTheme.titleMedium?.copyWith(
                             color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         Space.width(6),
                         Expanded(
                           child: Text(
                             '\$${NumberFormatUtil.formatThousand(widget.initialPrice)}',
-                            style: AppTheme.textTheme.labelSmall?.copyWith(
+                            style: textTheme.labelSmall?.copyWith(
                               color: AppColors.red,
                               decoration: TextDecoration.lineThrough,
                               decorationColor: AppColors.red,

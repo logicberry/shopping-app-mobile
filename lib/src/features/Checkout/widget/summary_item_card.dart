@@ -8,6 +8,8 @@ class SummaryItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+            final textTheme = Theme.of(context).textTheme;
+
     return ListTile(
       isThreeLine: true,
       contentPadding: EdgeInsets.zero,
@@ -23,11 +25,11 @@ class SummaryItemCard extends StatelessWidget {
           ),
         ),
       ),
-      title: Text('Smart Watch T80', style: AppTheme.textTheme.bodyLarge),
+      title: Text('Smart Watch T80', style: textTheme.bodyLarge),
       subtitle: Text('\$268.90',
-          style: AppTheme.textTheme.bodySmall
+          style: textTheme.bodySmall
               ?.copyWith(color: AppColors.primaryColor)),
-      trailing: Text('Quantity', style: AppTheme.textTheme.labelSmall),
+      trailing: Text('Quantity', style: textTheme.labelSmall),
     );
   }
 }

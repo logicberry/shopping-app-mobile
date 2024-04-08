@@ -42,8 +42,8 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
       body: Stack(children: [
         Column(children: [
           Container(
@@ -63,9 +63,9 @@ class _SignInPageState extends State<SignInPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Space.height(75),
-                      Text('Welcome', style: AppTheme.textTheme.headlineLarge),
+                      Text('Welcome', style: theme.textTheme.headlineLarge),
                       Text('Sign in to Continue',
-                          style: AppTheme.textTheme.bodyLarge
+                          style: theme.textTheme.bodyLarge
                               ?.copyWith(color: AppColors.white))
                     ]),
               )),
@@ -76,7 +76,7 @@ class _SignInPageState extends State<SignInPage> {
               height: 527.h,
               width: 375.w,
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: theme.scaffoldBackgroundColor,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30.r),
                     topRight: Radius.circular(30.r)),
@@ -124,7 +124,7 @@ class _SignInPageState extends State<SignInPage> {
                                 width: 4,
                               ),
                               Text('Remember me',
-                                  style: AppTheme.textTheme.bodyLarge?.copyWith(
+                                  style: theme.textTheme.bodyLarge?.copyWith(
                                     color: Colors.grey,
                                   )),
                             ],
@@ -132,7 +132,7 @@ class _SignInPageState extends State<SignInPage> {
                           GestureDetector(
                             onTap: () {},
                             child: Text('Forgot Password?',
-                                style: AppTheme.textTheme.bodyLarge?.copyWith(
+                                style: theme.textTheme.bodyLarge?.copyWith(
                                   color: AppColors.secondaryColor,
                                 )),
                           )
@@ -149,7 +149,7 @@ class _SignInPageState extends State<SignInPage> {
                         children: [
                           Text(
                             'Don\'t have an account?',
-                            style: AppTheme.textTheme.bodyLarge,
+                            style: theme.textTheme.bodyLarge,
                           ),
                           Space.width(8),
                           GestureDetector(
@@ -158,7 +158,7 @@ class _SignInPageState extends State<SignInPage> {
                               },
                               child: Text(
                                 'Sign Up',
-                                style: AppTheme.textTheme.bodyLarge
+                                style: theme.textTheme.bodyLarge
                                     ?.copyWith(color: AppColors.secondaryColor),
                               ))
                         ],
