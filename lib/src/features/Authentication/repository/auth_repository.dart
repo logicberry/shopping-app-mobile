@@ -38,7 +38,8 @@ class AuthRepository {
       }
       return response;
     } catch (e) {
-      debugPrint('Error registering user: $e');
+      Snackbar.show(
+          context: context, message: 'Internal Server Error', isError: true);
     }
   }
 
@@ -70,6 +71,8 @@ class AuthRepository {
       return response;
     } catch (e) {
       debugPrint('Error login user: $e');
+      Snackbar.show(
+          context: context, message: 'Internal Server Error', isError: true);
     }
   }
 }

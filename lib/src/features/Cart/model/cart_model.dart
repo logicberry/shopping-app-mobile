@@ -4,20 +4,19 @@ import 'dart:convert';
 import '../../Product/model/product_model.dart';
 
 class CartModel {
-  final String id;
-  final ProductModel product;
-  final int quantity;
+  final String? id;
+  final ProductModel? product;
+  int? quantity;
   CartModel({
-    required this.id,
-    required this.product,
-    required this.quantity,
+    this.id,
+    this.product,
+    this.quantity,
   });
 
   CartModel copyWith({
     String? id,
     ProductModel? product,
     int? quantity,
-    double? totalPrice,
   }) {
     return CartModel(
       id: id ?? this.id,
@@ -29,40 +28,36 @@ class CartModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'product': product.toMap(),
+      'product': product?.toMap(),
       'quantity': quantity,
     };
   }
 
   factory CartModel.fromMap(Map<String, dynamic> map) {
     return CartModel(
-      id: map['id'] as String,
-      product: ProductModel.fromMap(map['product'] as Map<String, dynamic>),
-      quantity: map['quantity'] as int,
+      id: map['id'] != null ? map['id'] as String : null,
+      product: map['product'] != null ? ProductModel.fromMap(map['product'] as Map<String,dynamic>) : null,
+      quantity: map['quantity'] != null ? map['quantity'] as int : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CartModel.fromJson(String source) =>
-      CartModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory CartModel.fromJson(String source) => CartModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() {
-    return 'CartModel(id: $id, product: $product, quantity: $quantity)';
-  }
+  String toString() => 'CartModel(id: $id, product: $product, quantity: $quantity)';
 
   @override
   bool operator ==(covariant CartModel other) {
     if (identical(this, other)) return true;
 
-    return other.id == id &&
-        other.product == product &&
-        other.quantity == quantity;
+    return
+      other.id == id &&
+      other.product == product &&
+      other.quantity == quantity;
   }
 
   @override
-  int get hashCode {
-    return id.hashCode ^ product.hashCode ^ quantity.hashCode;
-  }
+  int get hashCode => id.hashCode ^ product.hashCode ^ quantity.hashCode;
 }

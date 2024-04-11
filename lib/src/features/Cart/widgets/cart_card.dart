@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+import 'package:shopapp/src/features/Cart/controller/cart_controller.dart';
 
-import '../../../components/cart_num.dart';
 import '../../../core/core.dart';
+import '../../Product/model/product_model.dart';
 
 class CartCard extends StatelessWidget {
-  const CartCard({super.key});
+  final ProductModel? product;
+
+  const CartCard({super.key, this.product});
 
   @override
   Widget build(BuildContext context) {
-              final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Container(
       height: 125.h,
@@ -47,11 +51,11 @@ class CartCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('Smart Watch T80',
+                Text(product?.name ?? '',
                     style: textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.w500,
                     )),
-                Text('\$268.90',
+                Text('\$${product?.price}',
                     style: textTheme.titleMedium?.copyWith(
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.w600,
@@ -60,9 +64,15 @@ class CartCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CartAddRemove(),
+                    // const CartAddRemove(),
                     Space.width(60),
-                    SvgPicture.asset(SvgPath.delete),
+                    GestureDetector(
+                        onTap: () => context
+                            .read<CartProvider>()
+                            .removeFromCart(
+                                context: context,
+                                productId: product!.id.toString()),
+                        child: SvgPicture.asset(SvgPath.delete)),
                   ],
                 ),
               ],

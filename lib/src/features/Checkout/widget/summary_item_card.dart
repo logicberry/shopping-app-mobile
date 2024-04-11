@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/core.dart';
 
 class SummaryItemCard extends StatelessWidget {
-  const SummaryItemCard({super.key});
+  final String productName, productPrice, productquantity;
+  const SummaryItemCard({super.key, required this.productName, required this.productPrice, required this.productquantity});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +26,11 @@ class SummaryItemCard extends StatelessWidget {
           ),
         ),
       ),
-      title: Text('Smart Watch T80', style: textTheme.bodyLarge),
-      subtitle: Text('\$268.90',
+      title: Text(productName, style: textTheme.bodyLarge),
+      subtitle: Text('\$$productPrice',
           style: textTheme.bodySmall
               ?.copyWith(color: AppColors.primaryColor)),
-      trailing: Text('Quantity', style: textTheme.labelSmall),
+      trailing: Text('Quantity $productquantity', style: textTheme.labelSmall),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/Cart/model/cart_model.dart';
@@ -19,32 +21,92 @@ class LocalStorageService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_tokenKey);
   }
+}
 
+class CartLocalStorageService {
   static const String _cartKey = 'cart';
 
-  Future<void> addToCart(CartModel product) async {
-    final prefs = await SharedPreferences.getInstance();
-    final List<CartModel> cart = await getCartItems();
-    cart.add(product); // Add the new product to the cart
-    final cartJsonList = cart.map((cartItem) => cartItem.toJson()).toList();
-    await prefs.setStringList(_cartKey, cartJsonList);
+  Future<void> addToCart(CartModel cartItem) async {
+    try {
+      // Retrieve existing cart items from SharedPreferences
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final List<String> cartJsonList = prefs.getStringList(_cartKey) ?? [];
+
+      // Add the new cart item to the list
+      cartJsonList.add(jsonEncode(cartItem.toMap()));
+
+      // Save the updated cart items list back to SharedPreferences
+      await prefs.setStringList(_cartKey, cartJsonList);
+    } catch (e) {
+      // Handle error, if any
+      print('Error adding to cart: $e');
+      rethrow; // Rethrow the error to propagate it upwards
+    }
   }
 
   Future<List<CartModel>> getCartItems() async {
-    final prefs = await SharedPreferences.getInstance();
-    final cartJsonList = prefs.getStringList(_cartKey) ?? [];
-    return cartJsonList
-        .map((cartJson) => CartModel.fromJson(cartJson))
-        .toList();
+    try {
+      // Retrieve cart items from SharedPreferences
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final List<String> cartJsonList = prefs.getStringList(_cartKey) ?? [];
+
+      // Convert JSON strings to CartModel objects
+      final List<CartModel> cartItems = cartJsonList
+          .map((jsonString) => CartModel.fromMap(jsonDecode(jsonString)))
+          .toList();
+
+      return cartItems;
+    } catch (e) {
+      // Handle error, if any
+      print('Error fetching cart items: $e');
+      rethrow; // Rethrow the error to propagate it upwards
+    }
   }
 
-  Future<void> saveProductById(String productId) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('productId', productId);
+  Future<void> removeFromCart(String productId) async {
+    try {
+      // Retrieve existing cart items from SharedPreferences
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final List<String> cartJsonList = prefs.getStringList(_cartKey) ?? [];
+
+      // Remove the cart item with the specified product ID
+      cartJsonList.removeWhere((jsonString) {
+        final CartModel cartItem = CartModel.fromMap(jsonDecode(jsonString));
+        return cartItem.id == productId;
+      });
+
+      // Save the updated cart items list back to SharedPreferences
+      await prefs.setStringList(_cartKey, cartJsonList);
+    } catch (e) {
+      // Handle error, if any
+      print('Error removing from cart: $e');
+      rethrow; // Rethrow the error to propagate it upwards
+    }
   }
 
-  Future<String?> getProductById(String productId) async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('productId');
+  Future<void> updateCartItem(CartModel updatedItem) async {
+    try {
+      // Retrieve existing cart items from SharedPreferences
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final List<String> cartJsonList = prefs.getStringList(_cartKey) ?? [];
+
+      // Find the index of the item to be updated
+      final int index = cartJsonList.indexWhere((jsonString) {
+        final CartModel cartItem = CartModel.fromMap(jsonDecode(jsonString));
+        return cartItem.id == updatedItem.id;
+      });
+
+      if (index != -1) {
+        // Update the item at the found index
+        cartJsonList[index] = jsonEncode(updatedItem.toMap());
+
+        // Save the updated cart items list back to SharedPreferences
+        await prefs.setStringList(_cartKey, cartJsonList);
+      }
+    } catch (e) {
+      // Handle error, if any
+      print('Error updating cart item: $e');
+      rethrow; // Rethrow the error to propagate it upwards
+    }
   }
 }

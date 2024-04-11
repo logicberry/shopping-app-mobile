@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shopapp/router.dart';
 import 'package:shopapp/src/features/Authentication/controller/auth_controller.dart';
+import 'package:shopapp/src/features/Cart/controller/cart_controller.dart';
 import 'package:shopapp/src/features/Product/controller/product_controller.dart';
 import 'package:shopapp/src/features/Profile/controller/user_controller.dart';
-
 import 'src/features/Profile/controller/theme_controller.dart';
 import 'src/services/locator_service.dart';
 
@@ -20,7 +20,8 @@ void main() {
       ChangeNotifierProvider(create: (context) => AuthProvider()),
       ChangeNotifierProvider(create: (context) => ProductProvider()),
       ChangeNotifierProvider(create: (context) => UserProvider()),
-      ChangeNotifierProvider(create: (_) => ThemeProvider())
+      ChangeNotifierProvider(create: (_) => ThemeProvider()),
+      ChangeNotifierProvider(create: (_) => CartProvider())
     ], child: const MyApp()),
   );
 }

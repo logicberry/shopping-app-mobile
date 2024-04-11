@@ -3,10 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopapp/src/core/core.dart';
 
 import '../../../components/components.dart';
+import '../../Cart/model/cart_model.dart';
 import '../widget/widget.dart';
 
 class CheckOutPage extends StatefulWidget {
-  const CheckOutPage({super.key});
+  final List<CartModel> products;
+  final double totalPrice;
+  const CheckOutPage(
+      {super.key, required this.products, required this.totalPrice});
 
   @override
   State<CheckOutPage> createState() => _CheckOutPageState();
@@ -15,7 +19,7 @@ class CheckOutPage extends StatefulWidget {
 class _CheckOutPageState extends State<CheckOutPage> {
   @override
   Widget build(BuildContext context) {
-            final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       backgroundColor: AppColors.ash,
@@ -72,12 +76,17 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: List.generate(
-                          3,
+                          widget.products.length,
                           (index) {
+                            final item = widget.products[index];
                             return Column(
                               children: [
-                                const SummaryItemCard(),
-                                if (index < 3 - 1) const Divider(),
+                                SummaryItemCard(
+                                  productName: item.product!.name,
+                                  productPrice: item.product!.price.toString(),
+                                  productquantity: item.quantity.toString(),
+                                ),
+                                // if (index < 3 - 1) const Divider(),
                               ],
                             );
                           },
@@ -163,7 +172,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                 color: AppColors.black,
                               )),
                           const Spacer(),
-                          Text('\$ 150.00',
+                          Text('\$ ${widget.totalPrice}',
                               style: textTheme.bodySmall?.copyWith(
                                 color: AppColors.black,
                               )),
@@ -176,7 +185,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                 color: AppColors.black,
                               )),
                           const Spacer(),
-                          Text('\$ 160.00',
+                          Text('\$ 10.00',
                               style: textTheme.bodySmall?.copyWith(
                                 color: AppColors.black,
                               )),
@@ -191,13 +200,15 @@ class _CheckOutPageState extends State<CheckOutPage> {
           ),
         ),
       ),
-      bottomSheet: CartAndCheckoutBar(onTap: () {
-        showDialog(
-            context: context,
-            builder: (context) {
-              return const SuccessPopUp();
-            });
-      }),
+      bottomSheet: CartAndCheckoutBar(
+          totalPrice: widget.totalPrice.toString(),
+          onTap: () {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return const SuccessPopUp();
+                });
+          }),
     );
   }
 }

@@ -7,11 +7,13 @@ import '../core/core.dart';
 class CartAndCheckoutBar extends StatelessWidget {
   final String? title;
   final VoidCallback? onTap;
-  const CartAndCheckoutBar({super.key, this.title, this.onTap});
+  final String totalPrice;
+  const CartAndCheckoutBar(
+      {super.key, this.title, this.onTap, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
-              final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Container(
       width: double.infinity,
@@ -33,7 +35,7 @@ class CartAndCheckoutBar extends StatelessWidget {
                   style: textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.w600,
                   )),
-              Text('\$1480.20',
+              Text('\$$totalPrice',
                   style: textTheme.titleLarge?.copyWith(
                     color: AppColors.primaryColor,
                     fontWeight: FontWeight.w600,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shopapp/src/features/Cart/model/cart_model.dart';
 import 'package:shopapp/src/features/Product/model/product_model.dart';
 import 'package:shopapp/src/features/Profile/screens/change_password_page.dart';
 import 'package:shopapp/src/features/home/screens/products_screen.dart';
@@ -77,7 +78,12 @@ class AppRouter {
           name: RouteConstants.checkOut,
           path: '/checkOut',
           pageBuilder: (context, state) {
-            return const MaterialPage(child: CheckOutPage());
+            final data = state.extra as Map<String, dynamic>;
+            return MaterialPage(
+                child: CheckOutPage(
+              products: data['a'] as List<CartModel>,
+              totalPrice: data['b'] as double,
+            ));
           },
         ),
         GoRoute(
