@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../services/locator_service.dart';
-import '../../../services/snackbar.dart';
+import '../../../services/snackbar_service.dart';
 import '../../Product/model/product_model.dart';
 import '../model/cart_model.dart';
 import '../repository/cart_repository.dart';
@@ -30,7 +30,7 @@ class CartProvider extends ChangeNotifier {
 
       if (existingCartItem.product?.id != null &&
           existingCartItem.quantity != null) {
-        print('product already added');
+        debugPrint('product already added');
         Snackbar.warning(
           context: context,
           message: 'Product alraady added to cart',
@@ -58,7 +58,7 @@ class CartProvider extends ChangeNotifier {
       {required BuildContext context, required String productId}) async {
     await _cartRepository.removeFromCart(productId: productId);
     getCartItems();
-    print('product removed');
+    debugPrint('product removed');
     notifyListeners();
   }
 

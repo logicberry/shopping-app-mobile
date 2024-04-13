@@ -21,7 +21,6 @@ class CartRepository {
   }) async {
     try {
       await _localStorageService.addToCart(cartItem);
-      print(cartItem);
       return cartItem;
     } catch (e) {
       debugPrint('Error adding to cart: $e');

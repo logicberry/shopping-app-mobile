@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopapp/src/core/core.dart';
+
+import '../services/services.dart';
 
 class BaseRepository {
   void showInternalServerError(BuildContext context) {

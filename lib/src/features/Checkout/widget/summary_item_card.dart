@@ -2,15 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/core.dart';
+import '../../Product/widgets/palette_image.dart';
 
-class SummaryItemCard extends StatelessWidget {
-  final String productName, productPrice, productquantity;
+class SummaryItemCard extends StatefulWidget {
+  final String productName, productPrice, productquantity, productImageUrl;
   const SummaryItemCard(
       {super.key,
       required this.productName,
       required this.productPrice,
-      required this.productquantity});
+      required this.productquantity,
+      required this.productImageUrl});
 
+  @override
+  State<SummaryItemCard> createState() => _SummaryItemCardState();
+}
+
+class _SummaryItemCardState extends State<SummaryItemCard> {
+  Color _backgroundColor = Colors.transparent;
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -23,20 +31,26 @@ class SummaryItemCard extends StatelessWidget {
         height: 60.h,
         width: 60.w,
         decoration: BoxDecoration(
-          color: AppColors.pink,
+          color: _backgroundColor,
           borderRadius: BorderRadius.circular(10.r),
-          image: const DecorationImage(
-            image: AssetImage(ImagePath.welcome),
-            fit: BoxFit.cover,
-          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: PaletteImage(
+              imageUrl: widget.productImageUrl,
+              onPaletteGenerated: (color) {
+                setState(() {
+                  _backgroundColor = color;
+                });
+              }),
         ),
       ),
-      title: Text(productName, style: textTheme.titleSmall),
-      subtitle: Text('\$$productPrice',
+      title: Text(widget.productName, style: textTheme.titleSmall),
+      subtitle: Text('\$${widget.productPrice}',
           style: textTheme.titleSmall?.copyWith(
               color: AppColors.primaryColor, fontWeight: FontWeight.w600)),
       trailing: Text(
-        'Quantity $productquantity',
+        'Quantity ${widget.productquantity}',
         style: textTheme.labelSmall,
       ),
     );

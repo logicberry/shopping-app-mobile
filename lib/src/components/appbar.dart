@@ -106,7 +106,7 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
           onTap: ontap,
           child: SvgPicture.asset(
             svgPath,
-            color: actionColor,
+            colorFilter: ColorFilter.mode(actionColor!, BlendMode.srcIn),
           ),
         ),
         if (itemCount != null && itemCount > 0)

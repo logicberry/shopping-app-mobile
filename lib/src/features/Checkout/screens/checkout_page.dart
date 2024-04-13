@@ -99,6 +99,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                   productName: item.product!.name,
                                   productPrice: item.product!.price.toString(),
                                   productquantity: item.quantity.toString(),
+                                  productImageUrl: item.product!.imageUrl,
                                 ),
                                 // if (index < 3 - 1) const Divider(),
                               ],

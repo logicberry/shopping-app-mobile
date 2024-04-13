@@ -7,7 +7,7 @@ import 'package:shopapp/src/core/core.dart';
 import 'package:shopapp/src/features/Product/widgets/palette_image.dart';
 
 import '../../../components/components.dart';
-import '../../../services/format.dart';
+import '../../../services/num_formater.dart';
 import '../../Cart/controller/cart_controller.dart';
 import '../model/product_model.dart';
 import '../widgets/widgets.dart';

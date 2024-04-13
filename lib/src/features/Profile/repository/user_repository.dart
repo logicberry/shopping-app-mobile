@@ -3,9 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopapp/src/core/core.dart';
 import 'package:shopapp/src/features/Profile/model/user_model.dart';
-import 'package:shopapp/src/services/local_storage_service.dart';
-
-import '../../../core/global.dart';
+import '../../../services/services.dart';
 
 class UserRepository extends BaseRepository{
   final LocalStorageService _localStorageService = LocalStorageService();

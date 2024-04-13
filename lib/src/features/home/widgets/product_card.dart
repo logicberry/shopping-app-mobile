@@ -4,7 +4,7 @@ import 'package:palette_generator/palette_generator.dart';
 import 'package:shopapp/src/components/components.dart';
 
 import '../../../core/core.dart';
-import '../../../services/format.dart';
+import '../../../services/num_formater.dart';
 
 class ProductCard extends StatefulWidget {
   final String productName;

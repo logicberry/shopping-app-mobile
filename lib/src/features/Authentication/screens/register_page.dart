@@ -5,7 +5,7 @@ import 'package:shopapp/src/core/core.dart';
 import 'package:shopapp/src/features/Authentication/controller/auth_controller.dart';
 
 import '../../../components/components.dart';
-import '../../../services/locator_service.dart';
+import '../../../services/services.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});

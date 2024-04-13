@@ -17,11 +17,8 @@ void setupServiceLocator() {
   locator.registerLazySingleton<UserRepository>(() => UserRepository());
   locator.registerLazySingleton<CartRepository>(() => CartRepository());
 
-  // locator.registerLazySingleton<CartRepository>(() => CartRepository());
   locator.registerLazySingleton<AuthProvider>(() => AuthProvider());
   locator.registerLazySingleton<ProductProvider>(() => ProductProvider());
   locator.registerLazySingleton<UserProvider>(() => UserProvider());
   locator.registerLazySingleton<CartProvider>(() => CartProvider());
-
-  // locator.registerLazySingleton<CartProvider>(() => CartProvider());
 }

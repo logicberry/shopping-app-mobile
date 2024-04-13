@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/core.dart';
-import '../../../core/global.dart';
-import '../../../services/local_storage_service.dart';
+import '../../../services/services.dart';
 
 class AuthRepository extends BaseRepository {
   final LocalStorageService _localStorageService = LocalStorageService();

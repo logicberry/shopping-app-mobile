@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:shopapp/src/core/global.dart';
 import 'package:shopapp/src/features/Product/model/product_model.dart';
 
 import '../../../core/core.dart';
@@ -21,7 +20,6 @@ class ProductRepository extends BaseRepository {
           .map((productMap) => ProductModel.fromMap(productMap))
           .toList();
 
-      print(products);
       return products;
     } catch (e) {
       showInternalServerError(context);
@@ -42,7 +40,6 @@ class ProductRepository extends BaseRepository {
       final List<ProductModel> products = productList
           .map((productMap) => ProductModel.fromMap(productMap))
           .toList();
-      print(products);
       return products;
     } catch (e) {
       showInternalServerError(context);

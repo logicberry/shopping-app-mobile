@@ -6,12 +6,19 @@ import 'package:shopapp/src/features/Cart/controller/cart_controller.dart';
 
 import '../../../core/core.dart';
 import '../../Product/model/product_model.dart';
+import '../../Product/widgets/palette_image.dart';
 
-class CartCard extends StatelessWidget {
+class CartCard extends StatefulWidget {
   final ProductModel? product;
 
   const CartCard({super.key, this.product});
 
+  @override
+  State<CartCard> createState() => _CartCardState();
+}
+
+class _CartCardState extends State<CartCard> {
+  Color _backgroundColor = Colors.transparent;
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -38,12 +45,18 @@ class CartCard extends StatelessWidget {
               height: 90.h,
               width: 90.w,
               decoration: BoxDecoration(
-                color: AppColors.pink,
+                color: _backgroundColor,
                 borderRadius: BorderRadius.circular(10.r),
-                image: const DecorationImage(
-                  image: AssetImage(ImagePath.welcome),
-                  fit: BoxFit.cover,
-                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PaletteImage(
+                    imageUrl: widget.product?.imageUrl ?? '',
+                    onPaletteGenerated: (color) {
+                      setState(() {
+                        _backgroundColor = color;
+                      });
+                    }),
               ),
             ),
             Space.width(15),
@@ -51,11 +64,11 @@ class CartCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(product?.name ?? '',
+                Text(widget.product?.name ?? '',
                     style: textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.w500,
                     )),
-                Text('\$${product?.price}',
+                Text('\$${widget.product?.price}',
                     style: textTheme.titleMedium?.copyWith(
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.w600,
@@ -71,7 +84,7 @@ class CartCard extends StatelessWidget {
                             .read<CartProvider>()
                             .removeFromCart(
                                 context: context,
-                                productId: product!.id.toString()),
+                                productId: widget.product!.id.toString()),
                         child: SvgPicture.asset(SvgPath.delete)),
                   ],
                 ),
