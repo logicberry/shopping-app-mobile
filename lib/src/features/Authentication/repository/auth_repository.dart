@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/core.dart';
+import '../../../core/global.dart';
 import '../../../services/local_storage_service.dart';
 
-class AuthRepository {
+class AuthRepository extends BaseRepository {
   final LocalStorageService _localStorageService = LocalStorageService();
 
   Future<dynamic> register({
@@ -38,8 +39,7 @@ class AuthRepository {
       }
       return response;
     } catch (e) {
-      Snackbar.show(
-          context: context, message: 'Internal Server Error', isError: true);
+      showInternalServerError(context);
     }
   }
 
@@ -71,8 +71,7 @@ class AuthRepository {
       return response;
     } catch (e) {
       debugPrint('Error login user: $e');
-      Snackbar.show(
-          context: context, message: 'Internal Server Error', isError: true);
+      showInternalServerError(context);
     }
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:shopapp/src/core/global.dart';
 import 'package:shopapp/src/features/Product/model/product_model.dart';
 
 import '../../../core/core.dart';
 import '../../../services/local_storage_service.dart';
 
-class ProductRepository {
+class ProductRepository extends BaseRepository {
   final LocalStorageService _localStorageService = LocalStorageService();
 
   Future<List<ProductModel>> getAllProducts({
@@ -23,7 +24,7 @@ class ProductRepository {
       print(products);
       return products;
     } catch (e) {
-      debugPrint('Error fetching products: $e');
+      showInternalServerError(context);
       rethrow;
     }
   }
@@ -44,7 +45,7 @@ class ProductRepository {
       print(products);
       return products;
     } catch (e) {
-      debugPrint('Error fetching product: $e');
+      showInternalServerError(context);
       rethrow;
     }
   }

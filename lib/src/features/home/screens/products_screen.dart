@@ -46,7 +46,7 @@ class _ProductPageState extends State<ProductPage> {
       appBar: SHAppBar(
         implyLeading: true,
         background: AppColors.primaryColor,
-        title: widget.categoryId != null ? 'Category Products' : 'All Products',
+        title: widget.categoryId != '' ? 'Category Products' : 'All Products',
         actionColor: AppColors.white,
         actionConfig: AppBarActionConfig.allActions,
       ),

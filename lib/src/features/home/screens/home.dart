@@ -57,8 +57,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    getProducts();
     getUser();
+    getProducts();
   }
 
   @override
@@ -125,7 +125,9 @@ class _HomePageState extends State<HomePage> {
                     child: InkWell(
                       onTap: () {
                         context.pushNamed(RouteConstants.allProducts,
-                            pathParameters: {'categoryId': idx});
+                            queryParameters: {
+                              'categoryId': idx,
+                            });
                       },
                       child: CategoryComponent(
                         categoryName: categoryName,
@@ -164,8 +166,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text('New Products', style: textTheme.bodyMedium),
                 GestureDetector(
-                  onTap: () => context.pushNamed(RouteConstants.allProducts,
-                      pathParameters: {'categoryId': ''}),
+                  onTap: () => context.pushNamed(RouteConstants.allProducts, queryParameters: {'categoryId': ''}),
                   child: Text('See all',
                       style: textTheme.labelLarge?.copyWith(
                           color: AppColors.primaryColor,
@@ -177,26 +178,35 @@ class _HomePageState extends State<HomePage> {
           Space.height(13),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 21.w),
-            child: GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 13.0,
-                  mainAxisSpacing: 1.0,
-                  childAspectRatio: 160 / 190),
-              itemCount: (products.length < 4) ? products.length : 4,
-              itemBuilder: (context, index) {
-                ProductModel product = products[index];
+            child: products.isNotEmpty
+                ? GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 13.0,
+                            mainAxisSpacing: 1.0,
+                            childAspectRatio: 160 / 190),
+                    itemCount: (products.length < 4) ? products.length : 4,
+                    itemBuilder: (context, index) {
+                      ProductModel product = products[index];
 
-                return ProductCard(
-                  productName: product.name,
-                  company: product.company,
-                  image: product.imageUrl,
-                  productPrice: product.price,
-                  initialPrice: product.initialPrice,
-                );
-              },
-            ),
+                      return ProductCard(
+                        productName: product.name,
+                        company: product.company,
+                        image: product.imageUrl,
+                        productPrice: product.price,
+                        initialPrice: product.initialPrice,
+                      );
+                    },
+                  )
+                : SizedBox(
+                    height: 200.h,
+                    child: const Center(
+                        child: CircularProgressIndicator(
+                      color: AppColors.primaryColor,
+                    )),
+                  ),
           ),
         ],
       ),

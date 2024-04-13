@@ -5,7 +5,9 @@ import 'package:shopapp/src/core/core.dart';
 import 'package:shopapp/src/features/Profile/model/user_model.dart';
 import 'package:shopapp/src/services/local_storage_service.dart';
 
-class UserRepository {
+import '../../../core/global.dart';
+
+class UserRepository extends BaseRepository{
   final LocalStorageService _localStorageService = LocalStorageService();
 
   Future<UserModel> viewProfile({required BuildContext context}) async {
@@ -16,7 +18,7 @@ class UserRepository {
       final UserModel user = UserModel.fromMap(response);
       return user;
     } catch (e) {
-      debugPrint('Error fecthing user: $e');
+      showInternalServerError(context);
       rethrow;
     }
   }
@@ -54,7 +56,7 @@ class UserRepository {
 
       return response;
     } catch (e) {
-      debugPrint('Error registering user: $e');
+      showInternalServerError(context);
     }
   }
 
@@ -87,7 +89,7 @@ class UserRepository {
 
       return response;
     } catch (e) {
-      debugPrint('Error registering user: $e');
+      showInternalServerError(context);
     }
   }
 }

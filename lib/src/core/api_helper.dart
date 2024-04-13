@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiHelper {
+  static const int timeout = 30;
+
   static Future<dynamic> get(String url, String token) async {
     final response = await http.get(Uri.parse(url), headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer $token',
-    });
+    }).timeout(const Duration(seconds: timeout));
     return _response(response);
   }
 
@@ -18,7 +20,7 @@ class ApiHelper {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-    );
+    ).timeout(const Duration(seconds: timeout));
     return _response(response);
   }
 
@@ -30,7 +32,7 @@ class ApiHelper {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer $token',
       },
-    );
+    ).timeout(const Duration(seconds: timeout));
     return _response(response);
   }
 
@@ -41,7 +43,7 @@ class ApiHelper {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-    );
+    ).timeout(const Duration(seconds: timeout));
     return _response(response);
   }
 
@@ -65,8 +67,7 @@ class ApiHelper {
         throw Exception('Not Found');
       case 500:
       default:
-        throw Exception(
-            'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
+        throw Exception('Internal Server Error');
     }
   }
 }
