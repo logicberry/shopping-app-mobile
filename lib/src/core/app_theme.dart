@@ -12,12 +12,16 @@ class AppTheme {
     //BODY
     titleLarge: TextStyle(
         fontSize: 19.sp, color: AppColors.black, fontWeight: FontWeight.w600),
+    titleMedium: TextStyle(
+        fontSize: 16.sp, color: AppColors.black, fontWeight: FontWeight.w600),
 
     bodyLarge: TextStyle(
         fontSize: 12.sp, color: AppColors.black, fontWeight: FontWeight.w400),
 
     bodyMedium: TextStyle(
         fontSize: 13.sp, color: AppColors.black, fontWeight: FontWeight.w500),
+    bodySmall: TextStyle(
+        fontSize: 11.sp, color: AppColors.black, fontWeight: FontWeight.w500),
 
     //LABEL
     labelLarge: TextStyle(
@@ -33,10 +37,14 @@ class AppTheme {
     headlineMedium: TextStyle(fontSize: 12.sp, color: AppColors.white),
     titleLarge: TextStyle(
         fontSize: 19.sp, color: AppColors.white, fontWeight: FontWeight.w600),
+    titleMedium: TextStyle(
+        fontSize: 16.sp, color: AppColors.white, fontWeight: FontWeight.w600),
     bodyLarge: TextStyle(
         fontSize: 12.sp, color: AppColors.white, fontWeight: FontWeight.w400),
     bodyMedium: TextStyle(
         fontSize: 13.sp, color: AppColors.white, fontWeight: FontWeight.w500),
+    bodySmall: TextStyle(
+        fontSize: 11.sp, color: AppColors.white, fontWeight: FontWeight.w500),
     labelLarge: TextStyle(
         fontSize: 14.sp, color: AppColors.white, fontWeight: FontWeight.w600),
     labelSmall: TextStyle(fontSize: 11.sp, color: const Color(0xFF5F6E7C)),

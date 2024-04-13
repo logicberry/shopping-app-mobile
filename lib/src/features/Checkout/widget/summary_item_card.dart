@@ -45,7 +45,7 @@ class _SummaryItemCardState extends State<SummaryItemCard> {
               }),
         ),
       ),
-      title: Text(widget.productName, style: textTheme.titleSmall),
+      title: Text(widget.productName, style: textTheme.titleMedium),
       subtitle: Text('\$${widget.productPrice}',
           style: textTheme.titleSmall?.copyWith(
               color: AppColors.primaryColor, fontWeight: FontWeight.w600)),

@@ -48,7 +48,8 @@ class _CartPageState extends State<CartPage> {
                             checkboxShape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.r)),
                             controlAffinity: ListTileControlAffinity.leading,
-                            title: const Text('Select All Item'),
+                            title: Text('Select All Item',
+                                style: Theme.of(context).textTheme.bodyMedium),
                             value: true,
                             onChanged: (v) {}),
                         ListView.separated(

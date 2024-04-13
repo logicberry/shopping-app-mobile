@@ -74,21 +74,16 @@ class _CartCardState extends State<CartCard> {
                       fontWeight: FontWeight.w600,
                     )),
                 Space.height(10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // const CartAddRemove(),
-                    Space.width(60),
-                    GestureDetector(
-                        onTap: () => context
-                            .read<CartProvider>()
-                            .removeFromCart(
-                                context: context,
-                                productId: widget.product!.id.toString()),
-                        child: SvgPicture.asset(SvgPath.delete)),
-                  ],
-                ),
+               
               ],
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: GestureDetector(
+                  onTap: () => context.read<CartProvider>().removeFromCart(
+                      context: context,
+                      productId: widget.product!.id.toString()),
+                  child: SvgPicture.asset(SvgPath.delete)),
             ),
           ],
         ),

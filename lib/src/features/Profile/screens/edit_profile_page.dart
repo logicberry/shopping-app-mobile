@@ -82,7 +82,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       height: 358.h,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: theme.cardColor,
                           borderRadius:
                               BorderRadius.all(Radius.circular(15.r))),
                       child: Padding(
@@ -120,7 +120,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       right: 130,
                       child: CircleAvatar(
                         radius: 45.r,
-                        backgroundImage: const AssetImage(ImagePath.welcome),
+                        backgroundImage: const AssetImage(ImagePath.avatar),
                       ),
                     )
                   ],
@@ -130,7 +130,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   height: 110.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: AppColors.white,
+                      color: theme.cardColor,
                       borderRadius: BorderRadius.all(Radius.circular(15.r))),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
@@ -138,9 +138,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Address'),
+                        const Text(
+                          'Address',
+                        ),
                         Space.height(10),
-                        Text('${user.address}, ${user.country}')
+                        Text('${user.address}, ${user.country}',
+                            style: theme.textTheme.bodySmall)
                       ],
                     ),
                   ),

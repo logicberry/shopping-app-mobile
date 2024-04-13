@@ -77,7 +77,8 @@ class BalanceCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: textTheme.bodySmall?.copyWith()),
+            Text(title,
+                style: textTheme.bodyLarge?.copyWith(color: AppColors.black)),
             Text(balanceText,
                 style: textTheme.titleLarge?.copyWith(
                   color: balancdTextColor,

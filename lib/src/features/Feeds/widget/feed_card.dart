@@ -7,12 +7,12 @@ import '../../../core/core.dart';
 import '../../Product/model/product_model.dart';
 import '../../Product/widgets/palette_image.dart';
 
-Map<String, String> specifications = {
-  'Processor': 'Core i3',
-  'Model': 'IMAC (Mid 2010)',
-  'Memory': '4GB 1333 MHz DDR3 (upgradeable)',
-  'Built-In Display': '21.5 Inch (1920 x 1080)',
-};
+// Map<String, String> specifications = {
+//   'Processor': 'Core i3',
+//   'Model': 'IMAC (Mid 2010)',
+//   'Memory': '4GB 1333 MHz DDR3 (upgradeable)',
+//   'Built-In Display': '21.5 Inch (1920 x 1080)',
+// };
 
 class FeedCard extends StatefulWidget {
   final ProductModel product;
@@ -25,10 +25,9 @@ class FeedCard extends StatefulWidget {
 class _FeedCardState extends State<FeedCard> {
   Color _backgroundColor = Colors.transparent;
 
-
   @override
   Widget build(BuildContext context) {
-              final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return GestureDetector(
       onTap: () => context.pushNamed(RouteConstants.productDetails,
@@ -40,7 +39,7 @@ class _FeedCardState extends State<FeedCard> {
             borderRadius: BorderRadius.all(
               Radius.circular(15.r),
             ),
-            color: AppColors.white),
+            color: Theme.of(context).cardColor),
         child: Column(
           children: [
             Padding(
@@ -60,10 +59,10 @@ class _FeedCardState extends State<FeedCard> {
                 ),
                 titleAlignment: ListTileTitleAlignment.titleHeight,
                 title: Text(widget.product.name,
-                    style: textTheme.bodyMedium?.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w600)),
-                subtitle: Text(widget.product.company,
-                    style: textTheme.labelSmall),
+                    style: textTheme.bodyMedium
+                        ?.copyWith(fontWeight: FontWeight.w600)),
+                subtitle:
+                    Text(widget.product.company, style: textTheme.labelSmall),
                 trailing: const Icon(Icons.more_horiz_outlined),
               ),
             ),
@@ -97,10 +96,10 @@ class _FeedCardState extends State<FeedCard> {
                   ),
                   Space.height(8),
                   Text(widget.product.description.toUpperCase(),
-                      style: textTheme.bodyMedium?.copyWith(
-                          color: Colors.black, fontWeight: FontWeight.w400)),
+                      style: textTheme.bodyMedium
+                          ?.copyWith(fontWeight: FontWeight.w400)),
                   Space.height(4),
-                  _buildSpecificationItems(),
+                  // _buildSpecificationItems(),
                 ],
               ),
             )
@@ -109,36 +108,37 @@ class _FeedCardState extends State<FeedCard> {
       ),
     );
   }
-
-  Widget _buildSpecificationItems() {
-    List<Widget> items = [];
-    specifications.forEach((key, value) {
-      items.add(_buildSpecificationItem(key, value));
-      items.add(SizedBox(height: 1.h));
-    });
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: items,
-    );
-  }
-
-  Widget _buildSpecificationItem(String label, String value) {
-    return Row(
-      children: [
-        Text(
-          ' - $label',
-          style: TextStyle(
-            fontSize: 12.sp,
-          ),
-        ),
-        Space.width(5),
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 12.sp,
-          ),
-        ),
-      ],
-    );
-  }
 }
+
+//   Widget _buildSpecificationItems() {
+//     List<Widget> items = [];
+//     specifications.forEach((key, value) {
+//       items.add(_buildSpecificationItem(key, value));
+//       items.add(SizedBox(height: 1.h));
+//     });
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: items,
+//     );
+//   }
+
+//   Widget _buildSpecificationItem(String label, String value) {
+//     return Row(
+//       children: [
+//         Text(
+//           ' - $label',
+//           style: TextStyle(
+//             fontSize: 12.sp,
+//           ),
+//         ),
+//         Space.width(5),
+//         Text(
+//           value,
+//           style: TextStyle(
+//             fontSize: 12.sp,
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }

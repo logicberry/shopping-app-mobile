@@ -45,7 +45,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Shipping Address'),
+                Text('Shipping Address', style: textTheme.bodyMedium),
                 Space.height(6),
                 Container(
                   height: 90.h,
@@ -60,7 +60,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(user.address ?? 'No address found',
-                          style: textTheme.bodySmall),
+                          style: textTheme.bodyLarge),
                       GestureDetector(
                         onTap: () => context
                             .pushNamed(RouteConstants.editProfile, extra: user),
@@ -76,7 +76,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   ),
                 ),
                 Space.height(20),
-                const Text('Summary Item'),
+                Text('Summary Item', style: textTheme.bodyMedium),
                 Space.height(6),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -153,7 +153,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   ),
                 ),
                 Space.height(20),
-                const Text('Summary Order'),
+                Text('Summary Order', style: textTheme.bodyMedium),
                 Space.height(6),
                 Container(
                   height: 120.h,

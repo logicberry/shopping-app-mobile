@@ -7,6 +7,7 @@ class ImagePath {
   static const String logo = '${imagePath}logo.png';
   static const String register = '${imagePath}register.png';
   static const String welcome = '${imagePath}welcome.png';
+  static const String avatar = '${imagePath}avatar.png';
   static const String promo1 = '${imagePath}promobanner.jpg';
   static const String promo2 = '${imagePath}promo2.jpg';
   static const String promo3 = '${imagePath}promo3.jpg';
