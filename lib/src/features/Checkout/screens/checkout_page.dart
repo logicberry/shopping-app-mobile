@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:shopapp/src/core/core.dart';
+import 'package:shopapp/src/features/Profile/controller/user_controller.dart';
 
 import '../../../components/components.dart';
 import '../../Cart/model/cart_model.dart';
@@ -17,18 +20,24 @@ class CheckOutPage extends StatefulWidget {
 }
 
 class _CheckOutPageState extends State<CheckOutPage> {
+  double deliveryFee = 10.00;
+  double tax = 5.00;
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final theme = Theme.of(context);
+    final user = context.read<UserProvider>().user;
 
     return Scaffold(
-      backgroundColor: AppColors.ash,
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: const SHAppBar(
-          actionConfig: AppBarActionConfig.messageAndNotification,
-          title: 'Checkout',
-          centerTitle: true,
-          implyLeading: true,
-          actionColor: Colors.black),
+        actionConfig: AppBarActionConfig.messageAndNotification,
+        title: 'Checkout',
+        centerTitle: true,
+        implyLeading: true,
+        actionColor: AppColors.white,
+        background: AppColors.primaryColor,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -43,21 +52,26 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: theme.cardColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                          'Domen Tikoro Street:  825 Baker Avenue, Dallas,Texas, Zip code  75202',
-                          style: textTheme.bodySmall?.copyWith(
-                            color: AppColors.black,
-                          )),
-                      Text('Change address',
-                          style: textTheme.labelSmall?.copyWith(
-                              color: AppColors.primaryColor, fontSize: 10.sp)),
+                      Text(user.address ?? 'No address found',
+                          style: textTheme.bodySmall),
+                      GestureDetector(
+                        onTap: () => context
+                            .pushNamed(RouteConstants.editProfile, extra: user),
+                        child: Text(
+                            user.address != null
+                                ? 'Change address'
+                                : 'Add address',
+                            style: textTheme.labelSmall?.copyWith(
+                                color: AppColors.primaryColor,
+                                fontSize: 10.sp)),
+                      ),
                     ],
                   ),
                 ),
@@ -70,7 +84,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: theme.cardColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
@@ -100,7 +114,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   height: 70.h,
                   child: TextField(
                     decoration: InputDecoration(
-                      fillColor: AppColors.white,
+                      fillColor: theme.cardColor,
                       filled: true,
                       hintText: 'Enter Coupon Code',
                       hintStyle: textTheme.labelSmall,
@@ -145,7 +159,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: theme.cardColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
@@ -154,41 +168,24 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     children: [
                       Row(
                         children: [
-                          Text('Delivery Fee',
-                              style: textTheme.bodySmall?.copyWith(
-                                color: AppColors.black,
-                              )),
+                          Text('Delivery Fee', style: textTheme.bodySmall),
                           const Spacer(),
-                          Text('\$ 10.00',
-                              style: textTheme.bodySmall?.copyWith(
-                                color: AppColors.black,
-                              )),
+                          Text('\$ $deliveryFee', style: textTheme.bodySmall),
                         ],
                       ),
                       Row(
                         children: [
-                          Text('Subtotal',
-                              style: textTheme.bodySmall?.copyWith(
-                                color: AppColors.black,
-                              )),
+                          Text('Subtotal', style: textTheme.bodySmall),
                           const Spacer(),
                           Text('\$ ${widget.totalPrice}',
-                              style: textTheme.bodySmall?.copyWith(
-                                color: AppColors.black,
-                              )),
+                              style: textTheme.bodySmall),
                         ],
                       ),
                       Row(
                         children: [
-                          Text('Tax',
-                              style: textTheme.bodySmall?.copyWith(
-                                color: AppColors.black,
-                              )),
+                          Text('Tax', style: textTheme.bodySmall),
                           const Spacer(),
-                          Text('\$ 10.00',
-                              style: textTheme.bodySmall?.copyWith(
-                                color: AppColors.black,
-                              )),
+                          Text('\$ $tax', style: textTheme.bodySmall),
                         ],
                       ),
                     ],
@@ -201,7 +198,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
         ),
       ),
       bottomSheet: CartAndCheckoutBar(
-          totalPrice: widget.totalPrice.toString(),
+          totalPrice: '${widget.totalPrice + deliveryFee + tax}',
           onTap: () {
             showDialog(
                 context: context,

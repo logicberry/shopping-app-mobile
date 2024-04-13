@@ -20,7 +20,7 @@ class CartCard extends StatelessWidget {
       height: 125.h,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(

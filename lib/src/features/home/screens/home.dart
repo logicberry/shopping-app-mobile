@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:shopapp/src/features/Profile/controller/user_controller.dart';
 import 'package:shopapp/src/features/home/widgets/category_component.dart';
 import 'package:shopapp/src/features/home/widgets/product_card.dart';
 import 'package:shopapp/src/features/home/widgets/searchfield.dart';
@@ -48,16 +50,21 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
+  getUser() async {
+    await context.read<UserProvider>().viewProfile(context: context);
+  }
+
   @override
   void initState() {
     super.initState();
     getProducts();
+    getUser();
   }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
+    final user = context.watch<UserProvider>().user;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -75,10 +82,20 @@ class _HomePageState extends State<HomePage> {
                     Space.width(20),
                     SvgPicture.asset(SvgPath.location),
                     Space.width(10),
-                    Text('St 394 Jackson, New york  United Status',
-                        style: textTheme.bodyLarge?.copyWith(
-                            color: AppColors.white,
-                            fontWeight: FontWeight.w400)),
+                    GestureDetector(
+                      onTap: () =>
+                          user.address != null && user.address!.isNotEmpty
+                              ? null
+                              : context.pushNamed(RouteConstants.editProfile,
+                                  extra: user),
+                      child: Text(
+                          user.address != null && user.address!.isNotEmpty
+                              ? '${user.address}, ${user.country}'
+                              : 'Tap to set your address',
+                          style: textTheme.bodyLarge?.copyWith(
+                              color: AppColors.white,
+                              fontWeight: FontWeight.w400)),
+                    ),
                   ],
                 ),
                 Space.height(20),

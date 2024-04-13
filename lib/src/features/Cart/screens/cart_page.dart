@@ -27,10 +27,11 @@ class _CartPageState extends State<CartPage> {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.ash,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: const SHAppBar(
           implyLeading: true,
-          actionColor: AppColors.black,
+          actionColor: AppColors.white,
+          background: AppColors.primaryColor,
           title: 'Your Cart',
           centerTitle: true,
           actionConfig: AppBarActionConfig.messageAndNotification),

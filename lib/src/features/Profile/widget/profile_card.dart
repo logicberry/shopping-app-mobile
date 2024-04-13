@@ -72,7 +72,7 @@ class BalanceCard extends StatelessWidget {
           color: AppColors.white,
           borderRadius: BorderRadius.all(Radius.circular(10.r))),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 15.w),
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 15.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,

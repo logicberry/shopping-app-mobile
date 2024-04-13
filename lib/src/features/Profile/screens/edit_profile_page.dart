@@ -56,14 +56,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final user = context.watch<UserProvider>().user;
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: const SHAppBar(
         actionConfig: AppBarActionConfig.none,
         title: 'Edit Profile',
         centerTitle: true,
         implyLeading: true,
       ),
-      backgroundColor: AppColors.ash,
       body: SingleChildScrollView(
         child: SafeArea(
             child: Padding(
@@ -138,7 +140,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       children: [
                         const Text('Address'),
                         Space.height(10),
-                        Text('${widget.user.address}, ${widget.user.country}')
+                        Text('${user.address}, ${user.country}')
                       ],
                     ),
                   ),

@@ -13,7 +13,6 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
         final textTheme = Theme.of(context).textTheme;
-
     return Consumer<UserProvider>(builder: (context, userProvider, _) {
       return FutureBuilder<void>(
           future: userProvider.viewProfile(context: context),

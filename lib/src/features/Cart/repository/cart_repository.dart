@@ -29,18 +29,18 @@ class CartRepository {
     }
   }
 
-  Future<CartModel> updateCart({
-    required CartModel cartItem,
-  }) async {
-    try {
-      await _localStorageService.updateCartItem(cartItem);
-      print(cartItem);
-      return cartItem;
-    } catch (e) {
-      debugPrint('Error adding to cart: $e');
-      rethrow;
-    }
-  }
+  // Future<CartModel> updateCart({
+  //   required CartModel cartItem,
+  // }) async {
+  //   try {
+  //     await _localStorageService.updateCartItem(cartItem);
+  //     print(cartItem);
+  //     return cartItem;
+  //   } catch (e) {
+  //     debugPrint('Error adding to cart: $e');
+  //     rethrow;
+  //   }
+  // }
 
   Future<void> removeFromCart({
     required String productId,
@@ -49,6 +49,15 @@ class CartRepository {
       await _localStorageService.removeFromCart(productId);
     } catch (e) {
       debugPrint('Error removing from cart: $e');
+    }
+  }
+
+  // clear cart
+  Future<void> clearCart() async {
+    try {
+      await _localStorageService.clearCart();
+    } catch (e) {
+      debugPrint('Error clearing cart: $e');
     }
   }
 }

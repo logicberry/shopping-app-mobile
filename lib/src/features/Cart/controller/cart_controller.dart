@@ -36,7 +36,7 @@ class CartProvider extends ChangeNotifier {
           message: 'Product alraady added to cart',
         );
         // existingCartItem.quantity = (existingCartItem.quantity ?? 0) + quantity;
-        await _cartRepository.updateCart(cartItem: existingCartItem);
+        // await _cartRepository.updateCart(cartItem: existingCartItem);
       } else {
         final cartItem = CartModel(
           id: productId,
@@ -65,5 +65,12 @@ class CartProvider extends ChangeNotifier {
   Future<List<CartModel>> getCartItems() async {
     _cartItems = await _cartRepository.getCartItems();
     return _cartItems;
+  }
+
+  // clear cart
+  Future<void> clearCart() async {
+    await _cartRepository.clearCart();
+    _cartItems = [];
+    notifyListeners();
   }
 }

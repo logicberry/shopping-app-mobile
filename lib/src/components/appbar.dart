@@ -112,7 +112,7 @@ class SHAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (itemCount != null && itemCount > 0)
           Positioned(
             right: 0,
-            top: 0,
+            top: -3,
             child: Container(
               padding: const EdgeInsets.all(2),
               decoration: const BoxDecoration(

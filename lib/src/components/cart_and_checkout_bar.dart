@@ -19,7 +19,7 @@ class CartAndCheckoutBar extends StatelessWidget {
       width: double.infinity,
       height: 94.h,
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Theme.of(context).cardColor,
         border: Border.all(width: 0.3, color: AppColors.grey),
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20.r), topRight: Radius.circular(20.r)),

@@ -84,28 +84,47 @@ class CartLocalStorageService {
     }
   }
 
-  Future<void> updateCartItem(CartModel updatedItem) async {
+  // Future<void> updateCartItem(CartModel updatedItem) async {
+  //   try {
+  //     // Retrieve existing cart items from SharedPreferences
+  //     final SharedPreferences prefs = await SharedPreferences.getInstance();
+  //     final List<String> cartJsonList = prefs.getStringList(_cartKey) ?? [];
+
+  //     // Find the index of the item to be updated
+  //     final int index = cartJsonList.indexWhere((jsonString) {
+  //       final CartModel cartItem = CartModel.fromMap(jsonDecode(jsonString));
+  //       return cartItem.id == updatedItem.id;
+  //     });
+
+  //     if (index != -1) {
+  //       // Update the item at the found index
+  //       cartJsonList[index] = jsonEncode(updatedItem.toMap());
+
+  //       // Save the updated cart items list back to SharedPreferences
+  //       await prefs.setStringList(_cartKey, cartJsonList);
+  //     }
+  //   } catch (e) {
+  //     // Handle error, if any
+  //     print('Error updating cart item: $e');
+  //     rethrow; // Rethrow the error to propagate it upwards
+  //   }
+  // }
+
+  //clear cart
+  Future<void> clearCart() async {
     try {
       // Retrieve existing cart items from SharedPreferences
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       final List<String> cartJsonList = prefs.getStringList(_cartKey) ?? [];
 
-      // Find the index of the item to be updated
-      final int index = cartJsonList.indexWhere((jsonString) {
-        final CartModel cartItem = CartModel.fromMap(jsonDecode(jsonString));
-        return cartItem.id == updatedItem.id;
-      });
+      // Clear the cart items list
+      cartJsonList.clear();
 
-      if (index != -1) {
-        // Update the item at the found index
-        cartJsonList[index] = jsonEncode(updatedItem.toMap());
-
-        // Save the updated cart items list back to SharedPreferences
-        await prefs.setStringList(_cartKey, cartJsonList);
-      }
+      // Save the updated cart items list back to SharedPreferences
+      await prefs.setStringList(_cartKey, cartJsonList);
     } catch (e) {
       // Handle error, if any
-      print('Error updating cart item: $e');
+      print('Error clearing cart: $e');
       rethrow; // Rethrow the error to propagate it upwards
     }
   }

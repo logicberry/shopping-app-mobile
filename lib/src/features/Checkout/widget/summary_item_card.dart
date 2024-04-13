@@ -5,15 +5,20 @@ import '../../../core/core.dart';
 
 class SummaryItemCard extends StatelessWidget {
   final String productName, productPrice, productquantity;
-  const SummaryItemCard({super.key, required this.productName, required this.productPrice, required this.productquantity});
+  const SummaryItemCard(
+      {super.key,
+      required this.productName,
+      required this.productPrice,
+      required this.productquantity});
 
   @override
   Widget build(BuildContext context) {
-            final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return ListTile(
       isThreeLine: true,
       contentPadding: EdgeInsets.zero,
+      titleAlignment: ListTileTitleAlignment.center,
       leading: Container(
         height: 60.h,
         width: 60.w,
@@ -26,11 +31,14 @@ class SummaryItemCard extends StatelessWidget {
           ),
         ),
       ),
-      title: Text(productName, style: textTheme.bodyLarge),
+      title: Text(productName, style: textTheme.titleSmall),
       subtitle: Text('\$$productPrice',
-          style: textTheme.bodySmall
-              ?.copyWith(color: AppColors.primaryColor)),
-      trailing: Text('Quantity $productquantity', style: textTheme.labelSmall),
+          style: textTheme.titleSmall?.copyWith(
+              color: AppColors.primaryColor, fontWeight: FontWeight.w600)),
+      trailing: Text(
+        'Quantity $productquantity',
+        style: textTheme.labelSmall,
+      ),
     );
   }
 }
