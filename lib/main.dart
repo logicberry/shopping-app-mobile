@@ -7,6 +7,7 @@ import 'package:shopapp/src/features/Authentication/controller/auth_controller.d
 import 'package:shopapp/src/features/Cart/controller/cart_controller.dart';
 import 'package:shopapp/src/features/Product/controller/product_controller.dart';
 import 'package:shopapp/src/features/Profile/controller/user_controller.dart';
+import 'src/features/Cart/controller/selected_item_controller.dart';
 import 'src/features/Profile/controller/theme_controller.dart';
 import 'src/services/locator_service.dart';
 
@@ -21,7 +22,8 @@ void main() {
       ChangeNotifierProvider(create: (context) => ProductProvider()),
       ChangeNotifierProvider(create: (context) => UserProvider()),
       ChangeNotifierProvider(create: (_) => ThemeProvider()),
-      ChangeNotifierProvider(create: (_) => CartProvider())
+      ChangeNotifierProvider(create: (_) => CartProvider()),
+      ChangeNotifierProvider(create: (_) => SelectedItemsProvider()),
     ], child: const MyApp()),
   );
 }

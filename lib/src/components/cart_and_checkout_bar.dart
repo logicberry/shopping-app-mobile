@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:shopapp/src/components/button.dart';
 
 import '../core/core.dart';
+import '../features/Cart/controller/selected_item_controller.dart';
 
 class CartAndCheckoutBar extends StatelessWidget {
   final String? title;
@@ -14,7 +16,9 @@ class CartAndCheckoutBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
+    final selectedItemsProvider = context.watch<SelectedItemsProvider>();
+    final bool hasSelectedItems =
+        selectedItemsProvider.selectedItems.isNotEmpty;
     return Container(
       width: double.infinity,
       height: 94.h,
@@ -44,8 +48,12 @@ class CartAndCheckoutBar extends StatelessWidget {
             Space.width(5),
             SizedBox(
                 width: 185.w,
-                child:
-                    SAActionButton(title: title ?? 'Continue', onTap: onTap)),
+                child: SAActionButton(
+                    title: title ?? 'Continue',
+                    color: hasSelectedItems
+                        ? AppColors.secondaryColor
+                        : AppColors.grey,
+                    onTap: hasSelectedItems ? onTap : null)),
           ],
         ),
       ),

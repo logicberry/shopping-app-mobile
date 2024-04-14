@@ -10,8 +10,10 @@ import '../../Product/widgets/palette_image.dart';
 
 class CartCard extends StatefulWidget {
   final ProductModel? product;
+  final bool isSelected;
+  final void Function(bool?)? onSelected;
 
-  const CartCard({super.key, this.product});
+  const CartCard({super.key, this.product, required this.isSelected, this.onSelected});
 
   @override
   State<CartCard> createState() => _CartCardState();
@@ -37,8 +39,8 @@ class _CartCardState extends State<CartCard> {
           children: [
             Checkbox(
               activeColor: AppColors.primaryColor,
-              value: true,
-              onChanged: (v) {},
+              value: widget.isSelected,
+              onChanged: widget.onSelected,
               shape: const CircleBorder(),
             ),
             Container(
@@ -74,7 +76,7 @@ class _CartCardState extends State<CartCard> {
                       fontWeight: FontWeight.w600,
                     )),
                 Space.height(10),
-               
+
               ],
             ),
             Align(
