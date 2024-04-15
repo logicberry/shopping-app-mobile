@@ -3,11 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shopapp/router.dart';
-import 'package:shopapp/src/features/Authentication/controller/auth_controller.dart';
-import 'package:shopapp/src/features/Cart/controller/cart_controller.dart';
-import 'package:shopapp/src/features/Product/controller/product_controller.dart';
-import 'package:shopapp/src/features/Profile/controller/user_controller.dart';
-import 'src/features/Cart/controller/selected_item_controller.dart';
+import 'package:shopapp/src/app.dart';
+
+import 'src/core/core.dart';
 import 'src/features/Profile/controller/theme_controller.dart';
 import 'src/services/locator_service.dart';
 
@@ -17,14 +15,7 @@ void main() {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(
-    MultiProvider(providers: [
-      ChangeNotifierProvider(create: (context) => AuthProvider()),
-      ChangeNotifierProvider(create: (context) => ProductProvider()),
-      ChangeNotifierProvider(create: (context) => UserProvider()),
-      ChangeNotifierProvider(create: (_) => ThemeProvider()),
-      ChangeNotifierProvider(create: (_) => CartProvider()),
-      ChangeNotifierProvider(create: (_) => SelectedItemsProvider()),
-    ], child: const MyApp()),
+    const ShopApp(child: MyApp()),
   );
 }
 
@@ -38,6 +29,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: const Size(375, 812),
         builder: (ctx, child) {
+          SystemUiManager.setSystemUiOverlayStyle(context);
           return GestureDetector(
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: MaterialApp.router(

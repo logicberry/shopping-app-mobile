@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:shopapp/src/core/core.dart';
+
+import '../features/Profile/controller/theme_controller.dart';
 
 class AppTheme {
   static TextTheme lightTextTheme = TextTheme(
@@ -80,4 +84,25 @@ class AppTheme {
       ),
       bottomSheetTheme:
           const BottomSheetThemeData(backgroundColor: Color(0xFF0C4A3F)));
+}
+
+class SystemUiManager {
+  static void setSystemUiOverlayStyle(BuildContext context) {
+    final themeProvider = context.read<ThemeProvider>();
+    final isDarkMode = themeProvider.currentTheme == AppTheme.darkTheme;
+
+    SystemChrome.setSystemUIOverlayStyle(
+      isDarkMode
+          ? SystemUiOverlayStyle.dark.copyWith(
+              statusBarColor: Colors.transparent,
+              systemNavigationBarColor: const Color(0xFF06372E),
+              systemNavigationBarIconBrightness: Brightness.light,
+            )
+          : SystemUiOverlayStyle.light.copyWith(
+              statusBarColor: Colors.transparent,
+              systemNavigationBarColor: Colors.white,
+              systemNavigationBarIconBrightness: Brightness.dark,
+            ),
+    );
+  }
 }

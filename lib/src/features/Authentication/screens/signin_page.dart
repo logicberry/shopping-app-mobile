@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:shopapp/src/components/button.dart';
 import 'package:shopapp/src/components/textfield.dart';
 import 'package:shopapp/src/core/core.dart';
 
-import '../../../services/locator_service.dart';
 import '../controller/auth_controller.dart';
 
 class SignInPage extends StatefulWidget {
@@ -19,7 +19,7 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _signInKey = GlobalKey<FormState>();
-  final AuthProvider authProvider = locator<AuthProvider>();
+  // final AuthProvider authProvider = locator<AuthProvider>();
   @override
   void dispose() {
     _emailController.clear();
@@ -32,11 +32,11 @@ class _SignInPageState extends State<SignInPage> {
       final email = _emailController.text;
       final password = _passwordController.text;
 
-      authProvider.login(
-        context: context,
-        email: email,
-        password: password,
-      );
+      context.read<AuthProvider>().login(
+            context: context,
+            email: email,
+            password: password,
+          );
     }
   }
 
@@ -139,10 +139,13 @@ class _SignInPageState extends State<SignInPage> {
                         ],
                       ),
                       Space.height(71),
-                      SAActionButton(
-                        title: 'Sign In',
-                        onTap: _signIn,
-                      ),
+                      Consumer<AuthProvider>(builder: (context, value, child) {
+                        return SAActionButton(
+                          title: 'Sign In',
+                          onTap: _signIn,
+                          isLoading: value.isLoading,
+                        );
+                      }),
                       Space.height(80),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

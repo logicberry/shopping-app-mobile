@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:shopapp/src/core/core.dart';
 import 'package:shopapp/src/features/Authentication/controller/auth_controller.dart';
 
@@ -48,13 +49,13 @@ class _SignUpPageState extends State<SignUpPage> {
         return;
       }
 
-      authProvider.register(
-        context: context,
-        fullName: name,
-        email: email,
-        phoneNumber: phone,
-        password: password,
-      );
+      context.read<AuthProvider>().register(
+            context: context,
+            fullName: name,
+            email: email,
+            phoneNumber: phone,
+            password: password,
+          );
     }
   }
 
@@ -145,10 +146,13 @@ class _SignUpPageState extends State<SignUpPage> {
                         inputType: TextInputType.visiblePassword,
                       ),
                       Space.height(59),
-                      SAActionButton(
-                        title: 'Sign Up',
-                        onTap: _signUp,
-                      ),
+                      Consumer<AuthProvider>(builder: (context, value, child) {
+                        return SAActionButton(
+                          title: 'Sign In',
+                          onTap: _signUp,
+                          isLoading: value.isLoading,
+                        );
+                      }),
                       Space.height(50),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

@@ -149,7 +149,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                 ),
                 Space.height(25),
-                SAActionButton(title: 'Save Changes', onTap: edit)
+                Consumer<UserProvider>(
+                  builder: (context, value, child) {
+                    return SAActionButton(
+                        title: 'Save Changes',
+                        onTap: edit,
+                        isLoading: value.isLoading);
+                  },
+                ),
               ],
             ),
           ),
